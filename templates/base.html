@@ -1,17 +1,71 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Buy SPSS Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site to buy SPSS Online.">
     <meta name="author" content="Irene Garcia">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
 
 
 </head>
 <body>
-    <div>
-        {%  block content %}
-        {% endblock %}
+<div class="container">
+    <div class='container-fluid'>
+        <nav id="menu" class="navbar navbar-inverse">
+	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		    </button>
+            <a class="navbar-brand" href="#">LOGO GOES HERE</a>
+
+		    <div id="myNnavbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li ><a class="active" href="#">Home</a> </li>
+                    <li ><a href="#">Products</a> </li>
+                    <li ><a href="#">Blog</a> </li>
+                    <li ><a href="#">Contact</a> </li>
+
+			    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li ><a href="/profile"><span class="glyphicon glyphicon-user"> My Profile</span></a> </li>
+                        <li ><a href="/logout"><span class="glyphicon glyphicon-log-out"> Log out</span></a> </li>
+
+                    {% else %}
+                        <li ><a href="/register"><span class="glyphicon glyphicon-user"> Register</span></a> </li>
+                        <li ><a href="/login"><span class="glyphicon glyphicon-log-in"> Log in</span></a> </li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+		</nav>
+    </div>
+    <div class="container">
+        {% if messages %}
+            <div class="alert alert-success">
+                <div class="messages">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="container">
+            {%  block content %}
+            {% endblock %}
+        </div>
+        <div class="footer">
+           <p>Created by Irene Garcia</p>
+       </div>
+    </div>
     </div>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 </html>

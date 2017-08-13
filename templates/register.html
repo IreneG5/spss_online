@@ -1,0 +1,28 @@
+{%  extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+    <div class="col-md-6">
+        <p>Register to get more insights!</p>
+        <p>When you create your account you will be able to: </p>
+        <ul>
+            <li>Buy products and save your orders in your profile</li>
+            <li>Access all content from our resources</li>
+            <li>Comment and like our blog posts</li>
+            <li>Get the latest offers</li>
+            <li>And much more</li>
+            </ul>
+    <p>Register today!</p>
+    </div>
+    <div class="col-md-4">
+    <form role="form" id="register-form" method="post" action="{% url 'register' %} ">
+        <legend>Create a new account</legend>
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create Account</button>
+        </div>
+    </form>
+    </div>
+{% endblock %}
+
+
