@@ -1,15 +1,24 @@
-.navbar{
-    background: #403b65;
-    color: #fff;
+/* CSS Custom Styles */
+
+.border-green{
+
+    border-color:#bed600;
 }
 
+
+/* Navbar */
 #menu{
-    background-color: red;
-    background:red;
+    background:#403b65;
 }
 
-nav{
-    background-color: red;
-    background:red;
+#menu li>a:hover{
+    color: #bed600;
 }
+
+/* Forms */
+/* Testing register-form*/
+#register-form input {
+    width: 80%;
+}
+
 

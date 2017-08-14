@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>Hi {{ user.first_name }}!</h2>
+    <br>
+    <h4>Your Personal Details:</h4>
 
-    <h4>Your details</h4>
-    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Company: {{ user.company }}</p>
+    <ul>
+        <li><p>Name: {{ user.first_name }} {{ user.last_name }}</p></li>
+        <li><p>Company: {{ user.company }}</p></li>
+        <li><p>Email: {{ user.email }}</p></li>
+        <li><p>Phone: {{ user.phone }}</p></li>
+        <li><p>Industry: {{ user.industry }}</p></li>
+        <li><p>Country: {{ user.country }}</p></li>
 
+    </ul>
 {% endblock %}
