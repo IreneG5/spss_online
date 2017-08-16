@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Thank you for buying SPSS </h1> <!--Add the actual product they bought-->
+
+    <h2>POST</h2>
+    {{ post }}
+
+    <h2>GET</h2>
+    {{ get }}
+
+    <h4>What's next?</h4>
+
+    <p>Check out <a href="{% url blog %}"> our blog</a></p>
+    <p>Request a <a href="mailto:test@test.com">free consultation </a></p>
+
+{% endblock %}

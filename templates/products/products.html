@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>See below the products available.</h2>
+    <p>If you can't find the version or OS that you require, please contact us.</p>
+
+    <h4>IBM SPSS Statistics</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>OS</th>
+                <th>Price</th>
+                <th>License time</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for product in products %}
+            {% if product.code == "SPSS-Stats" %}
+                <tr><td>{{ product.name }}</td>
+                    <td>{{ product.osystem }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.license_type }}</td>
+                    <td>{{ product.paypal_form.sandbox }}</td> <!-- .render for production-->
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <br/>
+    <h4>IBM SPSS Modeler</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>OS</th>
+                <th>Price</th>
+                <th>License time</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for product in products %}
+            {% if product.code == "SPSS-Modeler" %}
+                <tr><td>{{ product.name }}</td>
+                    <td>{{ product.osystem }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.license_type }}</td>
+                    <td>{{ product.paypal_form.sandbox }}</td> <!-- .render for production-->
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
