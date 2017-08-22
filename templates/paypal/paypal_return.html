@@ -3,15 +3,19 @@
 
     <h1>Thank you for buying SPSS </h1> <!--Add the actual product they bought-->
 
+    <p>Your transaction has been completed, and a receipt for your purchase has been emailed to you.
+        You may log into your account at www.paypal.com to view details of this transaction.</p>
     <h2>POST</h2>
     {{ post }}
 
     <h2>GET</h2>
     {{ get }}
 
+
+
     <h4>What's next?</h4>
 
-    <p>Check out <a href="{% url blog %}"> our blog</a></p>
-    <p>Request a <a href="mailto:test@test.com">free consultation </a></p>
+    <!--<p>Check out <a href="{#% url 'blog' %#}"> our blog</a></p>-->
+    <p>Request a <a href="mailto:test@test.com">free consultation </a>with a member of our team.</p>
 
 {% endblock %}
