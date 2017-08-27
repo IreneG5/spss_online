@@ -1,56 +1,81 @@
 {% extends "base.html" %}
-{% block content %}
-    <h2>See below the products available.</h2>
-    <p>If you can't find the version or OS that you require, please contact us.</p>
+{% load bootstrap_tags %}
+{% load staticfiles %}
+{% load product_extras %}
+{% block head_js %}
 
-    <h4>IBM SPSS Statistics</h4>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>OS</th>
-                <th>Price</th>
-                <th>License time</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        {% for product in products %}
-            {% if product.code == "SPSS-Stats" %}
-                <tr><td>{{ product.name }}</td>
-                    <td>{{ product.osystem }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.license_type }}</td>
-                    <td>{{ product.paypal_form.sandbox }}</td> <!-- .render for production-->
-                </tr>
-            {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
-    <br/>
-    <h4>IBM SPSS Modeler</h4>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>OS</th>
-                <th>Price</th>
-                <th>License time</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        {% for product in products %}
-            {% if product.code == "SPSS-Modeler" %}
-                <tr><td>{{ product.name }}</td>
-                    <td>{{ product.osystem }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.license_type }}</td>
-                    <td>{{ product.paypal_form.sandbox }}</td> <!-- .render for production-->
-                </tr>
-            {% endif %}
-        {% endfor %}
-        </tbody>
-    </table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 {% endblock %}
+{% block content %}
+    <div class="col-sm-12">
+        <h3>See below the list of products available.</h3>
+        <div class="col-sm-8">
+
+            <p>&nbsp;&nbsp;</p>
+            <p>If you can't find the version or OS that you require, please contact us.</p>
+        </div>
+        <div class="col-sm-4 centered">
+            {% if not user.is_authenticated %}
+                Please log in to see payment options.<br>
+                <a class="btn btn-large btn-primary " href="{% url 'login' %}">Log in</a>&emsp;or&emsp;
+                <a class="btn btn-large btn-primary " href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <p>&nbsp;&nbsp;</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="5%">&nbsp;</th>
+                    <th width="50%">Name</th>
+                    <th>OS</th>
+                    <th>Price per month</th>
+                    <th>License time</th>
+                    <th>Buy</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><a id = "show_prod_desc{{ product.id }}" >
+                            <span class="glyphicon glyphicon-plus color-green"></span> </a>
+                            <a id = "hide_prod_desc{{ product.id }}" style="display: none;" >
+                                <span class="glyphicon glyphicon-minus color-green"></span></a>
+                        </td>
+                        <td ><b>{{ product.name }}</b>
+                            <div  id="{{ product.id }}" style="display: none;" >
+                                <br/>&emsp;{{ product.description }}<br>
+                            </div>
+                        </td>
+                        <td>{{ product.osystem }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.license_type }}</td>
+                        <td>
+                            {% if user.is_authenticated %}
+                                <!-- Paypal subscription -->
+                                {% paypal_form_for product user %}
+                                <!-- Paypal single payment # product.paypal_form.sandbox #-->
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <script>
+                        $( "#show_prod_desc{{ product.id }}" ).click(function() {
+                            $('#{{ product.id }}').show();
+                            $('#show_prod_desc{{ product.id }}').hide();
+                            $('#hide_prod_desc{{ product.id }}').show();
+                       });
+                        $( "#hide_prod_desc{{ product.id }}" ).click(function() {
+                            $('#{{ product.id }}').hide();
+                            $('#show_prod_desc{{ product.id }}').show();
+                            $('#hide_prod_desc{{ product.id }}').hide();
+                        });
+                   </script>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}
+</div>

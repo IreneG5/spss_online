@@ -44,3 +44,16 @@ class User(AbstractUser):
         industry = models.CharField(max_length=25, choices=industries, default='')
 
         objects = AccountUserManager()
+
+        def is_customer(self, product):
+            try:
+                purchase = self.purchase.get(product_pk=product.pk)
+            except Exception:
+                return False
+
+            if purchase.license_end>timezone.now():
+                return False
+
+            return True
+
+        
