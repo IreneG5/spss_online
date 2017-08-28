@@ -21,6 +21,7 @@ from home import views
 from accounts import views as accounts_views
 from products import views as product_views
 
+
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
@@ -31,10 +32,13 @@ urlpatterns = [
     url(r'^profile/$', accounts_views.profile, name='profile'),
     url(r'^login/$', accounts_views.login, name='login'),
     url(r'^logout/$', accounts_views.logout, name='logout'),
-    url(r'^products/$', product_views.all_products),
+    url(r'^products/$', product_views.all_products, name='products'),
 
     # Paypal
     url(r'^a-very-hard-to-guess-url/', include(paypal_urls)),
     url(r'^paypal-return', paypal_views.paypal_return),
     url(r'^paypal-cancel', paypal_views.paypal_cancel),
+
+    # Blog
+    url(r'', include('blog.urls'))
 ]

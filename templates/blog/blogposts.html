@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+
+{% block content %}
+    <h1>Welcome to our SPSS/Analytics Blog</h1>
+    <p>Here you will find industry insights, SPSS and Analytics tips and tricks, advice for your projects and much more.</p>
+    <p>&nbsp;</p>
+
+    <div class="container">
+
+    <div class="col-sm-9">
+        {% for post in posts %}
+            <div class="col-sm-4">
+                <div>
+                    <h3><a href="">{{ post.title }}</a></h3>
+                    <p>{{ post.published_date }}</p>
+                    <p>{{ post.content|truncatewords:30 }}...</p>
+                    <p>Category: {{ post.category|linebreaksbr }}</p>
+                    <p><button class="btn btn-default" onclick="location.href={{ post.id }}">Read more</button> </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}

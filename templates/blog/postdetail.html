@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+
+    <div class="container">
+
+    <div class="col-sm-9">
+            <div class="col-sm-9">
+                <div>
+                    <h3><a href="">{{ post.title }}</a></h3>
+                    <p>By: {{ post.author }} | Category: {{ post.category}}</p>
+                    <p>{{ post.published_date }}</p>
+                    <div>
+                        <a class="story-img" href="#">
+                            <img src="http://placehold.it/100" style="width:100px; height: 100px;">
+                        </a>
+                    </div>
+
+
+                    <p>{{ post.content|linebreaksbr  }}...</p>
+                    <p></p>
+
+                </div>
+            </div>
+        <div class="col-sm-9">
+            <button class="btn btn-default" onclick="location.href='/blog'">Back to Blog</button>
+        </div>
+
+    </div>
+    </div>
+{% endblock %}

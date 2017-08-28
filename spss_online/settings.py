@@ -25,8 +25,6 @@ SECRET_KEY = 'a7w##lr33)_=dv%jkd0%avvttderv_mxo&pa)hak*!1xa-iw90'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -43,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'paypal_store',
     'products',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +143,8 @@ STATICFILES_DIRS = (
 
 # PayPal Settings
 SITE_URL = 'http://127.0.0.1:8000'
-PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'
+PAYPAL_NOTIFY_URL = 'http://d15ac57c.ngrok.io'
+#PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'irene.g5555-facilitator@gmail.com'
 
+ALLOWED_HOSTS = ['127.0.0.1', 'http://d15ac57c.ngrok.io']

@@ -9,8 +9,7 @@
     <meta name="author" content="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-
+{% block head_js %}{% endblock %}
 </head>
 <body>
 <div class="container">
@@ -27,7 +26,7 @@
                 <ul class="nav navbar-nav">
                     <li ><a class="active" href="#">Home</a> </li>
                     <li ><a href="/products">Products</a> </li>
-                    <li ><a href="#">Blog</a> </li>
+                    <li ><a href="/blog">Blog</a> </li>
                     <li ><a href="#">Contact</a> </li>
 
 			    </ul>
@@ -61,7 +60,8 @@
             {% endblock %}
         </div>
         <div class="footer">
-            <br/>
+            <p>&nbsp;</p>
+
             <hr class="border-green">
 
            <p>Created by Irene Garcia</p>
