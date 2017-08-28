@@ -13,16 +13,19 @@
                 <div>
                     <h3><a href="">{{ post.title }}</a></h3>
                     <p>By: {{ post.author }} | Category: {{ post.category}}</p>
-                    <p>{{ post.published_date }}</p>
+                    <p>{{ post.published_date }} | Views: {{ post.views }}</p>
                     <div>
-                        <a class="story-img" href="#">
-                            <img src="http://placehold.it/100" style="width:100px; height: 100px;">
-                        </a>
+                          <img src="{{ post.image.url }}" style="width:100px; height: 100px;">
+
+
                     </div>
 
 
                     <p>{{ post.content|linebreaksbr  }}...</p>
-                    <p></p>
+                    <p>{% load disqus_tags %}
+                        {% set_disqus_title post.title %}
+                        {% disqus_show_comments %}
+                        </p>
 
                 </div>
             </div>

@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django_forms_bootstrap',
     'paypal.standard.ipn',
+    'disqus',
     'home',
     'accounts',
     'paypal_store',
@@ -141,10 +143,20 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+MEDIA_ROOT = 'media/'
+
+DISQUS_WEBSITE_SHORTNAME = 'spssblog'
+SITE_ID = 1
+
+ALLOWED_HOSTS = ['127.0.0.1', 'http://d15ac57c.ngrok.io']
+
 # PayPal Settings
 SITE_URL = 'http://127.0.0.1:8000'
 PAYPAL_NOTIFY_URL = 'http://d15ac57c.ngrok.io'
 #PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'irene.g5555-facilitator@gmail.com'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'http://d15ac57c.ngrok.io']
+
+
+
+
