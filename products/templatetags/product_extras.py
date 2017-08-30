@@ -17,15 +17,15 @@ def paypal_form_for(product, user):
             "currency_code": "EUR",
             "cmd": "_xclick-subscriptions",
             "a3": product.price,
-            "p3":1,
-            "t3":"M",
-            "src":1,
-            "Sra":1,
+            "p3": product.license_type,
+            "t3": "Y",  # Y for yearly, M for monthly
+            "src": 0,  # 1 for recurrent
+            "Sra": 1,
             "item_name": product.name,
             "invoice": uuid.uuid4(),
             "notify_url": settings.PAYPAL_NOTIFY_URL,
             "return_url": "%s/paypal-return" % settings.SITE_URL,
-            "cancel_return":"%s/paypal-cancel" % settings.SITE_URL,
+            "cancel_return": "%s/paypal-cancel" % settings.SITE_URL,
             "custom": "%s-%s" % (product.pk, user.id),
         }
 

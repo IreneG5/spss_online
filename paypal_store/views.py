@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+from products.models import Purchase
 
 
 @csrf_exempt

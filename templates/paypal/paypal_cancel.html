@@ -2,6 +2,10 @@
 {% block content %}
 
     <h1>We are sorry you've cancelled the purchase of this item.</h1>
+
+    {{ Purchase.objects.last }}
+
+
     <h2>POST</h2>
     {{ post }}
 

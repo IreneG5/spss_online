@@ -10,9 +10,8 @@ from signals import subscription_created, subscription_was_cancelled
 
 
 license_types=(
-    ('1 year', '12'),
-    ('2 years', '24'),
-    ('perpetual', '999999'),
+    ('1 year', '1'),
+    ('2 years', '2'),
 )
 
 
@@ -23,24 +22,24 @@ class Product(models.Model):
     osystem = models.CharField(max_length=10, default="")
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
-    license_type = models.CharField(max_length=50, choices=license_types, default="1 year")
+    license_type = models.CharField(max_length=50, choices=license_types, default="1")
 
     # Passes the info needed for the PaypalPaymentForm to create
     # the button and required HTML when we render the template
     # Only used for Paypal individual payments. Remove if not used
-    @property
-    def paypal_form(self):
-        paypal_dict = {
-            "business": settings.PAYPAL_RECEIVER_EMAIL,
-            "amount": self.price,
-            "currency": "EUR",
-            "item_name": "%s-%s" % (self.pk, uuid.uuid4()),
-            "notify_url": settings.PAYPAL_NOTIFY_URL,
-            "return_url": "%s/paypal-return/" % settings.SITE_URL,
-            "cancel_return": "%s/paypal-cancel/" % settings.SITE_URL
-        }
+    # @property
+    # def paypal_form(self):
+    #    paypal_dict = {
+    #        "business": settings.PAYPAL_RECEIVER_EMAIL,
+    #        "amount": self.price,
+    #        "currency": "EUR",
+    #        "item_name": "%s-%s" % (self.pk, uuid.uuid4()),
+    #        "notify_url": settings.PAYPAL_NOTIFY_URL,
+    #        "return_url": "%s/paypal-return/" % settings.SITE_URL,
+    #        "cancel_return": "%s/paypal-cancel/" % settings.SITE_URL
+    #    }
 
-        return PayPalPaymentsForm(initial=paypal_dict)
+    #    return PayPalPaymentsForm(initial=paypal_dict)
 
     def __unicode__(self):
         return self.name
@@ -53,4 +52,4 @@ class Purchase (models.Model):
 
 
 valid_ipn_received.connect(subscription_created)
-valid_ipn_received.connect(subscription_was_cancelled)
+# valid_ipn_received.connect(subscription_was_cancelled)
