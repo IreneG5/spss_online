@@ -11,17 +11,43 @@
     <div class="container">
 
     <div class="col-sm-9">
-        {% for post in posts %}
-            <div class="col-sm-4">
+        {% if posts %}
+            <div class="row blog-mini-row">
+                {% for post in posts %}
+                    <div class="col-sm-4 ">
+                    <div class="blog-mini-item">
+                            <div class="blog-mini-title"><h4><a href={{ post.id }}>{{ post.title|truncatechars:40 }}</a></h4></div>
+                            <div class="blog-mini-date"><i>{{ post.published_date| date }} | {{ post.category }}</i></div>
+                        {% if post.image.url %}
+                        <div class="blog-mini-image"><img src="{{ post.image.url }}"></div>
+                         {% endif %}
+                            <div class="blog-mini-content">{{ post.content|truncatechars:100 |linebreaksbr}}</div>
+                            <br>
+                            <div class="blog-mini-button"><button class="btn btn-default" onclick="location.href={{ post.id }}">Read more</button> </div>
+                    </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                        </div>
+                        <div class="row blog-mini-div">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="">We're working on amazing blog posts for you</div>
+        {% endif %}
+
+
+        {#% for post in posts %#}
+          <!--  <div class="col-sm-4">
                 <div>
-                    <h3><a href="">{{ post.title }}</a></h3>
-                    <p>{{ post.published_date }}</p>
-                    <p>{{ post.content|truncatewords:30 }}...</p>
-                    <p>Category: {{ post.category|linebreaksbr }}</p>
-                    <p><button class="btn btn-default" onclick="location.href={{ post.id }}">Read more</button> </p>
+                    <h3><a href="">{#  #}{ post.title }}</a></h3>
+                    <p>{#  #}{ post.published_date }}</p>
+                    <p>{#  #}{ post.content|truncatewords:30 }}...</p>
+                    <p>Category: {#  #}{ post.category|linebreaksbr }}</p>
+                    <p><button class="btn btn-default" onclick="location.href={#  #}{ post.id }}">Read more</button> </p>
                 </div>
             </div>
-        {% endfor %}
+        {#% endfor %#}
     </div>
     </div>
 {% endblock %}
