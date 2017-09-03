@@ -5,7 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
+from django import template
 from accounts.forms import UserRegistrationForm, UserLoginForm
+from products.models import Purchase
+
+register = template.Library()
 
 
 # Create your views here.
@@ -31,7 +35,9 @@ def register(request):
 
 @login_required(login_url='/login/')
 def profile(request):
-    return render(request, 'profile.html')
+    purchases = Purchase.objects.filter(user_id=request.user.id).order_by('-license_end')
+    today = arrow.now()
+    return render(request, 'profile.html', {'purchases':purchases})
 
 
 def login(request):
@@ -60,4 +66,6 @@ def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect(reverse('index'))
+
+
 

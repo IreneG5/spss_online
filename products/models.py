@@ -24,23 +24,6 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     license_type = models.CharField(max_length=50, choices=license_types, default="1")
 
-    # Passes the info needed for the PaypalPaymentForm to create
-    # the button and required HTML when we render the template
-    # Only used for Paypal individual payments. Remove if not used
-    # @property
-    # def paypal_form(self):
-    #    paypal_dict = {
-    #        "business": settings.PAYPAL_RECEIVER_EMAIL,
-    #        "amount": self.price,
-    #        "currency": "EUR",
-    #        "item_name": "%s-%s" % (self.pk, uuid.uuid4()),
-    #        "notify_url": settings.PAYPAL_NOTIFY_URL,
-    #        "return_url": "%s/paypal-return/" % settings.SITE_URL,
-    #        "cancel_return": "%s/paypal-cancel/" % settings.SITE_URL
-    #    }
-
-    #    return PayPalPaymentsForm(initial=paypal_dict)
-
     def __unicode__(self):
         return self.name
 
@@ -50,6 +33,8 @@ class Purchase (models.Model):
     product = models.ForeignKey(Product)
     license_end = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.product
 
 valid_ipn_received.connect(subscription_created)
-# valid_ipn_received.connect(subscription_was_cancelled)
+valid_ipn_received.connect(subscription_was_cancelled)

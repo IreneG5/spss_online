@@ -2,6 +2,7 @@ import uuid
 from django import template
 from django.conf import settings
 from paypal.standard.forms import PayPalPaymentsForm
+from ..models import Purchase
 
 register = template.Library()
 
@@ -36,3 +37,9 @@ def paypal_form_for(product, user):
     return html
 
 register.simple_tag(paypal_form_for)
+
+
+# @register.inclusion_tag('products/products.html')
+# def spss_last_purchase(request):
+#    last_purchase = Purchase.objects.last()
+#    return {'last_purchase':last_purchase}

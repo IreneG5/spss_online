@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls import include, url
 from paypal.standard.ipn import urls as paypal_urls
 from paypal_store import views as paypal_views
 from home import views
 from accounts import views as accounts_views
 from products import views as product_views
-
+from products.templatetags import product_extras as product_extras
+from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -40,5 +43,10 @@ urlpatterns = [
     url(r'^paypal-cancel', paypal_views.paypal_cancel),
 
     # Blog
-    url(r'', include('blog.urls'))
+    url(r'', include('blog.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns.append(url(r'^debug/', include(debug_toolbar.urls)))
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

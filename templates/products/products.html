@@ -10,7 +10,7 @@
 {% block content %}
     <div class="col-sm-12">
         <h3>See below the list of products available.</h3>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
 
             <p>&nbsp;&nbsp;</p>
             <p>If you can't find the version or OS that you require, please contact us.</p>
@@ -56,6 +56,7 @@
                             {% if user.is_authenticated %}
                                 <!-- Paypal subscription -->
                                 {% paypal_form_for product user %}
+
                                 <!-- Paypal single payment # product.paypal_form.sandbox #-->
                             {% else %}
                                 -
@@ -77,5 +78,19 @@
                 {% endfor %}
             </tbody>
         </table>
-{% endblock %}
+    {#% include "products/purchases.html" %#}
+
+<h4>Your active products</h4>
+    <table class="table table-striped">
+            <tbody>
+
+    {% for purchase in purchases %}
+
+        {% if purchase.license_end > today %}
+            <tr><td>{{ purchase.product }} - License expires on: {{ purchase.license_end | date }}</td></tr>
+        {% endif %}
+
+    {% endfor %}
+            </tbody></table>
+    {% endblock %}
 </div>

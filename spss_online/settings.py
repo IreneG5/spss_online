@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'paypal.standard.ipn',
     'disqus',
+    'debug_toolbar',
     'home',
     'accounts',
     'paypal_store',
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'spss_online.urls'
@@ -143,8 +145,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = '/Users/irene/Documents/Full-Stack-Developer/Stream3/Project/spss_online/media/'
+MEDIA_URL = '/media/'
 
+
+# Disqus
 DISQUS_WEBSITE_SHORTNAME = 'spssblog'
 SITE_ID = 1
 
