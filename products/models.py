@@ -33,8 +33,18 @@ class Purchase (models.Model):
     product = models.ForeignKey(Product)
     license_end = models.DateTimeField(default=timezone.now)
 
+    def __unicode__(self):
+        return self.product.name
+
+
+class PurchaseTemp(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='purchases_temp')
+    product = models.ForeignKey(Product)
+    license_end = models.DateTimeField(default=timezone.now)
+
     def __str__(self):
-        return self.product
+        return self.product.name
+
 
 valid_ipn_received.connect(subscription_created)
-valid_ipn_received.connect(subscription_was_cancelled)
+# valid_ipn_received.connect(subscription_was_cancelled)

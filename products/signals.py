@@ -6,8 +6,11 @@ def subscription_created(sender, **kwargs):
     ipn_obj = sender
     product_id = ipn_obj.custom.split('-')[0]
     user_id = ipn_obj.custom.split('-')[1]
-    models.Purchase.objects.create(product_id=product_id, user_id=user_id,
-                            license_end=arrow.now().replace(years=+1).datetime)
+    license_length = models.Product.objects.get(pk=product_id).license_type
+    license_length=int(license_length[0])
+    models.PurchaseTemp.objects.create(product_id=product_id, user_id=user_id,
+                            license_end=arrow.now().replace(years=+license_length).datetime)
+    
 
 
 def subscription_was_cancelled(sender, **kwargs):
