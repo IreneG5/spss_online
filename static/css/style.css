@@ -1,11 +1,25 @@
 /* CSS Custom Styles */
 
-.border-green{
-    border-color:#bed600;
+/*Color codes*/
+/*  Dark teal 006080 - 0, 96, 128
+    Light teal 20B2AA - 32, 178, 170
+    orange 20B2AA
+ */
+
+body{
+
 }
 
-.color-green{
-    color:#bed600;
+h1, h2, h3, h4, h5, h6{
+    color: #006080;
+}
+
+.border-teal{
+    border-color:#20B2AA;
+}
+
+.color-teal{
+    color:#20B2AA;
 }
 
 .centered{
@@ -15,19 +29,88 @@
 
 /* Navbar */
 #menu{
-    background:#403b65;
+    background:#006080;
+    border-color:#006080;
 }
 
 #menu li>a:hover{
-    color: #bed600;
+    color: #006080;
+    background-color: #20B2AA;
+}
+#menu li>a:focus{
+    color: #006080;
+    background-color: #20B2AA;
 }
 
+
+#menu .navbar-brand{
+    padding-top: 0px;
+
+}
+
+/* Home */
+/* Carousel */
+#myCarousel {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-caption>h1, .carousel-caption>h2, .carousel-caption>h3{
+    color:#fff;
+    text-shadow:1px 1px 2px #444343;
+    background-color:rgba(0, 0, 0, 0.3);
+}
+
+.carousel-inner{
+    border-radius:20px;
+}
+.carousel-inner img{
+
+}
+
+.carousel-control.right, .carousel-control.left{
+    background-image:none;
+}
 /* Forms */
 /* Testing register-form*/
 #register-form input {
     width: 80%;
 }
 
+
+
+/* Products */
+.product-mini-image>img{
+    width:100%;
+    padding:5px 15px;
+}
+
+.product-mini-item{
+    padding: 1px;
+    border: 1px solid #d5d5d5;
+    height: 100%;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px #d5d5d5;
+    text-align: center;
+}
+
+.product-mini-price{
+    font-size: 2.3em;
+}
+
+.popover{
+    /*background-color:rgba(32, 178, 170, 0.3);*/
+    border: 1px solid #006080;
+
+    background-color: rgba(241, 241, 241, 0.9);
+}
+.popover-title{
+    background-color:rgba(32, 178, 170, 0.9);
+}
+.popover.right>.arrow{
+    border-right-color:#006080;
+}
 
 /* Blog */
 .blog-mini-image>img{
@@ -37,6 +120,34 @@
 
 .blog-mini-item{
     padding: 5px;
-    border: 1px solid #f5f5f5;
+    border: 1px solid #d5d5d5;
     height: 100%;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px #d5d5d5;
 }
+
+/*CTA*/
+.cta{
+    border: 3px solid #20B2AA;
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px #d5d5d5 ;
+    padding: 10px;
+    text-align: center;
+}
+.cta>div{
+
+}
+.cta button{
+    background-image: linear-gradient(#26d9d0, #22c3bb 60%, #20B2AA);
+    background-repeat: no-repeat;
+    border: 1px solid #20B2AA;
+    background-color:#20B2AA;
+}
+
+.cta button:hover{
+    background-image: linear-gradient(#26d9d0, #22c3bb 60%, #20B2AA);
+    background-repeat: no-repeat;
+    border: 1px solid #20B2AA;
+    background-color:#20B2AA
+}
+

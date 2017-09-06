@@ -12,15 +12,14 @@
 {% block head_js %}{% endblock %}
 </head>
 <body>
-<div class="container">
-    <div class='container-fluid'>
+    <div class="container">
         <nav id="menu" class="navbar navbar-inverse">
 	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		    </button>
-            <a class="navbar-brand" href="#">LOGO GOES HERE</a>
+            <a class="navbar-brand" href="#"><img src="../media/images/logo2sm.png"> </a>
 
 		    <div id="myNnavbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -46,29 +45,30 @@
 		</nav>
     </div>
     <div class="container">
+    <div class="container-fluid">
         {% if messages %}
             <div class="alert">
-                    {% for message in messages %}
-                        <p class="{{ message.tags }}">{{ message }}</p>
-                    {% endfor %}
-                </div>
+                {% for message in messages %}
+                    <p class="{{ message.tags }}">{{ message }}</p>
+                {% endfor %}
             </div>
         {% endif %}
-        <div class="container">
+
+        <div class="container-fluid">
             {%  block content %}
             {% endblock %}
         </div>
         <div class="footer">
             <p>&nbsp;</p>
 
-            <hr class="border-green">
+            <hr class="border-teal">
 
            <p>Created by Irene Garcia</p>
        </div>
     </div>
-    </div>
+</div>
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </html>
