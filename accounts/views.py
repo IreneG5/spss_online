@@ -9,6 +9,7 @@ from django import template
 from accounts.forms import UserRegistrationForm, UserLoginForm
 from products.models import Purchase
 
+
 register = template.Library()
 
 
@@ -21,10 +22,11 @@ def register(request):
             user = auth.authenticate(email=request.POST.get('email'),
                                    password=request.POST.get('password1'))
             if user:
-                messages.success(request, "Thank you for registering")
+                messages.info(request, "Thanks for registering. You are now logged in.", extra_tags='alert alert-success')
+                auth.login(request, user)
                 return redirect(reverse('profile'))
             else:
-                messages.error(request, "Unable to log in. Please contact us")
+                messages.error(request, "Unable to log in. Please contact us", extra_tags='alert alert-danger')
     else:
         form=UserRegistrationForm()
 
@@ -36,7 +38,6 @@ def register(request):
 @login_required(login_url='/login/')
 def profile(request):
     purchases = Purchase.objects.filter(user_id=request.user.id).order_by('-license_end')
-    today = arrow.now()
     return render(request, 'profile.html', {'purchases':purchases})
 
 
@@ -49,7 +50,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                messages.success(request, "You have successfully logged in")
+                messages.success(request, "You have successfully logged in", extra_tags='alert alert-success')
                 return redirect(reverse('profile'))
             else:
                 form.add_error(None, "Your email or password was not recognised")
@@ -64,7 +65,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'You have successfully logged out')
+    messages.success(request, 'You have successfully logged out', extra_tags='alert alert-success')
     return redirect(reverse('index'))
 
 
