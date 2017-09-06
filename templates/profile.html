@@ -4,20 +4,26 @@
     <br>
     <div class="row">
         <div class="col-sm-9">
-            <h4>Your Details:</h4>
-            <ul>
-                <li><p>Name: {{ user.first_name }} {{ user.last_name }}</p></li>
-                <li><p>Company: {{ user.company }}</p></li>
-                <li><p>Email: {{ user.email }}</p></li>
-                <li><p>Phone: {{ user.phone }}</p></li>
-                <li><p>Industry: {{ user.industry }}</p></li>
-            </ul>
+            <div class="col-sm-12">
+                <h4>Your Details:</h4>
+                <ul>
+                    <li><b>Name</b>: {{ user.first_name }} {{ user.last_name }}</li>
+                    <li><b>Company</b>: {{ user.company }}</li>
+                    <li><b>Email</b>: {{ user.email }}</li>
+                    <li><b>Phone</b>: {{ user.phone }}</li>
+                    <li><b>Industry</b>: {{ user.industry }}</li>
+                </ul>
+            </div>
+
+            <div class="col-sm-12">&nbsp;</div>
+            <div class="col-sm-12">
+                <h4>Your Products:</h4>
+                    {% include "products/purchases.html" %}
+
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-9">
-            <h4>Your Products:</h4>
-            {% include "products/purchases.html" %}
+        <div class="col-sm-3">
+        {% include 'cta/cta_contactus.html' %}
         </div>
     </div>
 {% endblock %}

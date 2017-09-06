@@ -1,32 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="col-sm-9">
-        <div>
-            <h3>Thank you for buying SPSS </h3> <!--Add the actual product they bought-->
-            <p>Your transaction has been completed, and a receipt for your purchase has been emailed to you.
-                You may log into your account at www.paypal.com to view details of this transaction.</p>
-            <br>
-        </div>
-        <div>
-            <h4>Your last purchase</h4>
-            <p><i>* If the product below is not the one you just purchased please refresh the page</i></p>
-            <ul>
-                <li>Product: {{ last_purchase.product }}</li>
-                <li>Price: {{ last_purchase.product.price }}</li>
-                <li>License expires on: {{ last_purchase.license_end | date }}</li>
-            </ul>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-12">
+                <div>
+                    <h3>Thank you for buying SPSS </h3> <!--Add the actual product they bought-->
+                    <p>Your transaction has been completed, and a receipt for your purchase has been emailed to you.
+                        You may log into your account at www.paypal.com to view details of this transaction.</p>
+                    <br>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="clearfix"></div>
-
-    <div class="col-sm-12">
-        <br>
-        <h4>What's next?</h4>
-        <ul>
-            <li>Check out <a href="{% url 'blog' %}"> our blog</a></li>
-            <li>Request a <a href="mailto:test@test.com">consultation </a>with a member of our team.</li>
-        </ul>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="col-sm-12">
+                <div>
+                    <h4>Your last purchase</h4>
+                    <p><i>* If the product below is not the one you just purchased please refresh the page</i></p>
+                    <ul>
+                        <li>Product: {{ last_purchase.product }}</li>
+                        <li>Price: {{ last_purchase.product.price }}</li>
+                        <li>License expires on: {{ last_purchase.license_end | date }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <br>
+                <h4>What's next?</h4>
+                <ul>
+                    <li>Check out <a href="{% url 'blog' %}"> our blog</a></li>
+                    <li>Request a <a href="mailto:test@test.com">consultation </a>with a member of our team.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            bla
+        </div>
     </div>
 {% endblock %}
 

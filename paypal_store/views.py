@@ -21,9 +21,9 @@ def paypal_return(request):
     """
     # Check when the PurchaseTemp is being saved in the DB
     count = 0
-    while count < 20:
+    while count < 3:
         if PurchaseTemp.objects.last()is None:
-            count =+ 1
+            count += 1
             print count
             time.sleep(3)
         else:
