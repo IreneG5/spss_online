@@ -22,9 +22,11 @@
                         {% if post.image.url %}
                         <div class="blog-mini-image"><img src="{{ post.image.url }}"></div>
                          {% endif %}
-                            <div class="blog-mini-content">{{ post.content|truncatechars:100 |linebreaksbr}}</div>
+                            <div class="blog-mini-content">{{ post.content|truncatewords:15 |linebreaksbr}}</div>
                             <br>
-                            <div class="blog-mini-button"><button class="btn btn-default" onclick="location.href={{ post.id }}">Read more</button> </div>
+                            <div class="blog-mini-button centered">
+                                <button class="btn btn-default" onclick="location.href={{ post.id }}">Read more</button>
+                            </div>
                     </div>
                     </div>
                     {% if forloop.counter|divisibleby:3 %}

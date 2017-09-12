@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% if last_purchase %}
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-12">
@@ -20,9 +21,9 @@
                     <h4>Your last purchase</h4>
                     <p><i>* If the product below is not the one you just purchased please refresh the page</i></p>
                     <ul>
-                        <li>Product: {{ last_purchase.product }}</li>
+                        <li>Product: {{ last_purchase.product }} {{ last_purchase.product.osystem }}</li>
                         <li>Price: {{ last_purchase.product.price }}</li>
-                        <li>License expires on: {{ last_purchase.license_end | date }}</li>
+                        <li>License expires on: {{ last_purchase.license_end }}</li> <!-- | date-->
                     </ul>
                 </div>
             </div>
@@ -39,5 +40,8 @@
             bla
         </div>
     </div>
+    {% else %}
+        {{ html }}
+    {% endif %}
 {% endblock %}
 

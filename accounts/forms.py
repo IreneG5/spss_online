@@ -9,8 +9,8 @@ class UserRegistrationForm(UserCreationForm):
 
     # Extra fields not included in the User Model
     company = forms.CharField(max_length=100, label='Company', required=True )
-    phone = forms.CharField(max_length=20, label='Phone Number')
-    industry = forms.CharField(label='Industry', widget=forms.Select(choices=industries))
+    #phone = forms.CharField(max_length=20, label='Phone Number')
+    #industry = forms.CharField(label='Industry', widget=forms.Select(choices=industries))
     password1 = forms.CharField(
         label='Password',
         widget=forms.PasswordInput
@@ -21,14 +21,27 @@ class UserRegistrationForm(UserCreationForm):
         widget=forms.PasswordInput
     )
 
+
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'company', 'phone', 'industry']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'company']#, 'phone', 'industry']
         exclude = ['username']
+
+    def clean_password1(self):
+        password1 = self.cleaned_data.get('password1')
+        if not password1:
+            message = "Please enter your password"
+            raise forms.ValidationError(message)
+
+        return password1
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
+
+        if not password2:
+            message = "Please confirm your password"
+            raise forms.ValidationError(message)
 
         if password1 and password2 and password1 != password2:
             message = "Passwords do not match"
@@ -66,13 +79,6 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError(message)
         return company
 
-    def clean_phone(self):
-        phone = self.cleaned_data.get('phone')
-        if not phone:
-            message = "Please enter your phone number"
-            raise forms.ValidationError(message)
-        return phone
-
     def save(self, commit=True):
         instance = super(UserRegistrationForm, self).save(commit=False)
 
@@ -83,6 +89,14 @@ class UserRegistrationForm(UserCreationForm):
             instance.save()
 
         return instance
+
+    def __init__(self, *args, **kwargs):
+        super(UserRegistrationForm, self).__init__(*args, **kwargs)
+
+        for key in self.fields:
+            self.fields[key].required = False
+
+
 
 
 

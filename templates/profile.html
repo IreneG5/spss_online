@@ -10,15 +10,33 @@
                     <li><b>Name</b>: {{ user.first_name }} {{ user.last_name }}</li>
                     <li><b>Company</b>: {{ user.company }}</li>
                     <li><b>Email</b>: {{ user.email }}</li>
-                    <li><b>Phone</b>: {{ user.phone }}</li>
-                    <li><b>Industry</b>: {{ user.industry }}</li>
+
                 </ul>
             </div>
 
             <div class="col-sm-12">&nbsp;</div>
             <div class="col-sm-12">
                 <h4>Your Products:</h4>
-                    {% include "products/purchases.html" %}
+                    {#% include "products/purchases.html" %#}
+                <table class="table table-striped">
+                    <tbody>
+                       {% for purchase in purchases %}
+                           <tr><td>{{ purchase.product }} {{ purchase.product.osystem }}<br></td>
+                           <td>
+                                {% if purchase.license_end > today %}
+                                    License expires on: {{ purchase.license_end | date }}</td><td>
+                                    {% if purchase.license_end < expire_soon %}
+                                        <p class="bg-danger">Expiring soon</p>
+                                    {% endif %}
+                               {% else %}
+                               License expired on: {{ purchase.license_end | date }}
+                                </td><td>
+                                    <p class="bg-warning">Expired</p>
+                               </td></tr>
+                           {% endif %}
+                       {% endfor %}
+                    </tbody>
+                </table>
 
             </div>
         </div>

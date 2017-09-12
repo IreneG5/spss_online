@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
 {% load product_extras %}
-{% block head_js %}
-
-
-
-{% endblock %}
 
 {% block content %}
+    <!-- Carousel -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -14,18 +10,18 @@
         </ol>
 
         <div class="carousel-inner">
-            <div id="0" class="item " role="listbox">
-                <img src="../media/images/bg-charts.jpg" alt="" />
+            <!-- Item 1 -->
+            <div id="0" class="item active" role="listbox">
+                <img src="../static/images/bg-graph.jpg" alt="" />
                 <div class="carousel-caption">
                     <h1><b>Are you looking for affordable SPSS Software?</b></h1>
                     <h2>We can help you!</h2>
                     <button class="btn btn-success">Learn more</button></br>
-
                 </div>
-
             </div>
-            <div class="item active" role="listbox">
-                <img src="../media/images/bg-data.jpg" alt="" />
+            <!-- Item 2 -->
+            <div class="item" role="listbox">
+                <img src="../static/images/bg-data.jpg" alt="" />
                 <div class="carousel-caption">
                     <h1>easy SPSS Blog</h1>
                     <h2>Market insights, SPSS tips and tricks, and loads of advice to help you succeed... <br>All in one place!</h2>
@@ -33,6 +29,7 @@
                 </div>
             </div>
         </div>
+        <!-- Controls -->
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
             <span class="sr-only">Previous</span>
@@ -42,8 +39,8 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-<div class="container-fluid">
-    <h2>There will be a banner</h2>
-    <p>And some text and links</p>
-</div>
+    <!-- End Carousel -->
+    <div class="container-fluid">
+        <p>And some text and links</p>
+    </div>
 {% endblock %}

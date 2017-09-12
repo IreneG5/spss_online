@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import arrow
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -13,7 +14,6 @@ from products.models import Purchase
 register = template.Library()
 
 
-# Create your views here.
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
@@ -28,17 +28,22 @@ def register(request):
             else:
                 messages.error(request, "Unable to log in. Please contact us", extra_tags='alert alert-danger')
     else:
-        form=UserRegistrationForm()
+        form = UserRegistrationForm()
 
-    args={'form': form}
+    args = {'form': form}
     args.update(csrf(request))
     return render(request, 'register.html', args)
 
 
 @login_required(login_url='/login/')
 def profile(request):
-    purchases = Purchase.objects.filter(user_id=request.user.id).order_by('-license_end')
-    return render(request, 'profile.html', {'purchases':purchases})
+    today = arrow.now()  # passed as argument to compare the products with an active licence in the template
+    expire_soon = arrow.now().replace(days=+30).datetime  # passed as argument to highlight the products close to expire
+    purchases = Purchase.objects.filter(user_id=request.user.id).order_by('license_end')
+    args = {'purchases': purchases, 'today': today, 'expire_soon': expire_soon}
+    return render(request, "profile.html", args)
+    #purchases = Purchase.objects.filter(user_id=request.user.id).order_by('-license_end')
+    #return render(request, 'profile.html', {'purchases':purchases})
 
 
 def login(request):

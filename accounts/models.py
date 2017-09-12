@@ -40,8 +40,8 @@ class User(AbstractUser):
         # with the abstract we can add custom attributes
 
         company = models.CharField(max_length=100, default='')
-        phone = models.CharField(max_length=20, default='')
-        industry = models.CharField(max_length=25, choices=industries, default='')
+        #phone = models.CharField(max_length=20, default='')
+        #industry = models.CharField(max_length=25, choices=industries, default='')
 
         objects = AccountUserManager()
 

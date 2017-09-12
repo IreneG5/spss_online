@@ -91,8 +91,6 @@ DATABASES = {
 }
 
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -125,7 +123,7 @@ AUTHENTICATION_BACKENDS = (
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
@@ -153,13 +151,15 @@ MEDIA_URL = '/media/'
 DISQUS_WEBSITE_SHORTNAME = 'spssblog'
 SITE_ID = 1
 
-ALLOWED_HOSTS = ['127.0.0.1', '270885f3.ngrok.io']
+# Debug Toolbar
+INTERNAL_IPS = ('127.0.0.1',)
+
+ALLOWED_HOSTS = ['127.0.0.1', '2d1214fc.ngrok.io']
 
 # PayPal Settings
-SITE_URL = 'http://270885f3.ngrok.io'
-PAYPAL_NOTIFY_URL = 'http://270885f3.ngrok.io/a-very-hard-to-guess-url/'
-#PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'
-PAYPAL_RECEIVER_EMAIL = 'irene.g5555-facilitator@gmail.com'
+SITE_URL = 'http://2d1214fc.ngrok.io'
+PAYPAL_NOTIFY_URL = 'http://2d1214fc.ngrok.io/a-very-hard-to-guess-url/'
+PAYPAL_RECEIVER_EMAIL = 'irene.g5555-easySPSS1@gmail.com'
 
 
 

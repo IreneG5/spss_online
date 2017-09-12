@@ -2,7 +2,7 @@
 {% load bootstrap_tags %}
 {% block content %}
     <div class="col-md-6">
-        <p>Register to get more insights!</p>
+        <h1>Register to get more insights!</h1>
         <p>When you create your account you will be able to: </p>
         <ul>
             <li>Buy products and save your orders in your profile</li>
@@ -11,11 +11,11 @@
             <li>Get the latest offers</li>
             <li>And much more</li>
             </ul>
-    <p>Register today!</p>
+    <h4>Register today!</h4>
     </div>
-    <div class="col-md-4">
-    <form role="form" id="register-form" method="post" action="{% url 'register' %} ">
-        <legend>Create a new account</legend>
+    <div class="col-md-6">
+    <h2>Register to get more insights!</h2>
+    <form role="form" id="register-form" method="post" action="{% url 'register' %}">
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <div class="form-group">

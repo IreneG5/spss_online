@@ -15,7 +15,7 @@ def paypal_form_for(product, user):
     else:
         paypal_dict = {
             "business": settings.PAYPAL_RECEIVER_EMAIL,
-            "currency_code": "EUR",
+            "currency_code": "GBP",
             "cmd": "_xclick-subscriptions",
             "a3": product.price,
             "p3": product.license_type,
