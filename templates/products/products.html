@@ -17,6 +17,7 @@
     <div class="col2">
     <div class="col-sm-12">
         <h1>Products</h1>
+        <div class="border-left-teal">
         <p>What if you could get deeper, more meaningful insights from your data and predict what is likely to
             happen next?</p>
         <p><b>IBM SPSS software offers advanced techniques in an easy-to-use package to help you
@@ -27,8 +28,9 @@
             <li><b>IBM SPSS Modeler</b> is an extensive predictive analytics platform that is designed to bring predictive
                 intelligence to decisions made by individuals, groups, systems and the enterprise.</li>
             </ul>
+        </div>
         <div class="col-sm-6">
-            <h3>Buy your product today!</h3>
+            <h3>Buy your SPSS Software today!</h3>
             <p>If you OS is not listed or you need multiple licenses, please contact us.</p>
         </div>
         <div class="col-sm-4">
@@ -64,7 +66,7 @@
                             </div>
 
                         {% if products.image.url != "" %}
-                            <div class="product-mini-image"><img src=" {{ product.image.url }}"></div>
+                            <div class="product-mini-image"><img class="img-responsive centered" src=" {{ product.image.url }}"></div>
                         {% endif %}
 
                         <div><h4>{{ product.license_type }} - £{{ product.price }}</h4></div>
@@ -72,7 +74,7 @@
                         <div>
                             {% if user.is_authenticated %}
                                 <br />
-                                <div class="product-mini-paypal-button">{% paypal_form_for product user %}</div>
+                                <div class="product-mini-paypal-button img-responsive">{% paypal_form_for product user %}</div>
                             {% else %}
                                 <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
                             {% endif %}
@@ -101,20 +103,24 @@
     {% if user.is_authenticated %}
         <!-- Shows the user's products with an active license, highlighting the ones close to expire -->
         <h4>Your active products</h4>
-        <table class="table table-striped">
-            <tbody>
-               {% for purchase in purchases %}
-                   {% if purchase.license_end > today %}
-                        <tr><td>{{ purchase.product }} {{ purchase.product.osystem }}<br>
-                            License expires on: {{ purchase.license_end | date }}
-                            {% if purchase.license_end < expire_soon %}
-                                <p class="bg-danger">Expiring soon</p>
-                            {% endif %}
-                            </td></tr>
-                   {% endif %}
-               {% endfor %}
-            </tbody>
-        </table>
+        {% if purchases.count > 0 %}
+            <table class="table table-striped ">
+                <tbody>
+                   {% for purchase in purchases %}
+                       {% if purchase.license_end > today %}
+                            <tr><td><b>{{ purchase.product }} {{ purchase.product.osystem }}</b><br>
+                                License expires on: {{ purchase.license_end | date }}
+                                {% if purchase.license_end < expire_soon %}
+                                    <p class="alert alert-warning"><b>Expiring soon</b></p>
+                                {% endif %}
+                                </td></tr>
+                       {% endif %}
+                   {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div>You don't have any active product.</div>
+        {% endif %}
     {% endif %}
     </div>
     </div>

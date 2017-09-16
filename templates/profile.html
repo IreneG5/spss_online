@@ -1,43 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Hi {{ user.first_name }}!</h2>
-    <br>
+     <div class="row">
+        <div class="col-sm-12">
+            <h2>{{ user.first_name }}'s Profile</h2>
+            <p>Here you can find all the information related to your account, products and support cases.</p>
+            <br>
+        </div>
+
     <div class="row">
         <div class="col-sm-9">
             <div class="col-sm-12">
-                <h4>Your Details:</h4>
+                <h3>Your Details:</h3>
+                <div class="border-left-teal">
                 <ul>
                     <li><b>Name</b>: {{ user.first_name }} {{ user.last_name }}</li>
                     <li><b>Company</b>: {{ user.company }}</li>
                     <li><b>Email</b>: {{ user.email }}</li>
 
                 </ul>
+                </div>
             </div>
 
             <div class="col-sm-12">&nbsp;</div>
             <div class="col-sm-12">
                 <h4>Your Products:</h4>
                     {#% include "products/purchases.html" %#}
-                <table class="table table-striped">
+            {% if purchases.count > 0 %}
+                <table class="table table">
                     <tbody>
                        {% for purchase in purchases %}
-                           <tr><td>{{ purchase.product }} {{ purchase.product.osystem }}<br></td>
+                           <tr><td>{{ purchase.product }} {{ purchase.product.osystem }}
+                           </td>
                            <td>
                                 {% if purchase.license_end > today %}
                                     License expires on: {{ purchase.license_end | date }}</td><td>
                                     {% if purchase.license_end < expire_soon %}
-                                        <p class="bg-danger">Expiring soon</p>
+                                        <p class="alert alert-warning">Expiring soon&emsp;
+                                            <a href="{% url 'products' %}"><span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                            Buy again  </a> </p>
                                     {% endif %}
                                {% else %}
                                License expired on: {{ purchase.license_end | date }}
                                 </td><td>
-                                    <p class="bg-warning">Expired</p>
+                                    <p class="alert alert-danger">Expired&emsp;
+                                        <a href="{% url 'products' %}"><span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                            Buy again  </a> </p>
                                </td></tr>
                            {% endif %}
                        {% endfor %}
                     </tbody>
                 </table>
-
+            {% else %}
+                <div>You don't have any product yet.</div>
+                <div><a href="{% url 'products' %}"> Go to Products Page</a></div>
+            {% endif %}
             </div>
         </div>
         <div class="col-sm-3">

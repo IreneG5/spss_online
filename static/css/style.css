@@ -25,7 +25,16 @@ h1, h2, h3, h4, h5, h6{
 .centered{
     text-align: center;
     align:center;
+    margin-left:auto;
+    margin-right: auto;
 }
+
+.align-right{
+    align:right;
+    text-align: right;
+}
+
+
 
 /* Navbar */
 #menu{
@@ -54,6 +63,10 @@ h1, h2, h3, h4, h5, h6{
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    height:300px;
+}
+.carousel-caption{
+    padding-bottom: 10px;
 }
 
 .carousel-caption>h1, .carousel-caption>h2, .carousel-caption>h3{
@@ -65,13 +78,124 @@ h1, h2, h3, h4, h5, h6{
 .carousel-inner{
     border-radius:20px;
 }
-.carousel-inner img{
 
-}
 
 .carousel-control.right, .carousel-control.left{
     background-image:none;
 }
+
+.carousel-indicators{
+    margin-bottom:-30px;
+}
+
+
+@media screen and (max-width: 1199px){
+    #myCarousel h1{
+        font-size:35px;
+    }
+    #myCarousel h2{
+        font-size:23px;
+    }
+    .carousel-indicators{
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 991px){
+    #myCarousel h1{
+        margin-top: 20px;
+        font-size:20px;
+    }
+    #myCarousel h2{
+        font-size:15px;
+    }
+    .carousel-indicators{
+        margin-bottom: 85px;
+    }
+}
+@media screen and (max-width: 767px){
+    #myCarousel h1{
+        font-size:16px;
+    }
+    #myCarousel h2{
+        font-size:13px;
+    }
+    .carousel-inner .btn {
+        width: 80px;
+        margin-bottom: 0px;
+    }
+    .carousel-caption .btn{
+        font-size: 10px;
+    }
+        .carousel-indicators{
+        margin-bottom: 105px;
+    }
+}
+@media screen and (max-width: 699px){
+    #myCarousel{
+        display: none;
+    }
+}
+
+/* Testimonials */
+.testimonial-box{
+    padding: 5px;
+    border: 1px solid #d5d5d5;
+
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px #d5d5d5;
+    text-align: left;
+    margin:10px;
+}
+
+.testimonial-header{
+    height: 100px;
+}
+.testimonial-bg{
+    background-color: coral;
+    height:60px;
+    float: none;
+}
+.testimonial-bg.coral{
+    background-color: #ff7f50;
+}
+.testimonial-bg.green{
+    background-color: #008000;
+}
+.testimonial-bg.purple{
+    background-color: #9370db;
+}
+.testimonial-image{
+    padding: 10px;
+    height:120px;
+    z-index: 99;
+}
+.testimonial-image>img{
+    width:100px;
+}
+
+
+
+.border-left-teal{
+    border-left:10px solid #006080;
+    padding: 10px 20px;
+    text-align: left;
+    #background-color: rgba(32, 178, 170, 0.2);
+}
+
+
+
+.border-right-teal{
+    border-right:10px solid #006080;
+    padding-right: 20px;
+    padding-left: 5px;
+    text-align: right;
+}
+
+#who-we-are-img #what-we-offer-img{
+    padding: 10px;
+}
+
+
 /* Forms */
 /* Testing register-form*/
 #register-form input {
@@ -81,8 +205,13 @@ h1, h2, h3, h4, h5, h6{
 
 
 /* Products */
+.product-mini-name{
+
+}
+
 .product-mini-image>img{
     padding:5px 15px;
+
 }
 
 .product-mini-item{
@@ -99,14 +228,9 @@ h1, h2, h3, h4, h5, h6{
     font-size: 2.3em;
 }
 
-@media screen and (max-width: 1000px) {
-    .product-mini-paypal-button input{
-        width: 80%;
-    }
-    .product-mini-image>img{
-        width:60%;
-    }
-}
+
+
+
 
 .popover{
     /*background-color:rgba(32, 178, 170, 0.3);*/
@@ -130,34 +254,26 @@ h1, h2, h3, h4, h5, h6{
     padding: 10px;
     text-align: center;
 }
-.cta>div{
 
-}
-.cta button{
+.button-light-teal{
     background-image: linear-gradient(#26d9d0, #22c3bb 60%, #20B2AA);
     background-repeat: no-repeat;
     border: 1px solid #20B2AA;
     background-color:#20B2AA;
 }
 
-.cta button:hover{
+.button-light-teal:hover{
     background-image: linear-gradient(#26d9d0, #22c3bb 60%, #20B2AA);
     background-repeat: no-repeat;
     border: 1px solid #20B2AA;
     background-color:#20B2AA
 }
 
-.cta-image{
-    width: 60%;
-}
-
-
-
 
 
 /* Blog */
 .blog-mini-image>img{
-    width:100%;
+
     padding:5px 15px;
 }
 
@@ -182,8 +298,4 @@ h1, h2, h3, h4, h5, h6{
     overflow: hidden;
 }
 
-@media screen and (max-width: 1000px) {
-    .product-mini-paypal-button input{
-        width: 80%;
-    }
-}
+
