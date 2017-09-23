@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% block head_js %}{% endblock %}
+
 </head>
 <body>
     <div class="container">
@@ -19,24 +19,44 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		    </button>
-            <a class="navbar-brand" href="#"><img src="../static/images/logo.png"> </a>
+            <a class="navbar-brand" href="#"><img src="/static/images/logo.png"> </a>
 
 		    <div id="myNavbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li ><a class="active" href="/">Home</a> </li>
-                    <li ><a href="/products">Products</a> </li>
-                    <li ><a href="/blog">Blog</a> </li>
-                    <li ><a href="#">Contact</a> </li>
+                    <li {% if request.resolver_match.url_name == 'index'%}class="active"{% endif %}>
+                        <a class="active" href="/">Home</a>
+                    </li>
+                    <li {% if request.resolver_match.url_name == 'products'%}class="active"{% endif %}>
+                        <a href="/products">Products</a>
+                    </li>
+                    <li {% if request.resolver_match.url_name == 'blog' or request.resolver_match.url_name == 'post-detail'%}
+                        class="active"{% endif %}>
+                        <a href="/blog">Blog</a>
+                    </li>
+                    <li {% if request.resolver_match.url_name == 'contact'%}class="active"{% endif %}>
+
+                        <a href="/contact">Contact</a>
+                    </li>
 
 			    </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                        <li ><a href="/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a> </li>
-                        <li ><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a> </li>
+                        <li {% if request.resolver_match.url_name == 'profile'%}class="active"{% endif %}>
+                            <a href="/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a>
+                        </li>
+                        <!-- if is_customer or is_staff -->
+                        <li {% if request.resolver_match.url_name == 'ticket-detail' or request.resolver_match.url_name == 'tickets' or request.resolver_match.url_name == 'new-ticket' %}
+                            class="active"{% endif %}>
+                            <a href="/tickets"><span class="glyphicon glyphicon glyphicon-briefcase"></span> My Tickets </a> </li>
+
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a> </li>
 
                     {% else %}
-                        <li ><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a> </li>
-                        <li ><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a> </li>
+                        <li {% if request.resolver_match.url_name == 'register'%}class="active"{% endif %}>
+                            <a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a>
+                        </li>
+                        <li {% if request.resolver_match.url_name == 'login'%}class="active"{% endif %}>
+                            <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a> </li>
 
                     {% endif %}
 

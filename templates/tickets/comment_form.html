@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+{% block head_js %}
+    <script src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            mode: "textareas",
+            theme: "modern",
+            plugins: "paste",
+            force_p_newlines : false,
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" action="{{ form_action }}">
+                {% csrf_token %}
+                {{ comment_form | as_bootstrap }}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Comment</button>
+                    <a href="{% url 'ticket-detail' ticket_id %}" class="btn btn-default">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

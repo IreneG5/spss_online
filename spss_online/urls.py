@@ -17,13 +17,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from paypal.standard.ipn import urls as paypal_urls
 from paypal_store import views as paypal_views
 from home import views
 from accounts import views as accounts_views
 from products import views as product_views
-from products.templatetags import product_extras as product_extras
-from django.conf.urls.static import static
+from tickets import views as ticket_views
+
 
 urlpatterns = [
 
@@ -36,6 +37,7 @@ urlpatterns = [
     url(r'^login/$', accounts_views.login, name='login'),
     url(r'^logout/$', accounts_views.logout, name='logout'),
     url(r'^products/$', product_views.all_products, name='products'),
+    # url(r'^contact/$', views.get_contact, name='contact'),
 
     # Paypal
     url(r'^a-very-hard-to-guess-url/', include(paypal_urls)),
@@ -44,6 +46,11 @@ urlpatterns = [
 
     # Blog
     url(r'', include('blog.urls')),
+
+    # Ticket
+    url(r'', include('tickets.urls')),
+
+
 ]
 
 if settings.DEBUG:

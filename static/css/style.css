@@ -34,7 +34,9 @@ h1, h2, h3, h4, h5, h6{
     text-align: right;
 }
 
-
+.no-margin{
+    margin:0px;
+}
 
 /* Navbar */
 #menu{
@@ -49,6 +51,13 @@ h1, h2, h3, h4, h5, h6{
 #menu li>a:focus{
     color: #006080;
     background-color: #20B2AA;
+}
+
+#menu li.active>a{
+    color: #20B2AA;
+    background-color: #006080;
+    border-bottom: 3px solid #20B2AA;
+    margin-bottom:-3px;
 }
 
 

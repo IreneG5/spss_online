@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+    {% load bootstrap_tags %}
+    {% load ticket_extras %}
+
+    <div class="row">
+        <div class="col-md-12">
+            {% if user.is_authenticated and user.is_customer %} <!-- and is_customer-->
+                <p><a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a> </p>
+            {% else %}
+                <p><a href="{% url 'new-ticket' %}" class="btn btn-primary disabled ">Open New Ticket </a>
+                    Only customers with active products can create new tickets</p>
+            {% endif %}
+            {% if tickets %}
+                <section class="ticket">
+                    <table class="table ">
+                        <thead><tr>
+                            <th>Status</th>
+                            <th>Prod. Code</th>
+                            <th>Subject</th>
+                            <th>Opened</th>
+                            <th>Closed</th>
+                            <th>Comments</th>
+                            <th>Last comment</th>
+
+                        </tr></thead>
+                        <tbody>
+                            {% for ticket in tickets %}
+                                <tr>
+                                    <td>{{ ticket.get_status_display }}</td>
+                                    <td>{{ ticket.product.code }}</td>
+                                    <td><a href="{{ ticket.id }}">{{ ticket.subject }}</a></td>
+                                    <td>{{ ticket.opened_date | date}}</td>
+                                    <td>{% if ticket.closed_date %}
+                                        {{ ticket.closed_date }} {% endif %}</td>
+                                    <td>{{ ticket.comments.count }}</td>
+                                    <td>{% last_comment_user ticket %} | {% last_comment_date ticket %}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            {% else %}
+
+            <p>No tickets to show.</p>
+        {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

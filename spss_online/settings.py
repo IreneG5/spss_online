@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'disqus',
     'debug_toolbar',
+    'tinymce',
     'home',
     'accounts',
     'paypal_store',
     'products',
     'blog',
+    'tickets',
 ]
 
 MIDDLEWARE = [
@@ -147,6 +149,11 @@ MEDIA_ROOT = '/Users/irene/Documents/Full-Stack-Developer/Stream3/Project/spss_o
 MEDIA_URL = '/media/'
 
 
+# tinymce
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
+
+
+
 # Disqus
 DISQUS_WEBSITE_SHORTNAME = 'spssblog'
 SITE_ID = 1
@@ -160,8 +167,4 @@ ALLOWED_HOSTS = ['127.0.0.1', '2d1214fc.ngrok.io']
 SITE_URL = 'http://2d1214fc.ngrok.io'
 PAYPAL_NOTIFY_URL = 'http://2d1214fc.ngrok.io/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'irene.g5555-easySPSS1@gmail.com'
-
-
-
-
 

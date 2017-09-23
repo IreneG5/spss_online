@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+{% block head_js %}
+    <script src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
+    <script>
+        tinyMCE.init({mode: "textareas", theme: 'modern', plugins: 'paste'})
+    </script>
+{% endblock %}
+}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-9">
+            <form method="post" action="{% url 'new-ticket' %}">
+                {% csrf_token %}
+                {{ ticket_form | as_bootstrap }}
+                <hr>
+                {{ comment_form | as_bootstrap }}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Open New Case</button>
+                    <a href="{% url 'tickets'%}" class="btn btn-default">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
