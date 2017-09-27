@@ -37,9 +37,13 @@
                         <a href="/blog">Blog</a>
                     </li>
                     <li {% if request.resolver_match.url_name == 'contact'%}class="active"{% endif %}>
-
                         <a href="/contact">Contact</a>
                     </li>
+                    <li {% if request.resolver_match.kwargs.kwargs.url == 'about/' %}class="active"{% endif %}>
+                        <a href="/pages/about">About Us</a>
+
+                    </li>
+
 
 			    </ul>
                 <ul class="nav navbar-nav navbar-right">

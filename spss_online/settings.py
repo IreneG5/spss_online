@@ -25,6 +25,7 @@ SECRET_KEY = 'a7w##lr33)_=dv%jkd0%avvttderv_mxo&pa)hak*!1xa-iw90'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_ID = 2
 
 # Application definition
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.flatpages',
     'django_forms_bootstrap',
     'paypal.standard.ipn',
     'disqus',
@@ -57,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
@@ -156,7 +159,7 @@ TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min
 
 # Disqus
 DISQUS_WEBSITE_SHORTNAME = 'spssblog'
-SITE_ID = 1
+
 
 # Debug Toolbar
 INTERNAL_IPS = ('127.0.0.1',)

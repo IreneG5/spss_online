@@ -23,7 +23,6 @@ from paypal_store import views as paypal_views
 from home import views
 from accounts import views as accounts_views
 from products import views as product_views
-from tickets import views as ticket_views
 
 
 urlpatterns = [
@@ -38,6 +37,9 @@ urlpatterns = [
     url(r'^logout/$', accounts_views.logout, name='logout'),
     url(r'^products/$', product_views.all_products, name='products'),
     # url(r'^contact/$', views.get_contact, name='contact'),
+
+    # Flatpages
+    url(r'^pages/', include('django.contrib.flatpages.urls'), name='flatpages'),
 
     # Paypal
     url(r'^a-very-hard-to-guess-url/', include(paypal_urls)),
