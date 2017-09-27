@@ -29,6 +29,9 @@
                     <li {% if request.resolver_match.url_name == 'index'%}class="active"{% endif %}>
                         <a class="active" href="/">Home</a>
                     </li>
+                    <li {% if request.resolver_match.kwargs.url == 'about/' %}class="active"{% endif %}>
+                        <a href="/pages/about">About Us</a>
+                    </li>
                     <li {% if request.resolver_match.url_name == 'products'%}class="active"{% endif %}>
                         <a href="/products">Products</a>
                     </li>
@@ -39,10 +42,7 @@
                     <li {% if request.resolver_match.url_name == 'contact'%}class="active"{% endif %}>
                         <a href="/contact">Contact</a>
                     </li>
-                    <li {% if request.resolver_match.kwargs.kwargs.url == 'about/' %}class="active"{% endif %}>
-                        <a href="/pages/about">About Us</a>
 
-                    </li>
 
 
 			    </ul>
