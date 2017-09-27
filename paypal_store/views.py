@@ -14,9 +14,6 @@ register = template.Library()
 
 @csrf_exempt
 def paypal_return(request):
-    # print "returning to web"
-
-
     # Check that the last purchase for the user logged in was saved in the last 3 minutes
     # (to give the user time to return to the Merchant's website)
     if User.is_authenticated:
@@ -42,7 +39,7 @@ def paypal_return(request):
                 break
 
         if not_found == 10:
-            # print("Not found")
+
             messages.error(request, "There was a problem retrieving your purchase.",
                            extra_tags='alert alert-danger')
             args = {'html': "Please refresh the page. "

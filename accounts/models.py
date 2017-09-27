@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import arrow
 from django.db import models
+from products.models import Purchase
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils import timezone
 
@@ -37,23 +39,19 @@ class AccountUserManager(UserManager):
 
 
 class User(AbstractUser):
-        # with the abstract we can add custom attributes
 
         company = models.CharField(max_length=100, default='')
-        #phone = models.CharField(max_length=20, default='')
-        #industry = models.CharField(max_length=25, choices=industries, default='')
-
         objects = AccountUserManager()
 
-        def is_customer(self, product):
+        def is_customer(self):
+            is_customer = False
             try:
-                purchase = self.purchase.get(product_pk=product.pk)
+                purchases = Purchase.objects.filter(user_id=self.id)
             except Exception:
                 return False
 
-            if purchase.license_end>timezone.now():
-                return False
+            for purchase in purchases:
+                if purchase.license_end > arrow.now():
+                    return True
 
-            return True
-
-        
+            return False

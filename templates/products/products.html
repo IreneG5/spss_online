@@ -3,9 +3,6 @@
 {% load staticfiles %}
 {% load product_extras %}
 {% block head_js %}
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function(){
                 $('[data-toggle="popover"]').popover();
@@ -14,115 +11,115 @@
 {% endblock %}
 {% block content %}
     <div class="row">
-    <div class="col2">
-    <div class="col-sm-12">
-        <h1>Products</h1>
-        <div class="border-left-teal">
-        <p>What if you could get deeper, more meaningful insights from your data and predict what is likely to
-            happen next?</p>
-        <p><b>IBM SPSS software offers advanced techniques in an easy-to-use package to help you
-            find new opportunities, improve efficiency and minimize risk.</b></p>
-            <ul>
-            <li><b>IBM SPSS Statistics</b> is an integrated family of products that addresses the entire analytical process,
-                from planning to data collection, analysis, reporting and deployment.</li>
-            <li><b>IBM SPSS Modeler</b> is an extensive predictive analytics platform that is designed to bring predictive
-                intelligence to decisions made by individuals, groups, systems and the enterprise.</li>
-            </ul>
+        <div class="col-sm-12">
+            <h1>Products</h1>
+            <div class="border-left-teal">
+                <p>What if you could get deeper, more meaningful insights from your data and predict what is likely to
+                happen next?</p>
+                <p><b>IBM SPSS software offers advanced techniques in an easy-to-use package to help you
+                find new opportunities, improve efficiency and minimize risk.</b></p>
+                <ul>
+                <li><b>IBM SPSS Statistics</b> is an integrated family of products that addresses the entire analytical process,
+                    from planning to data collection, analysis, reporting and deployment.</li>
+                <li><b>IBM SPSS Modeler</b> is an extensive predictive analytics platform that is designed to bring predictive
+                    intelligence to decisions made by individuals, groups, systems and the enterprise.</li>
+                </ul>
+            </div>
         </div>
+    </div>
+    <div class="row">
         <div class="col-sm-6">
             <h3>Buy your SPSS Software today!</h3>
             <p>If you OS is not listed or you need multiple licenses, please contact us.</p>
         </div>
         <div class="col-sm-4">
-        {% if not user.is_authenticated %}
-            <!-- Being logged in is required to buy, the buttons won't appear otherwise.
-            Shows a message indicating the user to log in or register -->
-                <br>
-                <div class="alert alert-warning centered">
-                    <p>Please log in to see payment options</p>
-                    <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a> &emsp;or&emsp;
-                    <a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Register</a>
-                </div>
+            {% if not user.is_authenticated %}
+                <!-- Being logged in is required to buy, the buttons won't appear otherwise.
+                Shows a message indicating the user to log in or register -->
+                    <br>
+                    <div class="alert alert-warning centered">
+                        <p>Please log in to see payment options</p>
+                        <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a> &emsp;or&emsp;
+                        <a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Register</a>
+                    </div>
 
-            {% endif %}
-</div>
+                {% endif %}
+        </div>
     </div>
-    <div class="col-sm-9">
-        <p>&nbsp;&nbsp;</p>
-        {% if products.count > 0 %}
-            <!-- If there are products in the database, shows them as boxes -->
-            <div class="row product-mini-row">
-                {% for product in products %}
-                    <div class="col-sm-4 ">
-                    <div class="product-mini-item">
-                            <div class="product-mini-name"><h4>{{ product.name }} - {{ product.osystem }}
-                                <!-- popover title="..." to show a header -->
-                                <!--data-trigger="focus" to keep only one visible -->
-                            <a  tabindex="0" role="button"  data-trigger="focus" data-container="body" data-toggle="popover"
-                               data-placement="right"  data-content="{{ product.description }}">
-                                <span class="glyphicon glyphicon-info-sign"></span></a>
-                            </h4>
+    <div class="row">
+        <div class="col-sm-9">
+            <p>&nbsp;&nbsp;</p>
+            {% if products.count > 0 %}
+                <!-- If there are products in the database, shows them as boxes -->
+                <div class="row product-mini-row">
+                    {% for product in products %}
+                        <div class="col-sm-4 ">
+                        <div class="product-mini-item">
+                                <div class="product-mini-name"><h4>{{ product.name }} - {{ product.osystem }}
+                                    <!-- popover title="..." to show a header -->
+                                    <!--data-trigger="focus" to keep only one visible -->
+                                <a  tabindex="0" role="button"  data-trigger="focus" data-container="body" data-toggle="popover"
+                                   data-placement="right"  data-content="{{ product.description }}">
+                                    <span class="glyphicon glyphicon-info-sign"></span></a>
+                                </h4>
 
+                                </div>
+
+                            {% if products.image.url != "" %}
+                                <div class="product-mini-image"><img class="img-responsive centered" src=" {{ product.image.url }}"></div>
+                            {% endif %}
+
+                            <div><h4>{{ product.license_type }} - £{{ product.price }}</h4></div>
+
+                            <div>
+                                {% if user.is_authenticated %}
+                                    <br />
+                                    <div class="product-mini-paypal-button img-responsive">{% paypal_form_for product user %}</div>
+                                {% else %}
+                                    <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
+                                {% endif %}
+                                <br><br>
+                            </div>
+                        </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
                             </div>
 
-                        {% if products.image.url != "" %}
-                            <div class="product-mini-image"><img class="img-responsive centered" src=" {{ product.image.url }}"></div>
+                            <div class="row product-mini-div">
                         {% endif %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="">No products available.</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-3">
 
-                        <div><h4>{{ product.license_type }} - £{{ product.price }}</h4></div>
-
-                        <div>
-                            {% if user.is_authenticated %}
-                                <br />
-                                <div class="product-mini-paypal-button img-responsive">{% paypal_form_for product user %}</div>
-                            {% else %}
-                                <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
-                            {% endif %}
-                            <br><br>
-                        </div>
-                    </div>
-                    </div>
-                    {% if forloop.counter|divisibleby:3 %}
-                        </div>
-
-                        <div class="row product-mini-div">
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% else %}
-            <div class="">No products available.</div>
-        {% endif %}
-
-
-
+            {% include 'cta/cta_contactus.html' %}
+            <br>
+            {% if user.is_authenticated %}
+                <!-- Shows the user's products with an active license, highlighting the ones close to expire -->
+                <h4>Your active products</h4>
+                {% if purchases.count > 0 %}
+                    <table class="table table-striped ">
+                        <tbody>
+                           {% for purchase in purchases %}
+                               {% if purchase.license_end >= today %}
+                                    <tr><td><b>{{ purchase.product }} </b><br>
+                                        License expires on: {{ purchase.license_end | date }}
+                                        {% if purchase.license_end < expire_soon %}
+                                            <p class="alert alert-warning"><b>Expiring soon</b></p>
+                                        {% endif %}
+                                        </td></tr>
+                               {% endif %}
+                           {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div>You don't have any active product.</div>
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
-    <div class="col-sm-3">
 
-        {% include 'cta/cta_contactus.html' %}
-    <br>
-    {% if user.is_authenticated %}
-        <!-- Shows the user's products with an active license, highlighting the ones close to expire -->
-        <h4>Your active products</h4>
-        {% if purchases.count > 0 %}
-            <table class="table table-striped ">
-                <tbody>
-                   {% for purchase in purchases %}
-                       {% if purchase.license_end > today %}
-                            <tr><td><b>{{ purchase.product }} {{ purchase.product.osystem }}</b><br>
-                                License expires on: {{ purchase.license_end | date }}
-                                {% if purchase.license_end < expire_soon %}
-                                    <p class="alert alert-warning"><b>Expiring soon</b></p>
-                                {% endif %}
-                                </td></tr>
-                       {% endif %}
-                   {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <div>You don't have any active product.</div>
-        {% endif %}
-    {% endif %}
-    </div>
-    </div>
-    </div>
 {% endblock %}

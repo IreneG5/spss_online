@@ -97,10 +97,22 @@ class UserRegistrationForm(UserCreationForm):
             self.fields[key].required = False
 
 
-
-
-
 class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
+
+class UserForm(forms.Form):
+    email_address = forms.EmailField(widget = forms.TextInput(attrs = {'class':'required'}))
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(UserForm, self).__init__(*args, **kwargs)
+
+    def clean_email_address(self):
+        email = self.cleaned_data.get('email_address')
+        if self.user and self.user.email == email:
+            return email
+        if User.objects.filter(email=email).count():
+            raise forms.ValidationError(u'That email address already exists.')
+        return email

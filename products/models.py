@@ -25,7 +25,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="productimage/", blank=True, null=True)
 
     def __unicode__(self):
-        return self.name
+        return '%s (%s)' %(self.name, self.code)
 
 
 class Purchase (models.Model):
@@ -34,7 +34,7 @@ class Purchase (models.Model):
     license_end = models.DateTimeField(default=timezone.now)
 
     def __unicode__(self):
-        return self.product.name
+        return '%s - %s' %(self.product.name, self.user.email)
 
 
 

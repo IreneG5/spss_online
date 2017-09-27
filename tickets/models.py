@@ -26,6 +26,7 @@ class Ticket(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='tickets')
     status = models.CharField(max_length=50, choices=statuses, default='NEW')
     reason = models.CharField(max_length=50, choices=reasons, default='OTH')
+    # I want to show only the products that the user have an active license
     product = models.ForeignKey('products.Product', related_name='tickets')
     opened_date = models.DateTimeField(default=timezone.now)
     closed_date = models.DateTimeField(blank=True, null=True)
@@ -42,3 +43,4 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return '%s - ticket:%s - %s' %(self.pk, self.ticket_id, self.user)
+

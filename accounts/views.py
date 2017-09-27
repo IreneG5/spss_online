@@ -9,6 +9,7 @@ from django.template.context_processors import csrf
 from django import template
 from accounts.forms import UserRegistrationForm, UserLoginForm
 from products.models import Purchase
+from tickets.models import Ticket
 
 
 register = template.Library()
@@ -40,10 +41,12 @@ def profile(request):
     today = arrow.now()  # passed as argument to compare the products with an active licence in the template
     expire_soon = arrow.now().replace(days=+30).datetime  # passed as argument to highlight the products close to expire
     purchases = Purchase.objects.filter(user_id=request.user.id).order_by('license_end')
-    args = {'purchases': purchases, 'today': today, 'expire_soon': expire_soon}
+    tickets = Ticket.objects.filter(user_id=request.user.id).order_by('-opened_date')
+    args = {'purchases': purchases, 'today': today, 'expire_soon': expire_soon, 'tickets': tickets}
     return render(request, "profile.html", args)
-    #purchases = Purchase.objects.filter(user_id=request.user.id).order_by('-license_end')
-    #return render(request, 'profile.html', {'purchases':purchases})
+
+
+
 
 
 def login(request):

@@ -1,6 +1,5 @@
 import arrow
 from django import template
-from django.core.urlresolvers import reverse
 
 register = template.Library()
 
@@ -31,7 +30,6 @@ def last_comment_user(ticket):
     return name
 
 
-
 @register.simple_tag
 def last_comment_date(ticket):
     comments = ticket.comments.all().order_by('created_date')
@@ -41,5 +39,7 @@ def last_comment_date(ticket):
 @register.simple_tag
 def comment_date_humanized(comment):
     return arrow.get(comment.created_date).humanize()
+
+
 
 

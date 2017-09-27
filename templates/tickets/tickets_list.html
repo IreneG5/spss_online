@@ -1,8 +1,7 @@
 {% extends "base.html" %}
+{% load bootstrap_tags %}
+{% load ticket_extras %}
 {% block content %}
-    {% load bootstrap_tags %}
-    {% load ticket_extras %}
-
     <div class="row">
         <div class="col-md-12">
             {% if user.is_authenticated and user.is_customer %} <!-- and is_customer-->
@@ -16,8 +15,8 @@
                     <table class="table ">
                         <thead><tr>
                             <th>Status</th>
-                            <th>Prod. Code</th>
                             <th>Subject</th>
+                            <th>Prod. Code</th>
                             <th>Opened</th>
                             <th>Closed</th>
                             <th>Comments</th>
@@ -25,15 +24,15 @@
 
                         </tr></thead>
                         <tbody>
-                            {% for ticket in tickets %}
+                            {% for ticket in tickets  %}
                                 <tr>
                                     <td>{{ ticket.get_status_display }}</td>
-                                    <td>{{ ticket.product.code }}</td>
                                     <td><a href="{{ ticket.id }}">{{ ticket.subject }}</a></td>
+                                    <td>{{ ticket.product.code }}</td>
                                     <td>{{ ticket.opened_date | date}}</td>
-                                    <td>{% if ticket.closed_date %}
-                                        {{ ticket.closed_date }} {% endif %}</td>
-                                    <td>{{ ticket.comments.count }}</td>
+                                    <td>{% if ticket.closed_date  %}
+                                        {{ ticket.closed_date | date}} {% endif %}</td>
+                                    <td><span class="badge">{{ ticket.comments.count }}</span></td>
                                     <td>{% last_comment_user ticket %} | {% last_comment_date ticket %}</td>
                                 </tr>
                             {% endfor %}

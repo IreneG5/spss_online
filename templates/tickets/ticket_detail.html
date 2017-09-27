@@ -8,7 +8,7 @@
                 <h3 class=" {% if ticket.status == "CLS" %}text-danger{% else %} text-success{% endif %} ">
                         Status: {{ ticket.get_status_display }}</h3>
         </div>
-        <div class="col-md-6"><a href="{% url 'tickets' %}" class="btn btn-default">Back to My Tickets</a>
+        <div class="col-md-6"><a href="{% url 'tickets-list' %}" class="btn btn-default">Back to My Tickets</a>
         </div>
     </div>
     <div class="row">
@@ -34,14 +34,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <h2>Ticket: {{ ticket.subject }}</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <p><b>Product:</b> {{ ticket.product }}</p>
-            <p><b>Reason: </b>{{ ticket.reason }}</p>
+            <p><b>Reason: </b>{{ ticket.get_reason_display }}</p>
             <p><b>Created date:</b> {{ ticket.opened_date }}
             {% if ticket.closed_date != None %}
                 | <b>Closed date:</b> {{ ticket.closed_date }}
@@ -52,11 +52,25 @@
             <h4>Comments</h4>
             <table class="table">
                 <tbody>
-                {% for comment in comments  %}
+                {% for comment in comments   %}
                 <tr><td>
                     <b>{{ comment.user.first_name }} {{ comment.user.last_name }} | {% comment_date_humanized comment%}</b>
-                    <br><br>
+                    <br><br>{% autoescape off %}
                     {{ comment.comment }}
+                {% endautoescape %}
+                    {% if ticket.status != "CLS" %}
+                        {% if comment.user == user or user.is_staff %}
+                            <div class="pull-right">
+                            <!-- EDIT IS NOT WORKING -->
+                            <!-- #################################### -->
+                            <a href="{% url 'edit-comment' ticket.id comment.id %}"><i class="fa fa-pencil-square-o"></i></a>
+                            <!-- #################################### -->
+                                {% if ticket.comments.count > 1 %}
+                            <a href="{% url 'delete-comment' ticket.id comment.id %}"><i class="fa fa-trash-o"></i></a>
+                                    {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
                     <br><br>
                 </td></tr>
             {% endfor %}

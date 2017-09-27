@@ -5,14 +5,8 @@
 {% block head_js %}
     <script src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
     <script type="text/javascript">
-        tinyMCE.init({
-            mode: "textareas",
-            theme: "modern",
-            plugins: "paste",
-            force_p_newlines : false,
-        });
+        tinyMCE.init({ mode: "textareas", theme: "modern", plugins: "paste" });
     </script>
-
 {% endblock %}
 
 {% block content %}
