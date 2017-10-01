@@ -15,7 +15,6 @@
         <div class="col-md-6">
                 {% if user.is_customer or user.is_staff  %}
                     {% if ticket.status != "CLS" %}
-                        <a href="{% url 'new-comment' ticket.id %}" class="btn btn-default">Add Comment</a> &emsp;
                             <a href="{% url 'close-ticket' ticket.id %}" class="btn btn-danger">Close Ticket</a>
                     {% else %}
                         <a href="{% url 'reopen-ticket' ticket.id %}" class="btn btn-danger">Reopen Ticket</a>
@@ -58,19 +57,20 @@
                     <br><br>{% autoescape off %}
                     {{ comment.comment }}
                 {% endautoescape %}
-                    {% if ticket.status != "CLS" %}
-                        {% if comment.user == user or user.is_staff %}
-                            <div class="pull-right">
+                    <!-- Comment edit and delete functionality -->
+                    {#% if ticket.status != "CLS" %#}
+                        {#% if comment.user == user or user.is_staff %#}
+                           <!-- <div class="pull-right">
                             <!-- EDIT IS NOT WORKING -->
-                            <!-- #################################### -->
-                            <a href="{% url 'edit-comment' ticket.id comment.id %}"><i class="fa fa-pencil-square-o"></i></a>
-                            <!-- #################################### -->
-                                {% if ticket.comments.count > 1 %}
-                            <a href="{% url 'delete-comment' ticket.id comment.id %}"><i class="fa fa-trash-o"></i></a>
-                                    {% endif %}
-                            </div>
-                        {% endif %}
-                    {% endif %}
+                            <!-- ####################################
+                            <a href="{#% url 'edit-comment' ticket.id comment.id %#}"><i class="fa fa-pencil-square-o"></i></a>
+                            <!-- ####################################
+                                {#% if ticket.comments.count > 1 %#}
+                            <a href="{#% url 'delete-comment' ticket.id comment.id %#}"><i class="fa fa-trash-o"></i></a>
+                                    {#% endif %#}
+                            </div>-->
+                        {#% endif %#}
+                    {#% endif %#}
                     <br><br>
                 </td></tr>
             {% endfor %}

@@ -1,2 +1,11 @@
 .idea/*
+
 *.pyc
+*.py[co]
+
+db.sqlite3
+
+static/css/font-awesome-4.7.0/
+static/js/tinymce/
+
+ngrok.exe
