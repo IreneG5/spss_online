@@ -1,1 +1,37 @@
+{% extends "base.html" %}
 
+{% block head_js %}
+
+{% endblock %}
+{% block content %}
+  <div class="row">
+        <div class="col-md-12">
+            <h1>Contact Us</h1>
+            <div class="border-left-teal">
+                <p>Whether you need more information about us, about a product, need a customise quote or you want us
+                    to help you select the right solution for you...</p>
+                <p><b>We are here to help!</b></p>
+
+                <p>If you are a customer and have a technical support query please log in a new ticket in
+                "<a href="{% url 'tickets-list' %}">My Tickets</a>" section.</p>
+                <p>Otherwise...</p>
+                <p>Give us a call on +353 (0)1 1111111</p>
+                <p>Send us an email: <a href="mailto:info@easySPSS.com">info@easySPSS.com</a></p>
+                <p>Or visit our offices: Block 8, Blackrock Business Park, Carysfort Ave, Blackrock, Co. Dublin</p>
+            </div>
+            <div>&nbsp;</div>
+            <div class="row">
+                <div class="col-md-6">
+            <div class="google-maps">
+                <iframe src="//www.google.com/maps/embed/v1/place?q=Code%20Institute,Blackrock,%20Dublin
+                      &zoom=17
+                      &key=AIzaSyAbzMX0kT_kvJbDMsKlYTQapOAw4-iiydU"
+                        width="400" height="350" frameborder="0" style="border:0" allowfullscreen>
+
+                  </iframe>
+                </div>
+            </div>
+            </div>
+        </div>
+  </div>
+{% endblock %}
