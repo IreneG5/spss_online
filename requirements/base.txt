@@ -1,0 +1,11 @@
+Django==1.11.4
+Pillow==4.2.1
+arrow==0.10.0
+django-disqus==0.5
+django-forms-bootstrap==3.1.0
+django-paypal==0.3.6
+django-tinymce==2.6.0
+python-dateutil==2.6.1
+six==1.10.0
+wheel==0.24.0
+gunicorn==19.4

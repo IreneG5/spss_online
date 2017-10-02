@@ -1,0 +1,1 @@
+web: gunicorn spss_online.wsgi:application

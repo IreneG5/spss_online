@@ -22,9 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'a7w##lr33)_=dv%jkd0%avvttderv_mxo&pa)hak*!1xa-iw90'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+ALLOWED_HOSTS = ['127.0.0.1', '08d3d375.ngrok.io']
 SITE_ID = 2
 
 # Application definition
@@ -41,7 +39,6 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'paypal.standard.ipn',
     'disqus',
-    'debug_toolbar',
     'tinymce',
     'home',
     'accounts',
@@ -49,6 +46,7 @@ INSTALLED_APPS = [
     'products',
     'blog',
     'tickets',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +58,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'spss_online.urls'
@@ -83,17 +80,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'spss_online.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -125,15 +111,10 @@ AUTHENTICATION_BACKENDS = (
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Europe/London'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -141,7 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = ''
 
 STATICFILES_DIRS = (
@@ -155,19 +135,6 @@ MEDIA_URL = '/media/'
 # tinymce
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
 
-
-
 # Disqus
 DISQUS_WEBSITE_SHORTNAME = 'spssblog'
-
-
-# Debug Toolbar
-INTERNAL_IPS = ('127.0.0.1',)
-
-ALLOWED_HOSTS = ['127.0.0.1', '08d3d375.ngrok.io']
-
-# PayPal Settings
-SITE_URL = 'http://08d3d375.ngrok.io'
-PAYPAL_NOTIFY_URL = 'http://08d3d375.ngrok.io/a-very-hard-to-guess-url/'
-PAYPAL_RECEIVER_EMAIL = 'irene.g5555-easySPSS1@gmail.com'
 
