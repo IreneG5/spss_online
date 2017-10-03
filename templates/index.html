@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load product_extras %}
 
 {% block content %}
@@ -13,7 +14,7 @@
         <div class="carousel-inner">
             <!-- Item 0 -->
             <div class="item" role="listbox">
-                <img src="../static/images/bg-halloween.jpg" alt="Halloween Offer" />
+                <img src="{% static 'images/bg-halloween.jpg' %}" alt="Halloween Offer" />
                 <div class="carousel-caption">
                     <h1>Halloween Special Offer</h1>
                     <h2>Terrific Discounts in All SPSS Software!</h2>
@@ -22,7 +23,7 @@
             </div>
             <!-- Item 1 -->
             <div id="0" class="item active" role="listbox">
-                <img src="../static/images/bg-man.jpg" alt="Affordable SPSS Software" />
+                <img src="{% static 'images/bg-man.jpg' %}" alt="Affordable SPSS Software" />
                 <div class="carousel-caption">
                     <h1><b>Looking for affordable SPSS Software?</b></h1>
                     <h2>We can help you!</h2>
@@ -31,7 +32,7 @@
             </div>
             <!-- Item 2 -->
             <div class="item" role="listbox">
-                <img src="../static/images/bg-blog.jpg" alt="Blog" />
+                <img src="{% static 'images/bg-blog.jpg'%}" alt="Blog" />
                 <div class="carousel-caption">
                     <h1>easy SPSS Blog</h1>
                     <h2>Market insights, SPSS tips and tricks, <br/>and loads of advice to help you succeed!</h2>
@@ -70,7 +71,8 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div id="who-we-are-img"><img src="../static/images/who-we-are.jpg"> </div></div>
+                <div id="who-we-are-img"><img src="{% static 'images/who-we-are.jpg' %}"> </div>
+            </div>
         </div>
 
         <div class="row"><div class="col-md-12">&nbsp;</div> </div>
@@ -82,7 +84,7 @@
         </div>
         <div class="row ">
             <div class="col-md-2 col-md-offset-1">
-                <div id="what-we-offer"><img src="../static/images/what-we-offer.jpg"></div>
+                <div id="what-we-offer"><img src="{% static 'images/what-we-offer.jpg' %}"></div>
             </div>
             <div class="col-md-8 ">
 
@@ -106,7 +108,7 @@
             <div class="testimonial-box">
                 <div class="testimonial-header">
                 <div class="testimonial-bg orange">
-                <div class="testimonial-image centered"><img src="../static/images/clara-oswald.jpg"
+                <div class="testimonial-image centered"><img src="{% static 'images/clara-oswald.jpg' %}"
                                                     class="img-circle img-responsive centered">
                 </div></div>
                     </div>
@@ -122,7 +124,7 @@
             <div class="testimonial-box">
                 <div class="testimonial-header">
                 <div class="testimonial-bg green">
-                <div class="testimonial-image centered"><img src="../static/images/tony-stark.jpg"
+                <div class="testimonial-image centered"><img src="{% static 'images/tony-stark.jpg' %}"
                                                     class="img-circle img-responsive centered">
                 </div></div>
                     </div>
@@ -138,7 +140,7 @@
             <div class="testimonial-box">
                 <div class="testimonial-header">
                 <div class="testimonial-bg purple">
-                <div class="testimonial-image centered"><img src="../static/images/tyrion-lannister.jpg"
+                <div class="testimonial-image centered"><img src="{% static 'images/tyrion-lannister.jpg' %}"
                                                     class="img-circle img-responsive centered">
                 </div></div>
                     </div>
