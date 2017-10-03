@@ -9,3 +9,5 @@ python-dateutil==2.6.1
 six==1.10.0
 wheel==0.24.0
 gunicorn==19.4
+django-storages==1.6.5
+boto3==1.4.7
