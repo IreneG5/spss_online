@@ -1,4 +1,5 @@
 from base import *
+import dj_database_url
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -34,4 +35,10 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
         },
     },
+}
+
+
+# Load the ClearDB connection details from the environment variable
+DATABASES = {
+    'default': dj_database_url.config('CLEARDB_DATABASE_URL')
 }
