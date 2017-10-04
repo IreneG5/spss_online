@@ -119,14 +119,7 @@
         "expire_date": "2017-10-08T21:55:40.271Z"
     }
 },
-{
-    "model": "sites.site",
-    "pk": 1,
-    "fields": {
-        "domain": "example.com",
-        "name": "example.com"
-    }
-},
+
 {
     "model": "sites.site",
     "pk": 2,
