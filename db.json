@@ -74301,44 +74301,8 @@
         "user_permissions": []
     }
 },
-{
-    "model": "accounts.user",
-    "pk": 8,
-    "fields": {
-        "password": "pbkdf2_sha256$36000$B51lfK8fsI1Z$PQV8b88QMNsio2GPBW31r6cA5P53LgB56GlMS0EzvYg=",
-        "last_login": "2017-09-24T21:55:40.238Z",
-        "is_superuser": false,
-        "username": "test@test.com",
-        "first_name": "Amy",
-        "last_name": "Pond",
-        "email": "test@test.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2017-08-13T02:33:31.617Z",
-        "company": "",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "accounts.user",
-    "pk": 13,
-    "fields": {
-        "password": "pbkdf2_sha256$36000$s61RJg4Z6ymj$zZDo6EfC49XYKU9oRKs0o5bR2hCRgYs99MheZ0aI64Q=",
-        "last_login": "2017-08-13T19:21:17.980Z",
-        "is_superuser": false,
-        "username": "test1@test.com",
-        "first_name": "123",
-        "last_name": "123",
-        "email": "test1@test.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2017-08-13T19:20:04.802Z",
-        "company": "",
-        "groups": [],
-        "user_permissions": []
-    }
-},
+
+
 {
     "model": "accounts.user",
     "pk": 14,
