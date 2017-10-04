@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='ticket',
             name='status',
-            field=models.ForeignKey(default='New', on_delete=django.db.models.deletion.CASCADE, related_name='tickets', to='tickets.Status'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='tickets', to='tickets.Status'),
         ),
     ]
