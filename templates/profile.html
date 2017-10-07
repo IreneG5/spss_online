@@ -6,107 +6,148 @@
 {% block content %}
      <div class="row">
         <div class="col-sm-12">
-            <h2>{{ user.first_name }}'s Profile</h2>
+            <h2>Hi {{ user.first_name }}!</h2>
             <p>Here you can find all the information related to your account, products and tickets.</p>
             <br>
         </div>
      </div>
     <div class="row">
         <div class="col-sm-9">
-            <div class="col-sm-12">
-                <h3><span  class="glyphicon glyphicon-user"></span> Your Details</h3>
-                <div class="border-left-teal">
-                <ul>
-                    <li><b>Name</b>: {{ user.first_name }} {{ user.last_name }}</li>
-                    <li><b>Company</b>: {{ user.company }}</li>
-                    <li><b>Email</b>: {{ user.email }}</li>
+            <!-- Persona/Account Details -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3><span  class="glyphicon glyphicon-user"></span> Your Details</h3>
+                    <div class="border-left-teal">
+                        <ul>
+                            <li><b>Name</b>: {{ user.first_name }} {{ user.last_name }}</li>
+                            <li><b>Company</b>: {{ user.company }}</li>
+                            <li><b>Email</b>: {{ user.email }}</li>
+                            <li><b>User since:</b> {{ user.date_joined }}</li>
+                        </ul>
+                        {% if user.is_staff %}
+                            <p class="alert alert-info"><b>Your are a staff member of easySPSS</b>.</p>
+                        {% elif user.is_customer %}
+                            <p class="alert alert-success"><b>Customer Account Status</b>: Active </p>
+                        {% else %}
+                            <p class="alert alert-warning"><b>Customer Account Status</b>: Inactive </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
 
-                    <li><b>User since:</b> {{ user.date_joined }}</li>
-                </ul>
-                    {% if user.is_customer %}
-                        <p>You are an active customer</p>
-                    {% else %}
-                        <p>Your customer account is inactive.</p>
+            <div class="spacer">&nbsp;</div>
+
+            <div class="row">
+                <!-- Products Section (not shown for Staff) -->
+                <div class="col-sm-12">
+                    {% if not user.is_staff %}
+                        <h3><span  class="glyphicon glyphicon-shopping-cart"></span>
+                            <a data-toggle="collapse"  href="#products" > Your Products </a>
+                        </h3>
+                        <a href="{% url 'products' %}" class="pull-right">Go to Products
+                            <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                        </a>
+                        <div id="products" class="collapse in border-left-teal">
+                            {% if purchases.count > 0 %}
+                               <table class="table table"><tbody>
+                                   {% for purchase in purchases %}
+                                       <tr>
+                                            <td>{{ purchase.product }}</td>
+                                            <td>
+                                                {% if purchase.license_end > today %}
+                                                    Expires on: {{ purchase.license_end | date }}</td><td>
+                                                    {% if purchase.license_end < expire_soon %}
+                                                        <p class="alert alert-warning no-margin">Expiring soon&emsp;
+                                                            <a href="{% url 'products' %}">
+                                                                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                                                Buy again
+                                                            </a>
+                                                        </p>
+                                                    {% endif %}
+                                                {% else %}
+                                                    Expired on: {{ purchase.license_end | date }}
+                                            </td><td>
+                                                <p class="alert alert-danger no-margin">Expired&emsp;
+                                                <a href="{% url 'products' %}"><span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                                    Buy again
+                                                </a> </p>
+                                                {% endif %}
+                                            </td>
+                                       </tr>
+                                    {% endfor %}
+                                </tbody></table>
+                            {% else %}
+                                <div>You haven't bought anything yet. Contact us if you need any help!</div>
+                                <div><a href="{% url 'products' %}"> Go to Products </a></div>
+                            {% endif %}
+                        </div>
                     {% endif %}
-
-
                 </div>
             </div>
 
-            <div class="col-sm-12">&nbsp;</div>
+            <div class="spacer"></div>
+            <div class="row">
+                <!-- Tickets Section -->
+                <div class="col-md-12">
+                    <h3><span  class="glyphicon glyphicon-briefcase"></span>
+                        <a data-toggle="collapse"  href="#tickets" >
+                            {% if user.is_staff %} Customer's Tickets
+                            {% else %} Your Tickets
+                            {% endif %}
+                        </a>
+                    </h3>
+                    <a href="{% url 'tickets-list' %}" class="pull-right">Go to Tickets
+                        <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                    </a>
+                    <div id="tickets" class="collapse in border-left-teal">
+                        {% if tickets > 0 %}
+                                <table class="table"><tbody>
+                                    {% for ticket in tickets %}
+                                        <tr>
+                                            {% if user.is_staff %} <td>{{ ticket.status }}</td>
+                                            {% else %} <td>{{ ticket.get_status_display }}</td>
+                                            {% endif %}
+                                            <td>{{ ticket.subject }}</td>
+                                            <td>Opened: {{ ticket.opened_date | date}}</td>
 
-            <div class="col-sm-12">
+                                            {% if user.is_staff %}
+                                                <td>By: {{ ticket.user.first_name }}&nbsp;{{ ticket.user.last_name }}</td>
+                                                <td>Reason: {{ ticket.reason }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                </tbody></table>
+                                {% if not user.is_customer and not user.is_staff %}
+                                    <p class="aler alert-warning">Your are not an active customer. You can view your
+                                    old tickets (if any) but not edit them or create new ones.</p>
+                                {% endif %}
+                        {% elif user.is_customer %}
+                            <div>You don't have any ticket.</div>
+                        {% elif not is_staff %}
+                            <p class="aler alert-warning">Your are not an active customer.</p>
 
-                <h3><span  class="glyphicon glyphicon-shopping-cart"></span>
-                    <a data-toggle="collapse"  href="#products" > Your Products </a>
-                </h3>
-                <a href="{% url 'products' %}" class="pull-right">Go to Products
-                    <span class="glyphicon glyphicon-circle-arrow-right"></span>
-                </a>
-
-
-                <div id="products" class="collapse in border-left-teal">
-
-                {% if purchases.count > 0 %}
-                <table class="table table">
-                    <tbody>
-                       {% for purchase in purchases %}
-                           <tr><td>{{ purchase.product }}
-                           </td>
-                           <td>
-                                {% if purchase.license_end > today %}
-                                    Expires on: {{ purchase.license_end | date }}</td><td>
-                                    {% if purchase.license_end < expire_soon %}
-                                        <p class="alert alert-warning no-margin">Expiring soon&emsp;
-                                            <a href="{% url 'products' %}"><span class="glyphicon glyphicon-circle-arrow-right"></span>
-                                            Buy again  </a> </p>
-                                    {% endif %}
-                               {% else %}
-                               Expired on: {{ purchase.license_end | date }}
-                                </td><td>
-                                    <p class="alert alert-danger no-margin">Expired&emsp;
-                                        <a href="{% url 'products' %}"><span class="glyphicon glyphicon-circle-arrow-right"></span>
-                                            Buy again  </a> </p>
-                               </td></tr>
-                           {% endif %}
-                       {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <div>You don't have any product yet.</div>
-                <div><a href="{% url 'products' %}"> Go to Products Page</a></div>
-            {% endif %}
-            </div>
-            </div>
-
-<div class="col-sm-12">&nbsp;</div>
-            <div class="col-md-12">
-                <h3><span  class="glyphicon glyphicon-briefcase"></span>
-                    <a data-toggle="collapse"  href="#tickets" >Your Tickets </a>
-                </h3>
-                <a href="{% url 'tickets-list' %}" class="pull-right">Go to My Tickets
-                    <span class="glyphicon glyphicon-circle-arrow-right"></span>
-                </a>
-
-                <div id="tickets" class="collapse in border-left-teal">
-                {% if user.is_customer %}
-                    <table class="table table"><tbody>
-                        {% for ticket in tickets %}
-                            <tr><td><a href="{{ ticket.id }}">{{ ticket.subject }}</a></td>
-                            <td>Status: {{ ticket.get_status_display }}</td>
-                            <td>Opened on: {{ ticket.opened_date | date}}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody></table>
-                {% else %}
-                    <div>You haven't logged any ticket.</div>
-                 {% endif %}
+                         {% endif %}
+                    </div>
                 </div>
             </div>
-
         </div>
+
+        <!-- Call to action section -->
+
         <div class="col-sm-3">
-        {% include 'cta/cta_contactus.html' %}
+            {% if user.is_staff %}
+                <div class="cta">
+                    <p class="spacer"></p>
+                    <h4><a href="{% url 'products' %}"><span  class="glyphicon glyphicon-shopping-cart"></span>&emsp;Products</a></h4>
+                    <h4><a href="{% url 'products' %}"> <span  class="glyphicon glyphicon-star"></span>&emsp;Blog</a></h4>
+                    <h4><a href="{% url 'tickets-list' %}"><span  class="glyphicon glyphicon-briefcase"></span>&emsp;Tickets</a></h4>
+                    <p class="spacer"></p>
+                </div>
+            {% elif user.is_customer %}
+                {% include 'cta/cta_contactus.html' %}
+            {% else %}
+                {% include 'cta/cta_register.html' %}
+            {% endif %}
         </div>
     </div>
 

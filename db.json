@@ -9,10 +9,26 @@
 },
 {
     "model": "sessions.session",
+    "pk": "68yz8u2e08ouxww6tkq6un6pr2xqsw22",
+    "fields": {
+        "session_data": "Njk3YmQzMGNlZWViOGZmOGY2M2ZhNDI5OTRlY2Q2OTZmMzhkMTE2MTp7fQ==",
+        "expire_date": "2017-10-21T02:16:51.430Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "94vz4urs15fz5gz8wv2zunz88b7358tr",
     "fields": {
         "session_data": "YTlhOGQ4ZTVjOWUwZmQ4YjdkYjM0OWFkY2YzYTA2MWMxNmVkMTdmOTp7Il9hdXRoX3VzZXJfaGFzaCI6ImM2ZmU0NzliZTkwYjg2ZTYxMjQwMDNmZmE5ZDNkOWVlNmZmMGQ5MTYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiOCJ9",
         "expire_date": "2017-09-26T22:17:38.795Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "apzhjka3313e4dk34xghcb1re97asm9t",
+    "fields": {
+        "session_data": "Njk3YmQzMGNlZWViOGZmOGY2M2ZhNDI5OTRlY2Q2OTZmMzhkMTE2MTp7fQ==",
+        "expire_date": "2017-10-21T15:51:44.985Z"
     }
 },
 {
@@ -41,6 +57,22 @@
 },
 {
     "model": "sessions.session",
+    "pk": "e6qjbyxl4bnyj2cs8tu0l6ntndqsrq1j",
+    "fields": {
+        "session_data": "NTc2ODMyNDRlM2FkZDI3OTA3MmY3MjY1Y2Y3NTc3OTEzNThiNzg1ZDp7Il9hdXRoX3VzZXJfaGFzaCI6ImRjNTQ1YmI2MGMwMTNhNmNjZDcwMDlkZWYwOWUyODM3NmFmZjMwMTkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMjEifQ==",
+        "expire_date": "2017-10-20T18:37:41.466Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "fkbo493s321przttwl0acowj3ziezbvu",
+    "fields": {
+        "session_data": "Njk3YmQzMGNlZWViOGZmOGY2M2ZhNDI5OTRlY2Q2OTZmMzhkMTE2MTp7fQ==",
+        "expire_date": "2017-10-21T02:19:45.721Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "ft47d7h6y5ltqw5n4scjrvy7nhkendam",
     "fields": {
         "session_data": "NGEyZDUwM2MxNDVkYTdlODZkMTNhMDY0YzJmYTdjYTkyNzllNjk4NDp7Il9hdXRoX3VzZXJfaGFzaCI6ImEwODJhZTQzN2QyNzcwNTkzODgxOGFlMGIzOGJjOTgxODIzNjU3OGUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=",
@@ -65,6 +97,22 @@
 },
 {
     "model": "sessions.session",
+    "pk": "ixzri91zsxz6yrxnerse9lqzermzddcw",
+    "fields": {
+        "session_data": "NTdmMDZiNGVmNmUxZGEwOTNlM2JkMDk3ZTUwYzcxZjM4ZWU2M2E0NTp7Il9hdXRoX3VzZXJfaGFzaCI6IjQ3YjNmM2EyZDNjYzE5ZmU5OTBjMzFiZmZmMWRhY2NhNmYxZWM4M2MiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMjAifQ==",
+        "expire_date": "2017-10-20T18:28:21.397Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "keaiiggnwfwecaf52o290m5u8icgvdal",
+    "fields": {
+        "session_data": "MzNkNmQ3NmU5ZjVmNjRlZTZhMjU1Yjc4MjFhYmI3MDRlN2U5MDkxZDp7Il9hdXRoX3VzZXJfaGFzaCI6ImMzNjI0YzhmNDk4ZWQwZjM3NmYzNDVjZDMzOTY2OWYzNmIyYTMxMjkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMjIifQ==",
+        "expire_date": "2017-10-21T00:26:37.686Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "lre06p39jkz1c5w9thprspbhsrxe1apl",
     "fields": {
         "session_data": "MWQwMzQzNWI5Y2QwOWFjOGU0MDZiODYwNDIzYjQ1OGJmMDc0ZDQ2Mzp7Il9hdXRoX3VzZXJfaGFzaCI6ImEwODJhZTQzN2QyNzcwNTkzODgxOGFlMGIzOGJjOTgxODIzNjU3OGUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMiJ9",
@@ -77,6 +125,14 @@
     "fields": {
         "session_data": "Njk3YmQzMGNlZWViOGZmOGY2M2ZhNDI5OTRlY2Q2OTZmMzhkMTE2MTp7fQ==",
         "expire_date": "2017-09-19T21:02:57.780Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "n89hav70si9u656vvs93ud2fcufvhqss",
+    "fields": {
+        "session_data": "MTQ2MTM3NTQ0M2E2ZGFmZWJlYjE2OTY3MjE4YTFiMTU4MzQwNDRlNTp7Il9hdXRoX3VzZXJfaGFzaCI6IjNlNzEwY2Y3YzQyZjA1OTQ2MDcyN2M2NWYwMjFlYjg0MzBiYmE1ZjgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMTQifQ==",
+        "expire_date": "2017-10-19T12:42:16.288Z"
     }
 },
 {
@@ -97,6 +153,22 @@
 },
 {
     "model": "sessions.session",
+    "pk": "p7b23fw2ayb1vbg8sbicmye902myogg3",
+    "fields": {
+        "session_data": "Njk3YmQzMGNlZWViOGZmOGY2M2ZhNDI5OTRlY2Q2OTZmMzhkMTE2MTp7fQ==",
+        "expire_date": "2017-10-21T02:24:24.558Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "pqczg92p2p1a4pei9oh5h0bh1ohr0f69",
+    "fields": {
+        "session_data": "ODM5M2NhNGFjODc4NmRkZDI5YTNmMjE0YTFkYzkzNTVmYmJlZjQzNjp7Il9hdXRoX3VzZXJfaGFzaCI6ImYzMTdkN2YxMjczMTc5MmU5NTAzZTMyMDhhZTlkODNhYWRjZDFhMmYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMjMifQ==",
+        "expire_date": "2017-10-21T16:00:39.125Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "roo2vlw9i47nd2wlgjm75oek5lf9ztp5",
     "fields": {
         "session_data": "MWQwMzQzNWI5Y2QwOWFjOGU0MDZiODYwNDIzYjQ1OGJmMDc0ZDQ2Mzp7Il9hdXRoX3VzZXJfaGFzaCI6ImEwODJhZTQzN2QyNzcwNTkzODgxOGFlMGIzOGJjOTgxODIzNjU3OGUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMiJ9",
@@ -111,15 +183,6 @@
         "expire_date": "2017-10-05T23:51:11.007Z"
     }
 },
-{
-    "model": "sessions.session",
-    "pk": "zscvmyhqfw2qe7zs5n7oayd0u29xi0id",
-    "fields": {
-        "session_data": "YTlhOGQ4ZTVjOWUwZmQ4YjdkYjM0OWFkY2YzYTA2MWMxNmVkMTdmOTp7Il9hdXRoX3VzZXJfaGFzaCI6ImM2ZmU0NzliZTkwYjg2ZTYxMjQwMDNmZmE5ZDNkOWVlNmZmMGQ5MTYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiOCJ9",
-        "expire_date": "2017-10-08T21:55:40.271Z"
-    }
-},
-
 {
     "model": "sites.site",
     "pk": 2,
@@ -74301,14 +74364,12 @@
         "user_permissions": []
     }
 },
-
-
 {
     "model": "accounts.user",
     "pk": 14,
     "fields": {
         "password": "pbkdf2_sha256$36000$n8AFw263Ddyv$5WeCLh5yzPJnJIblK3sQ7sQ9X6oHoM+l0GYNqPw/OwA=",
-        "last_login": "2017-09-21T23:50:46.468Z",
+        "last_login": "2017-10-06T18:14:53.472Z",
         "is_superuser": false,
         "username": "test2@test.com",
         "first_name": "test2",
@@ -74337,6 +74398,82 @@
         "is_active": true,
         "date_joined": "2017-08-29T18:12:32.408Z",
         "company": "123456",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 20,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$Fktv3DbGAl08$Qzg7UQUOJkRqW0wDVP7TmrJjHiv7EkeoMEe2oipQ48Y=",
+        "last_login": "2017-10-06T18:28:21.359Z",
+        "is_superuser": false,
+        "username": "jon.snow@gmail.com",
+        "first_name": "Jon",
+        "last_name": "Snow",
+        "email": "jon.snow@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-10-06T18:28:21.126Z",
+        "company": "Winterfel",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 21,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$zOZZmMlcu4YY$J3zJNq/EguGtlzwax3Uphe2GK8vN3tzx7/Mk5skFSTY=",
+        "last_login": "2017-10-06T18:37:41.424Z",
+        "is_superuser": false,
+        "username": "arya.stark@gmail.com",
+        "first_name": "Arya",
+        "last_name": "Stark",
+        "email": "arya.stark@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-10-06T18:37:41.132Z",
+        "company": "Winterfel",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 22,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$V8cn3TYmNN3O$Nzx8sN4xPDcimm0yOvVT+uh7Odtvb9CY48YsR2seixA=",
+        "last_login": "2017-10-07T00:26:37.653Z",
+        "is_superuser": false,
+        "username": "rose.tyler@gmail.com",
+        "first_name": "Rose",
+        "last_name": "Tyler",
+        "email": "rose.tyler@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-10-06T20:03:45.983Z",
+        "company": "Bad Wolf Corp.",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 23,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$1AESJB4Jujg3$Qw4v2oLO/QnD15gzKgFm8LJ5R2WGGYBx/GHdX8W8CWw=",
+        "last_login": "2017-10-07T16:00:39.094Z",
+        "is_superuser": false,
+        "username": "jessica.jones@gmail.com",
+        "first_name": "Jessica",
+        "last_name": "Jones",
+        "email": "jessica.jones@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-10-07T00:42:19.118Z",
+        "company": "Marvel",
         "groups": [],
         "user_permissions": []
     }
@@ -74431,6 +74568,105 @@
     }
 },
 {
+    "model": "products.purchase",
+    "pk": 254,
+    "fields": {
+        "user": [
+            "test2@test.com"
+        ],
+        "product": 1,
+        "license_end": "2017-10-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 255,
+    "fields": {
+        "user": [
+            "test2@test.com"
+        ],
+        "product": 2,
+        "license_end": "2018-10-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 256,
+    "fields": {
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "product": 4,
+        "license_end": "2017-11-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 257,
+    "fields": {
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "product": 5,
+        "license_end": "2017-09-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 258,
+    "fields": {
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "product": 1,
+        "license_end": "2018-09-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 259,
+    "fields": {
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "product": 2,
+        "license_end": "2018-10-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 260,
+    "fields": {
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "product": 5,
+        "license_end": "2017-09-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 261,
+    "fields": {
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "product": 1,
+        "license_end": "2018-09-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 262,
+    "fields": {
+        "user": [
+            "jessica.jones@gmail.com"
+        ],
+        "product": 1,
+        "license_end": "2017-10-05T12:45:24Z"
+    }
+},
+{
     "model": "blog.category",
     "pk": 1,
     "fields": {
@@ -74457,7 +74693,7 @@
         "published_date": "2017-08-27T22:32:39Z",
         "category": 1,
         "views": 2,
-        "image": "blogimage/default.png"
+        "image": "blogimage/default.jpg"
     }
 },
 {
@@ -74472,8 +74708,8 @@
         "created_date": "2017-08-27T22:36:24.162Z",
         "published_date": "2017-08-27T22:36:18Z",
         "category": 1,
-        "views": 9,
-        "image": "blogimage/modeler-screenshot.png"
+        "views": 17,
+        "image": "blogimage/duplicate.jpg"
     }
 },
 {
@@ -74488,8 +74724,8 @@
         "created_date": "2017-08-27T22:37:17.376Z",
         "published_date": "2017-08-26T22:37:14Z",
         "category": 2,
-        "views": 1,
-        "image": "blogimage/analyst-def.jpg"
+        "views": 72,
+        "image": "blogimage/data-analysis.jpg"
     }
 },
 {
@@ -74503,9 +74739,280 @@
         "content": "The Irish playwright was on the money \u2013 no matter what way you look at it, attacking an old problem with a new solution is going to require change. In particular, attacking an old problem with advanced predictive analytics is going to spur an array of changes to business processes and with this, a necessary change of perspective. Staff will now be tasked with using the results of models to prioritise who they target with marketing materials, who they call and which products they promote to them. In times of transition, staff can feel overwhelmed, confused and frustrated if communication is poor. In fact lack of staff buy-in is one of the top reasons for the failure of newly adopted predictive analytics solutions.\r\n\r\n1. Start small, talk business\r\n2. Include the business from the beginning\r\n3. Identify obstacles\r\n4. Make a clear deployment plan\r\n5. Keep the analysts involved\r\n6. Prioritise good communication\r\n7. Know when to stop",
         "created_date": "2017-10-03T23:25:49.553Z",
         "published_date": "2017-10-03T23:24:35Z",
+        "category": 2,
+        "views": 28,
+        "image": "blogimage/brainstorm.jpg"
+    }
+},
+{
+    "model": "blog.post",
+    "pk": 7,
+    "fields": {
+        "author": [
+            "admin@admin.com"
+        ],
+        "title": "Commentary and Annotations in IBM SPSS Modeler (Sticky Notes)",
+        "content": "Add comments, document your thoughts and share details directly on the canvas with this sticky notes-like feature.\r\n\r\n1. Select the node(s) you wish to attach to the note or opt for standalone note.\r\n2. Right click and choose \u2018New Comment\u2019 and click on the icon to \u201cedit the properties of the current stream.\u201d\r\n3. Choose the \u2018Text\u2019 row and select \u201cCustom colours\u201d \r\n4. You can choose the colour!\r\n5. The comment box is now coloured with the colour of your choice.",
+        "created_date": "2017-10-06T22:53:36.276Z",
+        "published_date": "2017-10-06T22:53:20Z",
         "category": 1,
-        "views": 2,
-        "image": "blogimage/brainstorming.jpg"
+        "views": 1,
+        "image": "blogimage/post-it.jpg"
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 25,
+    "fields": {
+        "subject": "This is my first ticket",
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "status": "NEW",
+        "reason": "DWL",
+        "product": 1,
+        "opened_date": "2017-10-06T18:31:30.601Z",
+        "closed_date": null
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 26,
+    "fields": {
+        "subject": "I have a list...",
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "status": "CLS",
+        "reason": "INS",
+        "product": 2,
+        "opened_date": "2017-10-06T18:40:00.838Z",
+        "closed_date": "2017-10-06T19:22:54.994Z"
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 27,
+    "fields": {
+        "subject": "I am Jon Snow and I know nothing",
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "status": "PCR",
+        "reason": "OTH",
+        "product": 1,
+        "opened_date": "2017-10-06T19:18:16.082Z",
+        "closed_date": null
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 28,
+    "fields": {
+        "subject": "Joffrey...Cersei...Walder Frey...Meryn Trant...Tywin Lannister...The Red Woman...Beric Dondarrion...Thoros of Myr...Illyn Payne...The Mountain...",
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "status": "NEW",
+        "reason": "SWI",
+        "product": 1,
+        "opened_date": "2017-10-06T19:21:01.372Z",
+        "closed_date": null
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 30,
+    "fields": {
+        "subject": "Knowing it's real means you gotta make a decision",
+        "user": [
+            "jessica.jones@gmail.com"
+        ],
+        "status": "NEW",
+        "reason": "OTH",
+        "product": 1,
+        "opened_date": "2017-10-07T01:48:43.468Z",
+        "closed_date": null
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 54,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "test2@test.com"
+        ],
+        "comment": "<p>test2</p>",
+        "created_date": "2017-10-05T12:46:30Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 55,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "admin@admin.com"
+        ],
+        "comment": "<p>test aaaa</p>",
+        "created_date": "2017-10-05T12:52:28.834Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 56,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "admin@admin.com"
+        ],
+        "comment": "<p>dafsdfgasdfa</p>",
+        "created_date": "2017-10-05T12:59:46.396Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 57,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "admin@admin.com"
+        ],
+        "comment": "<p>dafsdfgasdfa</p>",
+        "created_date": "2017-10-05T13:00:14.465Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 58,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "admin@admin.com"
+        ],
+        "comment": "<p>dafsdfgasdfa</p>",
+        "created_date": "2017-10-05T13:01:02.260Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 59,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "test2@test.com"
+        ],
+        "comment": "<p>dfafdas</p>",
+        "created_date": "2017-10-05T13:01:48.972Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 60,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "admin@admin.com"
+        ],
+        "comment": "<p>agasdf</p>",
+        "created_date": "2017-10-05T13:01:58.203Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 61,
+    "fields": {
+        "ticket": 23,
+        "user": [
+            "test2@test.com"
+        ],
+        "comment": "<p>sdfasdf sdfas df</p>",
+        "created_date": "2017-10-06T18:16:23.056Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 62,
+    "fields": {
+        "ticket": 25,
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "comment": "<p>I'm Jon Snow</p>",
+        "created_date": "2017-10-06T18:31:30.612Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 63,
+    "fields": {
+        "ticket": 26,
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "comment": "<p>Do you want to know who is in that list?</p>",
+        "created_date": "2017-10-06T18:40:00.852Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 64,
+    "fields": {
+        "ticket": 26,
+        "user": [
+            "admin@admin.com"
+        ],
+        "comment": "<p>Let me guess...</p>",
+        "created_date": "2017-10-06T18:41:02.048Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 65,
+    "fields": {
+        "ticket": 27,
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "comment": "<p>That's what everybody says...</p>",
+        "created_date": "2017-10-06T19:18:16.097Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 66,
+    "fields": {
+        "ticket": 28,
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "comment": "<p>I can't sleep until I say the names...</p>",
+        "created_date": "2017-10-06T19:21:01.379Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 67,
+    "fields": {
+        "ticket": 27,
+        "user": [
+            "admin@admin.com"
+        ],
+        "comment": "<p>Daenerys is your aunt. Now you know something ;)</p>",
+        "created_date": "2017-10-06T21:21:00.706Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 69,
+    "fields": {
+        "ticket": 30,
+        "user": [
+            "jessica.jones@gmail.com"
+        ],
+        "comment": "<p>They say everyone's born a hero. But if you let it, life will push you over the line until you're the villain. Problem is, you don't always know that you've crossed that line. Maybe it's enough that the world thinks I'm a hero.</p>",
+        "created_date": "2017-10-07T01:48:43.477Z"
     }
 },
 {
@@ -75586,6 +76093,186 @@
         "object_repr": "7 Tips for Transitioning Data Insights into Business as Usual",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"title\", \"content\", \"image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2017-10-05T12:45:32.469Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "products",
+            "purchase"
+        ],
+        "object_id": "254",
+        "object_repr": "IBM SPSS Statistics 24 - test2@test.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2017-10-05T12:46:22.878Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "tickets",
+            "ticket"
+        ],
+        "object_id": "23",
+        "object_repr": "test2 - test2@test.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2017-10-05T12:46:38.411Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "tickets",
+            "comment"
+        ],
+        "object_id": "54",
+        "object_repr": "54 - ticket:23 - test2@test.com",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2017-10-06T22:48:32.414Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "blog",
+            "post"
+        ],
+        "object_id": "6",
+        "object_repr": "7 Tips for Transitioning Data Insights into Business as Usual",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"category\", \"image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2017-10-06T22:49:07.407Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "blog",
+            "post"
+        ],
+        "object_id": "2",
+        "object_repr": "Identifying Duplicate Cases in IBM SPSS Statistics",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2017-10-06T22:53:37.425Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "blog",
+            "post"
+        ],
+        "object_id": "7",
+        "object_repr": "Commentary and Annotations in IBM SPSS Modeler (Sticky Notes)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2017-10-06T22:56:31.693Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "blog",
+            "post"
+        ],
+        "object_id": "3",
+        "object_repr": "What makes a good Data Analyst?",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2017-10-06T23:00:35.202Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "blog",
+            "post"
+        ],
+        "object_id": "1",
+        "object_repr": "Customising Toolbars in IBM SPSS Statistics",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2017-10-07T01:47:37.527Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "tickets",
+            "comment"
+        ],
+        "object_id": "68",
+        "object_repr": "68 - ticket:29 - jessica.jones@gmail.com",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2017-10-07T01:47:49.641Z",
+        "user": [
+            "admin@admin.com"
+        ],
+        "content_type": [
+            "tickets",
+            "ticket"
+        ],
+        "object_id": "29",
+        "object_repr": "Knowing it's real means you gotta make a decision. - jessica.jones@gmail.com",
+        "action_flag": 3,
+        "change_message": ""
     }
 }
 ]

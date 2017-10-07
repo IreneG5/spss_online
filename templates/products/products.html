@@ -38,9 +38,10 @@
                 Shows a message indicating the user to log in or register -->
                     <br>
                     <div class="alert alert-warning centered">
-                        <p>Please log in to see payment options</p>
-                        <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a> &emsp;or&emsp;
-                        <a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Register</a>
+
+                        <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in </a> &emsp;or&emsp;
+                        <a href="{% url 'register' %}"><span class="glyphicon glyphicon-pencil"></span> Register </a>
+                        <br>to see payment options</p>
                     </div>
 
                 {% endif %}
@@ -90,14 +91,14 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <div class="">No products available.</div>
+                <div class="alert alert-warning">No products available.</div>
             {% endif %}
         </div>
         <div class="col-sm-3">
 
             {% include 'cta/cta_contactus.html' %}
             <br>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and not user.is_staff %}
                 <!-- Shows the user's products with an active license, highlighting the ones close to expire -->
                 <h4>Your active products</h4>
                 {% if purchases.count > 0 %}

@@ -38,11 +38,21 @@ def register(request):
 
 @login_required(login_url='/login/')
 def profile(request):
-    today = arrow.now()  # passed as argument to compare the products with an active licence in the template
-    expire_soon = arrow.now().replace(days=+30).datetime  # passed as argument to highlight the products close to expire
-    purchases = Purchase.objects.filter(user_id=request.user.id).order_by('license_end')
-    tickets = Ticket.objects.filter(user_id=request.user.id).order_by('-opened_date')
-    args = {'purchases': purchases, 'today': today, 'expire_soon': expire_soon, 'tickets': tickets}
+    user = request.user
+    if user.is_staff:
+        # Get list of all tickets for staff user
+        tickets = Ticket.objects.all().order_by('-opened_date')
+        args = {'tickets': tickets}
+    else:
+        if user.is_customer:
+            today = arrow.now()  # passed as argument to compare the products with an active licence in the template
+            expire_soon = arrow.now().replace(
+                days=+30).datetime  # passed as argument to highlight the products close to expire
+            purchases = Purchase.objects.filter(user_id=request.user.id).order_by('license_end')
+            tickets = Ticket.objects.filter(user_id=request.user.id).order_by('-opened_date')
+            args = {'purchases': purchases, 'today': today, 'expire_soon': expire_soon, 'tickets': tickets}
+        else:
+            args={}
     return render(request, "profile.html", args)
 
 

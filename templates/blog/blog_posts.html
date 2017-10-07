@@ -2,8 +2,6 @@
 {% load bootstrap_tags %}
 {% load staticfiles %}
 
-
-
 {% block content %}
     <h1>Welcome to our SPSS/Analytics Blog</h1>
     <p>Here you will find industry insights, SPSS and Analytics tips and tricks, advice for your projects and much more.</p>
@@ -17,8 +15,10 @@
                 {% for post in posts %}
                     <div class="col-sm-4 ">
                     <div class="blog-mini-item">
-                            <div class="blog-mini-title"><h4><a href={{ post.id }}>{{ post.title|truncatechars:40 }}</a></h4></div>
-                            <div class="blog-mini-date"><i>{{ post.published_date| date }} | {{ post.category }}</i></div>
+                            <div class="blog-mini-title">
+                                <h4><a href={{ post.id }}>{{ post.title|truncatechars:40 }}</a></h4></div>
+                            <div class="blog-mini-date">
+                                <i>{{ post.published_date| date }} | {{ post.category }}</i></div>
                         {% if post.image.url %}
                         <div class="blog-mini-image"><img class="img-responsive" src="{{ post.image.url }}"></div>
                          {% endif %}
@@ -36,13 +36,12 @@
                 {% endfor %}
             </div>
         {% else %}
-            <div class="">We're working on amazing blog posts for you</div>
+            <div class="alert alert-warning">We're working on amazing blog posts for you</div>
         {% endif %}
 
 
     </div>
      <div class="col-sm-3">
-
         {% include 'cta/cta_contactus.html' %}
      </div>
     </div>

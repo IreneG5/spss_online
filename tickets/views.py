@@ -16,9 +16,23 @@ from products.models import Purchase, Product
 # Create your views here.
 @login_required()
 def tickets_list(request):
-    # Get list of tickets for the logged user
-    tickets = Ticket.objects.filter(user_id=request.user.id).order_by('-opened_date')
-    comments = Comment.objects.filter(user_id=request.user.id)
+    user = request.user
+    if user.is_staff:
+        # Get list of all tickets for staff user
+        tickets = Ticket.objects.all().order_by('-opened_date')
+        comments = Comment.objects.all()
+    else:
+        # Get list of tickets for the logged user
+        tickets = Ticket.objects.filter(user_id=user.id).order_by('-opened_date')
+        comments = Comment.objects.filter(user_id=user.id)
+
+    args = {'tickets': tickets, 'comments': comments}
+    return render(request, 'tickets/tickets_list.html', args)
+
+@login_required()
+def tickets_all(request):
+    tickets = Ticket.objects.all().order_by('-opened_date')
+    comments = Comment.objects.all()
     args = {'tickets': tickets, 'comments': comments}
     return render(request, 'tickets/tickets_list.html', args)
 
@@ -59,7 +73,6 @@ def new_ticket(request):
             comment.save()
 
             messages.success(request,"Your ticket has been logged", extra_tags='alert alert-success')
-
             return redirect(reverse('ticket-detail', args={ticket.pk}))
         else:
             print "TICKET FORM NOT VALID"
@@ -95,7 +108,7 @@ def new_comment(request, ticket_id):
             comment.save()
 
             messages.success(request, "Your comment has been logged", extra_tags='alert alert-success')
-
+            update_pending_status(request,ticket)
             return redirect(reverse('ticket-detail', args={ticket.pk}))
     else:
         comment_form = CommentForm(request.POST)
@@ -148,6 +161,10 @@ def reopen_ticket(request, ticket_id):
     return redirect(reverse('ticket-detail', args={ticket_id}))
 
 
+
+
+
+
 # NOT WORKING, 'form_action': reverse('edit-comment', args={'ticket_id': ticket.id, 'comment_id': comment.id}),
 def edit_comment(request, ticket_id, comment_id):
     ticket = get_object_or_404(Ticket, pk=ticket_id)
@@ -191,3 +208,4 @@ def delete_comment(request, ticket_id, comment_id):
     messages.success(request, "Your comment was deleted!", extra_tags='alert alert-success')
 
     return redirect(reverse('ticket-detail', args={ticket_id}))
+

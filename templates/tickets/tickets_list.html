@@ -4,17 +4,21 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            {% if user.is_authenticated and user.is_customer %} <!-- and is_customer-->
+            {% if user.is_customer and not user.is_staff %} <!-- and is_customer-->
                 <p><a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a> </p>
-            {% else %}
-                <p><a href="{% url 'new-ticket' %}" class="btn btn-primary disabled ">Open New Ticket </a>
-                    Only customers with active products can create new tickets</p>
+            {% elif not user.is_staff %}
+                <p class="alert alert-warning">Only Active Customers can open and update tickets.
+                           If your account is inactive but you need help with an open ticket please
+                    <a href="{% url 'contact' %}">contact us</a>.</p>
             {% endif %}
             {% if tickets %}
                 <section class="ticket">
                     <table class="table ">
                         <thead><tr>
                             <th>Status</th>
+                            {% if user.is_staff %}
+                                <th>Customer</th>
+                            {% endif %}
                             <th>Subject</th>
                             <th>Prod. Code</th>
                             <th>Opened</th>
@@ -26,22 +30,26 @@
                         <tbody>
                             {% for ticket in tickets  %}
                                 <tr>
+                                 {% if user.is_staff %}
+                                    <td>{{ ticket.status }}</td>
+                                     <td>{{ ticket.user.first_name }} {{ ticket.user.last_name }}</td>
+                                 {% else %}
                                     <td>{{ ticket.get_status_display }}</td>
-                                    <td><a href="{{ ticket.id }}">{{ ticket.subject }}</a></td>
+                                 {%  endif %}
+                                    <td><a href="{{ ticket.id }}">{{ ticket.subject |truncatewords_html:10 }}</a></td>
                                     <td>{{ ticket.product.code }}</td>
                                     <td>{{ ticket.opened_date | date}}</td>
                                     <td>{% if ticket.closed_date  %}
                                         {{ ticket.closed_date | date}} {% endif %}</td>
                                     <td><span class="badge">{{ ticket.comments.count }}</span></td>
-                                    <td>{% last_comment_user ticket %} | {% last_comment_date ticket %}</td>
+                                    <td>{% last_comment_date ticket %}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </section>
             {% else %}
-
-            <p>No tickets to show.</p>
+                <p>No tickets to show.</p>
         {% endif %}
         </div>
     </div>

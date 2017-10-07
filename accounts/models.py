@@ -6,15 +6,6 @@ from products.models import Purchase
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils import timezone
 
-industries=(
-    ('academic', 'Academic'),
-    ('commercial', 'Commercial'),
-    ('public-sector', 'Public Sector'),
-    ('healthcare', 'Healthcare'),
-    ('non-profit', 'Non-profit'),
-    ('other', 'Other'),
-)
-
 
 # Create your models here.
 class AccountUserManager(UserManager):
