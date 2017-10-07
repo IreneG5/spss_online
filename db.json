@@ -89,6 +89,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "h6fms14q7cqnljmo89crka19oxnmcrpr",
+    "fields": {
+        "session_data": "N2Y2MjlkNzMxOGQxNWUxZWFlNjMwYjM0M2Y1ZjNkYjZkMGE2NDU3ZDp7Il9hdXRoX3VzZXJfaGFzaCI6ImIxNzk1YzVmOTI5MmFmMGJmYjVlZWUyM2FmOGNmZWU2YTE1MDNhZGEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMjQifQ==",
+        "expire_date": "2017-10-21T17:17:59.564Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "ibfkwyu7ulbknnn24cbyvk2zyls1kjve",
     "fields": {
         "session_data": "YTlhOGQ4ZTVjOWUwZmQ4YjdkYjM0OWFkY2YzYTA2MWMxNmVkMTdmOTp7Il9hdXRoX3VzZXJfaGFzaCI6ImM2ZmU0NzliZTkwYjg2ZTYxMjQwMDNmZmE5ZDNkOWVlNmZmMGQ5MTYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiOCJ9",
@@ -165,14 +173,6 @@
     "fields": {
         "session_data": "ODM5M2NhNGFjODc4NmRkZDI5YTNmMjE0YTFkYzkzNTVmYmJlZjQzNjp7Il9hdXRoX3VzZXJfaGFzaCI6ImYzMTdkN2YxMjczMTc5MmU5NTAzZTMyMDhhZTlkODNhYWRjZDFhMmYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMjMifQ==",
         "expire_date": "2017-10-21T16:00:39.125Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "roo2vlw9i47nd2wlgjm75oek5lf9ztp5",
-    "fields": {
-        "session_data": "MWQwMzQzNWI5Y2QwOWFjOGU0MDZiODYwNDIzYjQ1OGJmMDc0ZDQ2Mzp7Il9hdXRoX3VzZXJfaGFzaCI6ImEwODJhZTQzN2QyNzcwNTkzODgxOGFlMGIzOGJjOTgxODIzNjU3OGUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMiJ9",
-        "expire_date": "2017-10-09T20:33:23.476Z"
     }
 },
 {
@@ -74350,7 +74350,7 @@
     "pk": 2,
     "fields": {
         "password": "pbkdf2_sha256$36000$IDXmqkeCBDHQ$AAMcpNc8mBa2XPfcfrSYgIPe+LmnDjUy1ihr+f45gfI=",
-        "last_login": "2017-09-25T20:33:23.345Z",
+        "last_login": "2017-10-07T17:14:31.444Z",
         "is_superuser": true,
         "username": "admin@admin.com",
         "first_name": "Admin",
@@ -74360,44 +74360,6 @@
         "is_active": true,
         "date_joined": "2017-08-13T01:48:55.309Z",
         "company": "CodeInstitute",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "accounts.user",
-    "pk": 14,
-    "fields": {
-        "password": "pbkdf2_sha256$36000$n8AFw263Ddyv$5WeCLh5yzPJnJIblK3sQ7sQ9X6oHoM+l0GYNqPw/OwA=",
-        "last_login": "2017-10-06T18:14:53.472Z",
-        "is_superuser": false,
-        "username": "test2@test.com",
-        "first_name": "test2",
-        "last_name": "test2",
-        "email": "test2@test.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2017-08-13T19:25:54.086Z",
-        "company": "",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "accounts.user",
-    "pk": 18,
-    "fields": {
-        "password": "pbkdf2_sha256$36000$REAAg20eQIXR$vFsET6i9OU0aZZYEO3OmFenboUklNPJvy+7iaFbEZ2I=",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "test10@test.com",
-        "first_name": "test10",
-        "last_name": "test10",
-        "email": "test10@test.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2017-08-29T18:12:32.408Z",
-        "company": "123456",
         "groups": [],
         "user_permissions": []
     }
@@ -74474,6 +74436,25 @@
         "is_active": true,
         "date_joined": "2017-10-07T00:42:19.118Z",
         "company": "Marvel",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 24,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$W2bMCEspgtkV$zfN4ah/qAzLRLxz4XvDUtPi87rn3bEx7aD/tpZHrjDU=",
+        "last_login": "2017-10-07T17:17:59.529Z",
+        "is_superuser": true,
+        "username": "the.doctor@gmail.com",
+        "first_name": "The",
+        "last_name": "Doctor",
+        "email": "the.doctor@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-10-07T17:17:59.137Z",
+        "company": "TARDIS",
         "groups": [],
         "user_permissions": []
     }
@@ -74565,28 +74546,6 @@
         ],
         "product": 1,
         "license_end": "2018-09-12T21:39:55.129Z"
-    }
-},
-{
-    "model": "products.purchase",
-    "pk": 254,
-    "fields": {
-        "user": [
-            "test2@test.com"
-        ],
-        "product": 1,
-        "license_end": "2017-10-05T12:45:24Z"
-    }
-},
-{
-    "model": "products.purchase",
-    "pk": 255,
-    "fields": {
-        "user": [
-            "test2@test.com"
-        ],
-        "product": 2,
-        "license_end": "2018-10-05T12:45:24Z"
     }
 },
 {
@@ -74762,21 +74721,6 @@
 },
 {
     "model": "tickets.ticket",
-    "pk": 25,
-    "fields": {
-        "subject": "This is my first ticket",
-        "user": [
-            "jon.snow@gmail.com"
-        ],
-        "status": "NEW",
-        "reason": "DWL",
-        "product": 1,
-        "opened_date": "2017-10-06T18:31:30.601Z",
-        "closed_date": null
-    }
-},
-{
-    "model": "tickets.ticket",
     "pk": 26,
     "fields": {
         "subject": "I have a list...",
@@ -74798,7 +74742,7 @@
         "user": [
             "jon.snow@gmail.com"
         ],
-        "status": "PCR",
+        "status": "PER",
         "reason": "OTH",
         "product": 1,
         "opened_date": "2017-10-06T19:18:16.082Z",
@@ -74809,11 +74753,11 @@
     "model": "tickets.ticket",
     "pk": 28,
     "fields": {
-        "subject": "Joffrey...Cersei...Walder Frey...Meryn Trant...Tywin Lannister...The Red Woman...Beric Dondarrion...Thoros of Myr...Illyn Payne...The Mountain...",
+        "subject": "Joffrey... Cersei... Walder Frey... Meryn Trant... Tywin Lannister... The Red Woman... Beric Dondarrion... Thoros of Myr... Illyn Payne... The Mountain...",
         "user": [
             "arya.stark@gmail.com"
         ],
-        "status": "NEW",
+        "status": "PCR",
         "reason": "SWI",
         "product": 1,
         "opened_date": "2017-10-06T19:21:01.372Z",
@@ -74833,114 +74777,6 @@
         "product": 1,
         "opened_date": "2017-10-07T01:48:43.468Z",
         "closed_date": null
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 54,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "test2@test.com"
-        ],
-        "comment": "<p>test2</p>",
-        "created_date": "2017-10-05T12:46:30Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 55,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "admin@admin.com"
-        ],
-        "comment": "<p>test aaaa</p>",
-        "created_date": "2017-10-05T12:52:28.834Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 56,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "admin@admin.com"
-        ],
-        "comment": "<p>dafsdfgasdfa</p>",
-        "created_date": "2017-10-05T12:59:46.396Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 57,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "admin@admin.com"
-        ],
-        "comment": "<p>dafsdfgasdfa</p>",
-        "created_date": "2017-10-05T13:00:14.465Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 58,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "admin@admin.com"
-        ],
-        "comment": "<p>dafsdfgasdfa</p>",
-        "created_date": "2017-10-05T13:01:02.260Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 59,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "test2@test.com"
-        ],
-        "comment": "<p>dfafdas</p>",
-        "created_date": "2017-10-05T13:01:48.972Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 60,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "admin@admin.com"
-        ],
-        "comment": "<p>agasdf</p>",
-        "created_date": "2017-10-05T13:01:58.203Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 61,
-    "fields": {
-        "ticket": 23,
-        "user": [
-            "test2@test.com"
-        ],
-        "comment": "<p>sdfasdf sdfas df</p>",
-        "created_date": "2017-10-06T18:16:23.056Z"
-    }
-},
-{
-    "model": "tickets.comment",
-    "pk": 62,
-    "fields": {
-        "ticket": 25,
-        "user": [
-            "jon.snow@gmail.com"
-        ],
-        "comment": "<p>I'm Jon Snow</p>",
-        "created_date": "2017-10-06T18:31:30.612Z"
     }
 },
 {
@@ -75013,6 +74849,30 @@
         ],
         "comment": "<p>They say everyone's born a hero. But if you let it, life will push you over the line until you're the villain. Problem is, you don't always know that you've crossed that line. Maybe it's enough that the world thinks I'm a hero.</p>",
         "created_date": "2017-10-07T01:48:43.477Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 70,
+    "fields": {
+        "ticket": 27,
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "comment": "<p>I am Aegon Targaryen O.o</p>",
+        "created_date": "2017-10-07T17:43:24.253Z"
+    }
+},
+{
+    "model": "tickets.comment",
+    "pk": 71,
+    "fields": {
+        "ticket": 28,
+        "user": [
+            "the.doctor@gmail.com"
+        ],
+        "comment": "<p>Would you shut up?&nbsp;</p>",
+        "created_date": "2017-10-07T17:44:36.261Z"
     }
 },
 {
