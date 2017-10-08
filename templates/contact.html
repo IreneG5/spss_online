@@ -18,9 +18,11 @@
                     to help you select the right solution for you...</p>
                 <p><b>We are here to help!</b></p>
 
-                <p>If you are a customer and have a technical support query please log in a new ticket in
-                "<a href="{% url 'tickets-list' %}">My Tickets</a>" section.</p>
-                <p>Otherwise...</p>
+                {% if user.is_customer %}
+                    <p>If you need technical support please log in a new ticket in
+                    "<a href="{% url 'tickets-list' %}">My Tickets</a>" section.</p>
+                    <p>Otherwise...</p>
+                {% endif %}
                 <p>Give us a call on +353 (0)1 1111111</p>
                 <p>Send us an email: <a href="mailto:info@easySPSS.com">info@easySPSS.com</a></p>
                 <p>Or visit our offices: Block 8, Blackrock Business Park, Carysfort Ave, Blackrock, Co. Dublin</p>
