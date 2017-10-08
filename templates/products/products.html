@@ -95,8 +95,23 @@
             {% endif %}
         </div>
         <div class="col-sm-3">
-
-            {% include 'cta/cta_contactus.html' %}
+        <!-- 4 different call to actions: Shortcuts for staff, contact us for customer, offer for inactive users,
+        and register for not logged in users -->
+            {% if user.is_staff %}
+                <div class="cta">
+                    <p class="spacer"></p>
+                    <h4><a href="{% url 'profile' %}"><span  class="glyphicon glyphicon-user"></span>&emsp;Profile</a></h4>
+                    <h4><a href="{% url 'products' %}"> <span  class="glyphicon glyphicon-star"></span>&emsp;Blog</a></h4>
+                    <h4><a href="{% url 'tickets-list' %}"><span  class="glyphicon glyphicon-briefcase"></span>&emsp;Tickets</a></h4>
+                    <p class="spacer"></p>
+                </div>
+            {% elif user.is_customer %}
+                {% include 'cta/cta_contactus.html' %}
+            {% elif user.is_authenticated %}
+                {% include 'cta/cta_offer.html' %}
+            {% else %}
+                {% include 'cta/cta_register.html' %}
+            {% endif %}
             <br>
             {% if user.is_authenticated and not user.is_staff %}
                 <!-- Shows the user's products with an active license, highlighting the ones close to expire -->
