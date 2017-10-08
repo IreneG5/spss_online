@@ -30,7 +30,9 @@
                     <a href="{% url 'reopen-ticket' ticket.id %}" class="btn btn-warning">Reopen Ticket</a>
                 {% endif %}
                 </div><div class="col-md-6">
-                    <a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a>
+                    {% if not user.is_staff %}
+                        <a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a>
+                    {% endif %}
             {% else %}
                  </div><div class="col-md-6">
             {% endif %}
