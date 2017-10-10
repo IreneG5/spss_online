@@ -10,10 +10,14 @@ from django.utils import timezone
 # Create your models here.
 class AccountUserManager(UserManager):
     def _create_user(self, username, email, password,
-                     is_staff, is_superuser, first_name, last_name, **extra_fields):
+                     is_staff, is_superuser, first_name="Default", last_name="Default", **extra_fields):
         """
         Creates and saves a User with the given username, email and password.
         """
+        first_name = email
+
+        last_name = email
+
         now = timezone.now()
         if not email:
             raise ValueError('The username must be set')

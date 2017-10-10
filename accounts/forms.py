@@ -7,9 +7,8 @@ from accounts.models import User
 class UserRegistrationForm(UserCreationForm):
 
     # Extra fields not included in the User Model
-    company = forms.CharField(max_length=100, label='Company', required=True )
-    #phone = forms.CharField(max_length=20, label='Phone Number')
-    #industry = forms.CharField(label='Industry', widget=forms.Select(choices=industries))
+    company = forms.CharField(max_length=100, label='Company')
+
     password1 = forms.CharField(
         label='Password',
         widget=forms.PasswordInput
@@ -20,10 +19,9 @@ class UserRegistrationForm(UserCreationForm):
         widget=forms.PasswordInput
     )
 
-
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'company']#, 'phone', 'industry']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'company']
         exclude = ['username']
 
     def clean_password1(self):

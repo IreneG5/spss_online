@@ -29,6 +29,7 @@ def tickets_list(request):
     args = {'tickets': tickets, 'comments': comments}
     return render(request, 'tickets/tickets_list.html', args)
 
+
 @login_required()
 def tickets_all(request):
     tickets = Ticket.objects.all().order_by('-opened_date')
@@ -125,6 +126,7 @@ def new_comment(request, ticket_id):
         args.update(csrf(request))
 
         return render(request, 'tickets/comment_form.html', args)
+
 
 
 # Automatically check after new comment and update the ticket status depending on the user that commented

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-#from boto.s3.connection import S3Connection
+from boto.s3.connection import S3Connection
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,9 +21,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'a7w##lr33)_=dv%jkd0%avvttderv_mxo&pa)hak*!1xa-iw90'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-ALLOWED_HOSTS = ['127.0.0.1', '08d3d375.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', '934896b0.ngrok.io']
 SITE_ID = 2
 
 # Application definition
@@ -159,8 +159,10 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_STORAGE_BUCKET_NAME = 'spssonlinebucket'
 AWS_S3_REGION_NAME = 'eu-west-1'  # e.g. us-east-2
 
+
+
 # Get the Keys from the Environmental Variables
-#s3 = S3Connection(os.environ['AWS_ACCESS_KEY_ID'], os.environ['AWS_SECRET_ACCESS_KEY'])
+s3 = S3Connection(os.environ['AWS_ACCESS_KEY_ID'], os.environ['AWS_SECRET_ACCESS_KEY'])
 
 # Tell django-storages the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
