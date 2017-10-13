@@ -1,27 +1,33 @@
 {%  extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <div class="col-md-6">
-        <h1>Register to get more insights!</h1>
-        <p>When you create your account you will be able to: </p>
-        <ul>
-            <li>Buy products and save your orders in your profile</li>
-            <li>Access all content from our resources</li>
-            <li>Comment and like our blog posts</li>
-            <li>Get the latest offers</li>
-            <li>And much more</li>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Register to get more insights!</h1>
+            <p class="spacer">&nbsp;</p>
+            <p>Create your account to get all these benefits: </p>
+            <ul>
+                <li>Buy products and see your orders in your profile</li>
+                <li>Open support tickets for your active products</li>
+                <li>Read and comment in our blog</li>
+                <li>Get the latest offers and discounts</li>
+                <li>And much more</li>
             </ul>
-    <h4>Register today!</h4>
-    </div>
-    <div class="col-md-6">
-    <h2>Register to get more insights!</h2>
-    <form role="form" id="register-form" method="post" action="{% url 'register' %}">
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Create Account</button>
+            <p class="spacer">&nbsp;</p>
+            <h4>Register today!</h4>
+            <p class="spacer">&nbsp;</p>
         </div>
-    </form>
+        <div class="col-md-6">
+            <p class="spacer">&nbsp;</p>
+            <h4>Fill out the form below to create your account!</h4>
+            <form role="form" id="register-form" method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}
 

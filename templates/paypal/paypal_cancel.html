@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-9">
+            <h1>We are sorry you've cancelled the purchase of this item.</h1>
+            <ul>
+                <li>Product: {{ last_purchase.product }} {{ last_purchase.product.osystem }}</li>
+                <li>Price: {{ last_purchase.product.price }}</li>
+            </ul>
+            <p class="spacer">&nbsp;</p>
+            <h4>Please let us know if there is something we can do to help.</h4>
+            <p class="spacer">&nbsp;</p>
+            <p>Go to <a href="{% url 'products' %}"> products</a>.</p>
+            <p>Go to <a href="{% url 'profile' %}"> my profile</a>.</p>
 
-    <h1>We are sorry you've cancelled the purchase of this item.</h1>
-
-    {{ Purchase.objects.last }}
-
-
-    <h2>POST</h2>
-    {{ post }}
-
-    <h2>GET</h2>
-    {{ get }}
-
-    <h4>Please let us know if there is something we can do to help.</h4>
-
-    <p>Take me back to the <a href="{% url 'products' %}"> products page</a></p>
-    <p>Take me back to my <a href="{% url 'profile' %}"> profile page</a></p>
-
+        </div>
+        <div class="col-sm-3">
+            {% include 'cta/cta_contactus.html' %}
+        </div>
+    </div>
 {% endblock %}

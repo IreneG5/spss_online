@@ -3,7 +3,7 @@
 {% load product_extras %}
 
 {% block content %}
-    <!-- Carousel -->
+    <!-- carousel -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -14,29 +14,29 @@
         <div class="carousel-inner">
             <!-- Item 0 -->
             <div class="item" role="listbox">
-                <img src="{% static 'images/bg-halloween.jpg' %}" alt="Halloween Offer" />
+                <img src="{% static 'images/bg-halloween.jpg' %}" alt="Halloween Offer" class="img-responsive" />
                 <div class="carousel-caption">
                     <h1>Halloween Special Offer</h1>
                     <h2>Terrific Discounts in All SPSS Software!</h2>
-                    <a class="btn btn-warning" href="{% url 'contact' %}">Contact us</a></br></br>
+                    <a class="btn btn-warning" href="{% url 'contact' %}">Contact us</a></br>
                 </div>
             </div>
             <!-- Item 1 -->
             <div id="0" class="item active" role="listbox">
-                <img src="{% static 'images/bg-man.jpg' %}" alt="Affordable SPSS Software" />
+                <img src="{% static 'images/bg-man.jpg' %}" alt="Affordable SPSS Software"  class="img-responsive" />
                 <div class="carousel-caption">
-                    <h1><b>Looking for affordable SPSS Software?</b></h1>
-                    <h2>We can help you!</h2>
+                    <h2>Looking for affordable SPSS Software?</h2>
+                    <h1>We can help you!</h1>
                     <a class="btn btn-warning" href="{% url 'products' %}">Learn more</a></br>
                 </div>
             </div>
             <!-- Item 2 -->
             <div class="item" role="listbox">
-                <img src="{% static 'images/bg-blog.jpg'%}" alt="Blog" />
+                <img src="{% static 'images/bg-blog.jpg'%}" alt="Blog"  class="img-responsive" />
                 <div class="carousel-caption">
                     <h1>easy SPSS Blog</h1>
                     <h2>Market insights, SPSS tips and tricks, <br/>and loads of advice to help you succeed!</h2>
-                    <a class="btn btn-warning" href="{% url 'blog' %}">Visit our Blog</a></br></br>
+                    <a class="btn btn-warning" href="{% url 'blog' %}">Visit our Blog</a></br>
                 </div>
             </div>
 
@@ -51,107 +51,141 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <!-- End Carousel -->
+    <!-- end carousel -->
 
-    <div class="container-fluid">
-        <div class="row"><div class="col-md-12">&nbsp;</div> </div>
-        <div class="row ">
-            <div class="col-md-10 col-md-offset-1">
-                <h2>Who we are</h2>
-            </div></div>
-        <div class="row ">
-            <div class="col-md-8 col-md-offset-1">
-                <div id="who-we-are" class="border-left-teal">
-                <p>easySPSS are a certified IBM SPSS Online Software Reseller awarded as the Reseller of the year
-                    since 2012.</p>
-                <p>We know that one size doesn't fit all, that's why we work with you to find a solution that suits
-                    you.</p>
-                <p>Our mission is to give you exactly what you need, at the best value.</p>
-                    <p><a class="btn btn-info" href="/pages/about"> More About us</a></p>
+    <!-- main content -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Who we are -->
+            <div class="row ">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="spacer">&nbsp;</div>
+                    <div class="spacer">&nbsp;</div>
+                    <h2>Who we are</h2>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div id="who-we-are-img"><img src="{% static 'images/who-we-are.jpg' %}"> </div>
-            </div>
-        </div>
-
-        <div class="row"><div class="col-md-12">&nbsp;</div> </div>
-
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 align-right">
-                <h2>What we offer</h2>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="col-md-2 col-md-offset-1">
-                <div id="what-we-offer"><img src="{% static 'images/what-we-offer.jpg' %}"></div>
-            </div>
-            <div class="col-md-8 ">
-
-                <div id="what-we-offer" class="border-right-teal">
-                    <p><b>IBM SPSS Software</b> enables customers across industries to bring data to the heart of their
-                        decision making.</p>
-                    <p>Whether it is your first time using SPSS, you need it only for a few months,
-                        or you just need more licenses or additional modules, We can help!</p>
-                    <p>We make it easy at the best value!</p>
-
-
-                    <p><a class="btn btn-info" href="{% url 'products' %}"> More About Our Products</a></p>
-                </div>
-                </div>
-        </div>
-
-        <div class="row"><div class="col-md-12">&nbsp;</div> </div>
-
-        <h2>What our customers say</h2>
-        <div class="col-md-4">
-            <div class="testimonial-box">
-                <div class="testimonial-header">
-                <div class="testimonial-bg orange">
-                <div class="testimonial-image centered"><img src="{% static 'images/clara-oswald.jpg' %}"
-                                                    class="img-circle img-responsive centered">
-                </div></div>
+            <div class="row ">
+                <div class="col-md-8 col-md-offset-1">
+                    <div id="who-we-are" class="border-left-teal">
+                        <p>easySPSS are a certified IBM SPSS Online Software Reseller awarded as the Reseller of the year
+                            since 2012.</p>
+                        <p>We know that one size doesn't fit all, that's why we work with you to find a solution that suits
+                            you.</p>
+                        <p>Our mission is to give you exactly what you need, at the best value.</p>
+                        <p><a class="btn btn-info" href="/pages/about"> More About us</a></p>
                     </div>
-                <div class="testimonial-content">
-                    <h4>Clara Oswald </h4>
-                    <h6>Lecturer & Researcher</h6>
-                    <p>I have automated reports in SPSS that save me a lot of time.
-                        I can now focus on what is really important, Time And Relative Dimension in Space (TARDIS).</p>
+                </div>
+                <div class="col-md-2">
+                    <div id="who-we-are-img"><img src="{% static 'images/who-we-are.jpg' %}" alt="Who we are"
+                                                  class="img-responsive" > </div>
                 </div>
             </div>
-        </div>
-                <div class="col-md-4">
-            <div class="testimonial-box">
-                <div class="testimonial-header">
-                <div class="testimonial-bg green">
-                <div class="testimonial-image centered"><img src="{% static 'images/tony-stark.jpg' %}"
-                                                    class="img-circle img-responsive centered">
-                </div></div>
-                    </div>
-                <div class="testimonial-content">
-                    <h4>Tony Stark </h4>
-                    <h6>Head of Analytics</h6>
-                    <p>SPSS Modeler looks a expensive tool at the beginning but we got 150% ROI
-            within the first 6 months. That's what I need, money to save the world.</p>
-                </div>
-            </div>
-        </div>
-                <div class="col-md-4">
-            <div class="testimonial-box">
-                <div class="testimonial-header">
-                <div class="testimonial-bg purple">
-                <div class="testimonial-image centered"><img src="{% static 'images/tyrion-lannister.jpg' %}"
-                                                    class="img-circle img-responsive centered">
-                </div></div>
-                    </div>
-                <div class="testimonial-content">
-                    <h4>Tyrion Lannister</h4>
-                    <h6>Drinks & Knows things</h6>
-                    <p>Thanks to SPSS we have improved our infection control rates in the North.
-                        Now we know how to fight this long winter. Let's drink to celebrate!</p>
-                </div>
-            </div>
-        </div>
+            <!-- end Who we are -->
 
+            <!-- What we offer -->
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 align-right">
+                    <div class="spacer">&nbsp;</div>
+                    <div class="spacer">&nbsp;</div>
+                    <h2>What we offer</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1">
+                    <div id="what-we-offer"><img src="{% static 'images/what-we-offer.jpg' %}" alt="What we offer"
+                                                class="img-responsive" ></div>
+                </div>
+                <div class="col-md-8 ">
+                    <div id="what-we-offer" class="border-right-teal">
+                        <p><b>IBM SPSS Software</b> enables customers across industries to bring data to the heart of their
+                            decision making.</p>
+                        <p>Whether it is your first time using SPSS, you need it only for a few months,
+                            or you just need more licenses or additional modules, We can help!</p>
+                        <p>We make it easy at the best value!</p>
+                        <p><a class="btn btn-info" href="{% url 'products' %}"> More About Our Products</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- end What we offer -->
 
+            <!-- What our customers say -->
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="spacer">&nbsp;</div>
+                    <div class="spacer">&nbsp;</div>
+                    <h2>What our customers say</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- testimonial 1 -->
+                    <div class="col-md-4">
+                        <div class="testimonial-box">
+                            <div class="testimonial-header">
+                                <div class="testimonial-bg orange">
+                                    <div class="testimonial-image centered">
+                                        <img src="{% static 'images/clara-oswald.jpg' %}" alt="Clara Oswald"
+                                             class="img-circle img-responsive centered" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <h4>Clara Oswald </h4>
+                                <h6>Lecturer & Researcher</h6>
+                                <p>I have automated reports in SPSS that save me a lot of time.
+                                    I can now focus on what is really important, Time And Relative Dimension in Space
+                                    (TARDIS).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end testimonial 1 -->
+
+                    <!-- testimonial 2 -->
+                    <div class="col-md-4">
+                        <div class="testimonial-box">
+                            <div class="testimonial-header">
+                                <div class="testimonial-bg green">
+                                    <div class="testimonial-image centered">
+                                        <img src="{% static 'images/tony-stark.jpg' %}" alt="Tony Stark"
+                                             class="img-circle img-responsive centered">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <h4>Tony Stark </h4>
+                                <h6>Head of Analytics</h6>
+                                <p>SPSS Modeler looks a expensive tool at the beginning but we got 150% ROI
+                                within the first 6 months. That's what I need, money to save the world.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end testimonial 2 -->
+
+                    <!-- testimonial 3 -->
+                    <div class="col-md-4">
+                        <div class="testimonial-box">
+                            <div class="testimonial-header">
+                                <div class="testimonial-bg purple">
+                                    <div class="testimonial-image centered">
+                                        <img src="{% static 'images/tyrion-lannister.jpg' %}" alt="Tyrion Lannister"
+                                             class="img-circle img-responsive centered">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <h4>Tyrion Lannister</h4>
+                                <h6>Drinks & Knows things</h6>
+                                <p>Thanks to SPSS we have improved our infection control rates in the North.
+                                Now we know how to fight this long winter. Let's drink to celebrate!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end testimonial 3 -->
+                </div>
+            </div>
+            <!-- end What our customers say -->
+        </div>
+    </div>
+    <!-- end main content -->
 {% endblock %}

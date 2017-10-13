@@ -2,7 +2,7 @@
 
 /*Color codes*/
 /*  Dark teal 006080 - 0, 96, 128
-    Light teal 20B2AA - 32, 178, 170
+    Teal 20B2AA - 32, 178, 170
     orange 20B2AA
  */
 
@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6{
     color: #006080;
 }
 
+.small-text{
+    font-size: small;
+}
+
 .border-teal{
     border-color:#20B2AA;
 }
@@ -21,6 +25,7 @@ h1, h2, h3, h4, h5, h6{
 .color-teal{
     color:#20B2AA;
 }
+
 
 .centered{
     text-align: center;

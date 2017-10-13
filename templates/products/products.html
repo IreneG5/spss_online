@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% load bootstrap_tags %}
-{% load staticfiles %}
+{% load static %}
+
 {% load product_extras %}
 {% block head_js %}
         <script>
@@ -9,7 +9,9 @@
             });
         </script>
 {% endblock %}
+
 {% block content %}
+    <!-- intro -->
     <div class="row">
         <div class="col-sm-12">
             <h1>Products</h1>
@@ -27,6 +29,8 @@
             </div>
         </div>
     </div>
+    <!-- end intro -->
+    <!-- message alert log in -->
     <div class="row">
         <div class="col-sm-6">
             <h3>Buy your SPSS Software today!</h3>
@@ -35,57 +39,55 @@
         <div class="col-sm-4">
             {% if not user.is_authenticated %}
                 <!-- Being logged in is required to buy, the buttons won't appear otherwise.
-                Shows a message indicating the user to log in or register -->
-                    <br>
-                    <div class="alert alert-warning centered">
-
-                        <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in </a> &emsp;or&emsp;
-                        <a href="{% url 'register' %}"><span class="glyphicon glyphicon-pencil"></span> Register </a>
-                        <br>to see payment options</p>
-                    </div>
-
-                {% endif %}
+                Show a message indicating the user needs to log in or register -->
+                <br>
+                <div class="alert alert-warning centered">
+                    <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in </a> &emsp;or&emsp;
+                    <a href="{% url 'register' %}"><span class="glyphicon glyphicon-pencil"></span> Register </a>
+                    <br>to see payment options</p>
+                </div>
+            {% endif %}
         </div>
     </div>
+    <!-- end message alert log in -->
+    <!-- products boxes -->
     <div class="row">
         <div class="col-sm-9">
-            <p>&nbsp;&nbsp;</p>
+            <p class="spacer">&nbsp;</p>
+            <!-- If there are products in the database, shows them as boxes -->
             {% if products.count > 0 %}
-                <!-- If there are products in the database, shows them as boxes -->
                 <div class="row product-mini-row">
                     {% for product in products %}
                         <div class="col-sm-4 ">
-                        <div class="product-mini-item">
-                                <div class="product-mini-name"><h4>{{ product.name }} - {{ product.osystem }}
-                                    <!-- popover title="..." to show a header -->
-                                    <!--data-trigger="focus" to keep only one visible -->
-                                <a  tabindex="0" role="button"  data-trigger="focus" data-container="body" data-toggle="popover"
-                                   data-placement="right"  data-content="{{ product.description }}">
-                                    <span class="glyphicon glyphicon-info-sign"></span></a>
-                                </h4>
-
+                            <div class="product-mini-item">
+                                <div class="product-mini-name">
+                                    <h4>{{ product.name }} - {{ product.osystem }}
+                                        <a  tabindex="0" role="button"  data-trigger="focus" data-container="body"
+                                            data-toggle="popover" data-placement="right"
+                                            data-content="{{ product.description }}">
+                                            <span class="glyphicon glyphicon-info-sign"></span></a>
+                                    </h4>
                                 </div>
-
-                            {% if products.image.url != "" %}
-                                <div class="product-mini-image"><img class="img-responsive centered" src=" {{ product.image.url }}"></div>
-                            {% endif %}
-
-                            <div><h4>{{ product.license_type }} - £{{ product.price }}</h4></div>
-
-                            <div>
-                                {% if user.is_authenticated %}
-                                    <br />
-                                    <div class="product-mini-paypal-button img-responsive">{% paypal_form_for product user %}</div>
-                                {% else %}
-                                    <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
+                                {% if products.image.url != "" %}
+                                    <div class="product-mini-image"><img class="img-responsive centered" src=" {{ product.image.url }}"></div>
                                 {% endif %}
-                                <br><br>
+                                <div>
+                                    <h4>{{ product.license_type }} - £{{ product.price }}
+                                    </h4>
+                                </div>
+                                <div>
+                                    {% if user.is_authenticated %}
+                                        <br />
+                                        <div class="product-mini-paypal-button img-responsive">{% paypal_form_for product user %}</div>
+                                    {% else %}
+                                        <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
+                                    {% endif %}
+                                    <br><br>
+                                </div>
                             </div>
-                        </div>
                         </div>
                         {% if forloop.counter|divisibleby:3 %}
                             </div>
-
                             <div class="row product-mini-div">
                         {% endif %}
                     {% endfor %}
@@ -94,6 +96,9 @@
                 <div class="alert alert-warning">No products available.</div>
             {% endif %}
         </div>
+        <!-- end products boxes -->
+
+        <!-- right column -->
         <div class="col-sm-3">
         <!-- 4 different call to actions: Shortcuts for staff, contact us for customer, offer for inactive users,
         and register for not logged in users -->
@@ -112,7 +117,11 @@
             {% else %}
                 {% include 'cta/cta_register.html' %}
             {% endif %}
-            <br>
+            <!-- call to action -->
+
+            <p class="spacer">&nbsp;</p>
+
+            <!-- active products -->
             {% if user.is_authenticated and not user.is_staff %}
                 <!-- Shows the user's products with an active license, highlighting the ones close to expire -->
                 <h4>Your active products</h4>
@@ -135,7 +144,8 @@
                     <div>You don't have any active product.</div>
                 {% endif %}
             {% endif %}
+            <!-- end active products -->
         </div>
+        <!-- end right column -->
     </div>
-
 {% endblock %}

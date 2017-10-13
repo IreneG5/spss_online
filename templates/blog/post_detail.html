@@ -1,16 +1,17 @@
 {% extends "base.html" %}
-{% load bootstrap_tags %}
-{% load staticfiles %}
-
+{% load static %}
 
 {% block content %}
-    <div class="row"></div>
+    <div class="row">
         <div class="col-sm-12">
             <h3><a href="">{{ post.title }}</a></h3>
         </div>
     </div>
+
     <div class="row">
+        <!-- blog post details -->
         <div class="col-sm-9">
+            <!-- header -->
             <div class="row">
                 <div class="col-sm-6">
                     <p>By: {{ post.author.first_name }} {{ post.author.last_name }} &emsp;<b>|</b>&emsp; Category: {{ post.category}}</p>
@@ -25,12 +26,15 @@
                     <button class="btn btn-primary pull-left" onclick="location.href='/blog'">Back to Blog</button>
                 </div>
             </div>
+            <!-- content -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="centered"><img class="img-responsive" src="{{ post.image.url }}" ></div>
                     <div>
                         <br>
                         <p>{{ post.content|linebreaksbr  }}...</p>
+                        <p class="spacer">&nbsp;</p>
+                        <!-- disqus comments -->
                         {% if user.is_authenticated %}
                             <p>{% load disqus_tags %}
                                 {% set_disqus_title post.title %}
@@ -47,8 +51,11 @@
                 </div>
             </div>
         </div>
+        <!-- end blog post details -->
+        <!-- popular posts -->
         <div class="col-sm-3">
             <!-- List of popular posts -->
         </div>
+        <!-- popular posts -->
     </div>
 {% endblock %}

@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Title contains keywords for marketing purposes -->
     <title>Buy SPSS Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -12,9 +13,11 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Block to include other javascript in child templates -->
     {% block head_js %}{% endblock %}
 </head>
 <body>
+    <!-- menu -->
     <div class="container">
         <nav id="menu" class="navbar navbar-inverse">
 	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -23,9 +26,9 @@
 		        <span class="icon-bar"></span>
 		    </button>
             <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}"/> </a>
-
 		    <div id="myNavbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!-- Using request.resolver.match to highlight the active menu -->
                     <li {% if request.resolver_match.url_name == 'index'%}class="active"{% endif %}>
                         <a class="active" href="/">Home</a>
                     </li>
@@ -42,11 +45,9 @@
                     <li {% if request.resolver_match.url_name == 'contact'%}class="active"{% endif %}>
                         <a href="/contact">Contact</a>
                     </li>
-
-
-
 			    </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <!-- Show profile, tickets and log out only if the user is authenticated -->
                     {% if user.is_authenticated %}
                         <li {% if request.resolver_match.url_name == 'profile'%}class="active"{% endif %}>
                             <a href="/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a>
@@ -57,43 +58,53 @@
                             <a href="/tickets"><span class="glyphicon glyphicon glyphicon-briefcase"></span> My Tickets </a> </li>
 
                         <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a> </li>
-
+                    <!-- Show register and login only if the user is not authenticated -->
                     {% else %}
                         <li {% if request.resolver_match.url_name == 'register'%}class="active"{% endif %}>
                             <a href="/register"><span class="glyphicon glyphicon-pencil"></span> Register</a>
                         </li>
                         <li {% if request.resolver_match.url_name == 'login'%}class="active"{% endif %}>
                             <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a> </li>
-
                     {% endif %}
-
                 </ul>
+
             </div>
 		</nav>
     </div>
+    <!-- end menu -->
+    <!-- main content -->
     <div class="container">
-    <div class="container-fluid">
-        {% if messages %}
-            <div class="alert">
-                {% for message in messages %}
-                    <p class="{{ message.tags }}">{{ message }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-
         <div class="container-fluid">
-            {%  block content %}
-            {% endblock %}
+            <!-- messages passed from views, if any -->
+            {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}
+                        <p class="{{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <!-- end messages -->
+
+            <div class="container-fluid">
+                <!-- block to insert child templates -->
+                {%  block content %}
+                {% endblock %}
+                <!-- end block -->
+            </div>
         </div>
+    </div>
+    <!-- end main content -->
+    <!-- footer -->
+    <div class="container">
         <div class="footer">
-            <p>&nbsp;</p>
-
+            <div class="spacer">&nbsp;</div>
             <hr class="border-teal">
-
-           <p>Created by Irene Garcia</p>
+            <p>Created by Irene Garcia</p>
+            <p class="small"><i>* easySPSS is a fictional company. It is not related to IBM Software or the fictional TV
+                characters showed in this website in any way.</i></p>
        </div>
     </div>
-</div>
+    <!-- end footer -->
 </body>
 
 </html>
