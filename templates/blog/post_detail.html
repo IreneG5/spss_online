@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% load blog_extras %}
+
 
 {% block content %}
     <div class="row">
         <div class="col-sm-12">
-            <h3><a href="">{{ post.title }}</a></h3>
+            <h2>{{ post.title }}</h2>
         </div>
     </div>
 
@@ -13,19 +15,35 @@
         <div class="col-sm-9">
             <!-- header -->
             <div class="row">
-                <div class="col-sm-6">
-                    <p>By: {{ post.author.first_name }} {{ post.author.last_name }} &emsp;<b>|</b>&emsp; Category: {{ post.category}}</p>
-                        <p><span>{{ post.published_date | date }}</span>&nbsp;&nbsp;<span class="badge pull-right">{{ post.views }} views</span></p>
+                <div class="col-sm-8">
+                    <p>By: {{ post.author.first_name }} {{ post.author.last_name }}
+                        &emsp;<b>|</b>&emsp; Category: {{ post.category}}</p>
+                    <p><span>Posted: {{ post.published_date | date }}</span>&nbsp;</p>
+                    <p>
+                    <!-- Voting buttons or login message -->
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'voteup' post.id %}">
+                                <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i></a>
+                                &emsp;<a href="{% url 'votedown' post.id %}">
+                                <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i></a>
+                        {% else %}
+                            <span class="alert-warning"><a href="{% url 'login' %}">
+                                <span class="glyphicon glyphicon-log-in"></span> Log in </a>to vote </span>
+                        {% endif %}
+                        <!-- Metrics on votes and views. Social media sharing. -->
+                        &emsp;<span class="badge"> {{ post.score }}
+                            {% if post.score == 1 %}point{% else %}points{% endif %}</span>
+                        &emsp;&emsp;<span class="badge">{{ post.views }} views</span>
+                        &emsp;&emsp;<a href="https://twitter.com/intent/tweet?url={{ current_path }}&via=easySPSS&text={{ post.title }}"
+                       target="_blank"><img src="{% static 'images/tweet.png' %}"/></a>
+                    </p>
                 </div>
                 <div class="col-sm-2">
-                    <a href="https://twitter.com/intent/tweet?url={{ current_path }}&via=easySPSS&text={{ post.title }}"
-                       target="_blank"><img class="img-responsive" src="{% static 'images/tweet.png' %}"/></a>
+                    <a class="btn btn-primary pull-left" href="{% url 'blog' %}">Back to Blog</a>
                 </div>
 
-                <div class="col-sm-2">
-                    <button class="btn btn-primary pull-left" onclick="location.href='/blog'">Back to Blog</button>
-                </div>
             </div>
+            <!-- end header -->
             <!-- content -->
             <div class="row">
                 <div class="col-md-12">
@@ -34,7 +52,7 @@
                         <br>
                         <p>{{ post.content|linebreaksbr  }}...</p>
                         <p class="spacer">&nbsp;</p>
-                        <!-- disqus comments -->
+                        <!-- disqus comments only if the user is loged in-->
                         {% if user.is_authenticated %}
                             <p>{% load disqus_tags %}
                                 {% set_disqus_title post.title %}
@@ -50,12 +68,15 @@
                     </div>
                 </div>
             </div>
+            <!-- end content -->
         </div>
         <!-- end blog post details -->
         <!-- popular posts -->
         <div class="col-sm-3">
-            <!-- List of popular posts -->
+            {% get_most_voted_posts %}
+            <div class="big-spacer">&nbsp;</div>
+            {% get_most_viewed_posts %}
         </div>
-        <!-- popular posts -->
+        <!-- end popular posts -->
     </div>
 {% endblock %}

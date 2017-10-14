@@ -1,0 +1,22 @@
+<!-- Top 3 most voted posts for side bar -->
+
+<div class="cta">
+    <h3>Top 3 Voted</h3>
+    {% for post in posts %}
+        <div class="row">
+            <div class="col-sm-6">
+                <h5><a href={% url 'post-detail' post.id %}>{{ post.title }}</a> </h5>
+            </div>
+            <div class="col-sm-6 ">
+                <div class="centered">{{ post.score }} {% if post.score == 1 %}point{% else %}points{% endif %}</div>
+                <div><img class="img-responsive" src="{{ post.image.url }}"></div>
+            </div>
+        </div>
+        {% if forloop.last %}
+            <div class="spacer">&nbsp;</div>
+        {% else %}
+            <hr>
+        {% endif %}
+    {% endfor %}
+</div>
+

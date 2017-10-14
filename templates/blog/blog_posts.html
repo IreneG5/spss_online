@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load blog_extras %}
 
 {% block content %}
     <div class="row">
@@ -7,69 +8,57 @@
             <h1>Welcome to our SPSS & Analytics Blog</h1>
             <p>Here you will find industry insights, SPSS and Analytics tips and tricks, advice for your projects and much more.</p>
             <p class="spacer">&nbsp;</p>
-
-            <!-- blog posts -->
-            <div class="row">
-                <div class="col-sm-9">
-                    {% if posts %}
-                        <div class="row blog-mini-row">
-                            {% for post in posts %}
-                                <div class="col-sm-4 ">
-                                    <div class="blog-mini-item">
-                                        <div class="blog-mini-title">
-                                            <h4><a href={{ post.id }}>{{ post.title|truncatechars:40 }}</a></h4>
-                                        </div>
-                                        <div class="blog-mini-date">
-                                            <i>{{ post.published_date| date }} | {{ post.category }}</i>
-                                        </div>
-                                        {% if post.image.url %}
-                                            <div class="blog-mini-image">
-                                                <img class="img-responsive" src="{{ post.image.url }}">
-                                            </div>
-                                        {% endif %}
-                                        <div class="blog-mini-content">{{ post.content|truncatewords:15 |linebreaksbr}}
-                                        </div>
-                                        <br>
-                                        <div class="blog-mini-button centered">
-                                            <button class="btn btn-default" onclick="location.href={{ post.id }}">
-                                                Read more</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 3 posts per row -->
-                                {% if forloop.counter|divisibleby:3 %}
-                                    </div>
-                                    <div class="row blog-mini-div">
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        <div class="alert alert-warning">We're working on amazing blog posts for you.</div>
-                    {% endif %}
-                </div>
-                <!-- end blog posts -->
-                <!-- right column -->
-                <div class="col-sm-3">
-                    <!-- 4 different call to actions: Shortcuts for staff, contact us for customer, offer for inactive users,
-                    and register for not logged in users -->
-                    {% if user.is_staff %}
-                        <div class="cta">
-                            <p class="spacer"></p>
-                            <h4><a href="{% url 'products' %}"> <span  class="glyphicon glyphicon-shopping-cart"></span>&emsp;Products</a></h4>
-                            <h4><a href="{% url 'profile' %}"><span  class="glyphicon glyphicon-user"></span>&emsp;Profile</a></h4>
-                            <h4><a href="{% url 'tickets-list' %}"><span  class="glyphicon glyphicon-briefcase"></span>&emsp;Tickets</a></h4>
-                            <p class="spacer"></p>
-                        </div>
-                    {% elif user.is_customer %}
-                        {% include 'cta/cta_contactus.html' %}
-                    {% elif user.is_authenticated %}
-                        {% include 'cta/cta_offer.html' %}
-                    {% else %}
-                        {% include 'cta/cta_register.html' %}
-                    {% endif %}
-                </div>
-                <!-- end right column -->
-            </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <!-- blog posts -->
+            {% if posts %}
+                <div class="row blog-mini-row">
+                    {% for post in posts %}
+                        <div class="col-sm-4 ">
+                            <div class="blog-mini-item">
+                                <div class="blog-mini-title">
+                                    <h4><a href={% url 'post-detail' post.id %}>{{ post.title|truncatechars:40 }}</a></h4>
+                                </div>
+                                <div class="blog-mini-date">
+                                    <i>{{ post.published_date| date }} | {{ post.category }}</i>
+                                </div>
+                                {% if post.image.url %}
+                                    <div class="blog-mini-image">
+                                        <img class="img-responsive" src="{{ post.image.url }}">
+                                    </div>
+                                {% endif %}
+                                <div class="blog-mini-content">{{ post.content|truncatewords:15 |linebreaksbr}}
+                                </div>
+                                <br>
+                                <div class="blog-mini-button centered">
+                                    <a class="btn btn-default" href="{% url 'post-detail' post.id %}">
+                                        Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 3 posts per row -->
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div>
+                            <div class="row blog-mini-div">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-warning">We're working on amazing blog posts for you.</div>
+            {% endif %}
+        </div>
+        <!-- end blog posts -->
+
+        <!-- right column -->
+        <div class="col-sm-3">
+            <!-- List of most voted posts -->
+                {% get_most_voted_posts %}
+                <div class="big-spacer">&nbsp;</div>
+                <!-- List of most viewed posts -->
+                {% get_most_viewed_posts %}
+        </div>
+        <!-- end right column -->
     </div>
 {% endblock %}

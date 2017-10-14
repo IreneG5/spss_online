@@ -6,9 +6,9 @@
     orange 20B2AA
  */
 
-body{
-
-}
+/**********************/
+/*      General       */
+/**********************/
 
 h1, h2, h3, h4, h5, h6{
     color: #006080;
@@ -16,6 +16,28 @@ h1, h2, h3, h4, h5, h6{
 
 .small-text{
     font-size: small;
+}
+
+.centered{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.align-right{
+    text-align: right;
+}
+
+.no-margin{
+    margin:0;
+}
+
+.spacer {
+    margin-top: 30px;
+}
+
+.big-spacer {
+    margin-top: 60px;
 }
 
 .border-teal{
@@ -26,23 +48,24 @@ h1, h2, h3, h4, h5, h6{
     color:#20B2AA;
 }
 
-
-.centered{
-    text-align: center;
-    align:center;
-    margin-left:auto;
-    margin-right: auto;
+.border-left-teal{
+    border-left:10px solid #006080;
+    padding: 10px 20px;
+    text-align: left;
+    #background-color: rgba(32, 178, 170, 0.2);
 }
 
-.align-right{
-    align:right;
+.border-right-teal{
+    border-right:10px solid #006080;
+    padding-right: 20px;
+    padding-left: 5px;
     text-align: right;
 }
 
-.no-margin{
-    margin:0px;
-}
 
+/**********************/
+/*       Base         */
+/**********************/
 /* Navbar */
 #menu{
     background:#006080;
@@ -65,13 +88,15 @@ h1, h2, h3, h4, h5, h6{
     margin-bottom:-3px;
 }
 
-
 #menu .navbar-brand{
-    padding-top: 0px;
-
+    padding-top: 0;
 }
 
-/* Home */
+
+/**********************/
+/*        Home        */
+/**********************/
+
 /* Carousel */
 #myCarousel {
     width: 90%;
@@ -79,6 +104,7 @@ h1, h2, h3, h4, h5, h6{
     margin-right: auto;
     height:300px;
 }
+
 .carousel-caption{
     padding-bottom: 10px;
 }
@@ -93,7 +119,6 @@ h1, h2, h3, h4, h5, h6{
     border-radius:20px;
 }
 
-
 .carousel-control.right, .carousel-control.left{
     background-image:none;
 }
@@ -101,7 +126,6 @@ h1, h2, h3, h4, h5, h6{
 .carousel-indicators{
     margin-bottom:-30px;
 }
-
 
 @media screen and (max-width: 1199px){
     #myCarousel h1{
@@ -114,6 +138,7 @@ h1, h2, h3, h4, h5, h6{
         margin-bottom: 20px;
     }
 }
+
 @media screen and (max-width: 991px){
     #myCarousel h1{
         margin-top: 20px;
@@ -135,12 +160,12 @@ h1, h2, h3, h4, h5, h6{
     }
     .carousel-inner .btn {
         width: 80px;
-        margin-bottom: 0px;
+        margin-bottom: 0;
     }
     .carousel-caption .btn{
         font-size: 10px;
     }
-        .carousel-indicators{
+    .carousel-indicators{
         margin-bottom: 105px;
     }
 }
@@ -154,7 +179,6 @@ h1, h2, h3, h4, h5, h6{
 .testimonial-box{
     padding: 5px;
     border: 1px solid #d5d5d5;
-
     border-radius: 3px;
     box-shadow: 3px 3px 5px #d5d5d5;
     text-align: left;
@@ -164,20 +188,25 @@ h1, h2, h3, h4, h5, h6{
 .testimonial-header{
     height: 100px;
 }
+
 .testimonial-bg{
     background-color: coral;
     height:60px;
     float: none;
 }
+
 .testimonial-bg.coral{
     background-color: #ff7f50;
 }
+
 .testimonial-bg.green{
     background-color: #008000;
 }
+
 .testimonial-bg.purple{
     background-color: #9370db;
 }
+
 .testimonial-image{
     padding: 10px;
     height:120px;
@@ -187,45 +216,29 @@ h1, h2, h3, h4, h5, h6{
     width:100px;
 }
 
-
-
-.border-left-teal{
-    border-left:10px solid #006080;
-    padding: 10px 20px;
-    text-align: left;
-    #background-color: rgba(32, 178, 170, 0.2);
-}
-
-
-
-.border-right-teal{
-    border-right:10px solid #006080;
-    padding-right: 20px;
-    padding-left: 5px;
-    text-align: right;
-}
-
+/* Sectopms */
 #who-we-are-img #what-we-offer-img{
     padding: 10px;
 }
 
 
-/* Forms */
-/* Testing register-form*/
+/**********************/
+/*       Forms        */
+/**********************/
+
 #register-form input {
     width: 80%;
 }
 
-
-
-/* Products */
+/**********************/
+/*      Products      */
+/**********************/
 .product-mini-name{
 
 }
 
 .product-mini-image>img{
     padding:5px 15px;
-
 }
 
 .product-mini-item{
@@ -242,25 +255,24 @@ h1, h2, h3, h4, h5, h6{
     font-size: 2.3em;
 }
 
-
-
-
-
 .popover{
     /*background-color:rgba(32, 178, 170, 0.3);*/
     border: 1px solid #006080;
 
     background-color: rgba(241, 241, 241, 0.9);
 }
+
 .popover-title{
     background-color:rgba(32, 178, 170, 0.9);
 }
+
 .popover.right>.arrow{
     border-right-color:#006080;
 }
 
-
-/*CTA*/
+/**********************/
+/*       CTAs         */
+/**********************/
 .cta{
     border: 3px solid #20B2AA;
     border-radius: 10px;
@@ -280,15 +292,19 @@ h1, h2, h3, h4, h5, h6{
     background-image: linear-gradient(#26d9d0, #22c3bb 60%, #20B2AA);
     background-repeat: no-repeat;
     border: 1px solid #20B2AA;
-    background-color:#20B2AA
+    background-color:#20B2AA;
 }
 
 
-
-/* Blog */
+/**********************/
+/*        Blog        */
+/**********************/
 .blog-mini-image>img{
-
     padding:5px 15px;
+}
+
+.blog-image-list>img{
+    padding: 0 50px;
 }
 
 .blog-mini-item{
@@ -300,42 +316,34 @@ h1, h2, h3, h4, h5, h6{
     margin: 10px 0;
 }
 
-
 .blog-mini-title{
     height: 55px;
     overflow: hidden;
     margin-bottom:10px;
-
 }
+
 .blog-mini-content{
     height: 60px;
     overflow: hidden;
 }
 
 
-.blog-image{
-
-}
-
-
-/* Contact us */
+/**********************/
+/*     Contact us     */
+/**********************/
 .google-maps{
     overflow:hidden;
     padding-bottom:56.25%;
     position:relative;
     height:0;
     margin-left:15px;
-
 }
+
 .google-maps iframe {
     left:0;
     top:0;
     height:100%;
     width:100%;
     position:absolute;
-
 }
 
-.spacer {
-    margin-top: 30px;
-}

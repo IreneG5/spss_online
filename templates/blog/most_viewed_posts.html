@@ -1,0 +1,25 @@
+<!-- Top 3 most viewed posts for side bar -->
+<div class="cta">
+    <h3>Top 3 Viewed</h3>
+    {% for post in posts %}
+        <div class="row">
+            <div class="col-sm-6">
+                <h5><a href={% url 'post-detail' post.id %}>{{ post.title }}</a></h5>
+            </div>
+            <div class="col-sm-6 ">
+                <div class="centered"> {{ post.views }} {% if post.views == 1 %}view{% else %}views{% endif %}</div>
+                <div><img class="img-responsive" src="{{ post.image.url }}"></div>
+            </div>
+        </div>
+        {% if forloop.last %}
+            <div class="spacer">&nbsp;</div>
+        {% else %}
+            <hr>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+
+
+

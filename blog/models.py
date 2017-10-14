@@ -23,6 +23,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, related_name='blog')
     views = models.IntegerField(default=0)
     image = models.ImageField(upload_to="blogimage/", blank=True, null=True)
+    score = models.IntegerField(default=0)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -30,4 +31,13 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class Vote(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='votes')
+    post = models.ForeignKey(Post, related_name='votes')
+    vote = models.IntegerField(default=0)
+
+    def __unicode__(self):
+        return '%d-%s' % (self.pk, self.post.title)
 
