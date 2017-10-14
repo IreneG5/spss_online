@@ -1,4 +1,5 @@
 {%  extends "base.html" %}
+{% load static %}
 {% load bootstrap_tags %}
 {% block content %}
     <div class="row">
@@ -16,11 +17,18 @@
             <p class="spacer">&nbsp;</p>
             <h4>Register today!</h4>
             <p class="spacer">&nbsp;</p>
+            <p>Don't forget to follow us on social media to stay up to date!</p>
+                <div>
+                    <a href="http://www.facebook.com" target="_blank"><img src="{% static 'images/sm-fb.png' %}"/></a>
+                    &emsp;<a href="http://www.twitter.com" target="_blank"><img src="{% static 'images/sm-tw.png' %}"/></a>
+                    &emsp;<a href="http://www.linkedin.com" target="_blank"><img src="{% static 'images/sm-li.png' %}"/></a>
+                </div>
         </div>
         <div class="col-md-6">
             <p class="spacer">&nbsp;</p>
-            <h4>Fill out the form below to create your account!</h4>
+
             <form role="form" id="register-form" method="post" action="{% url 'register' %}">
+                <legend>Fill out the form below to create your account!</legend>
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
                 <div class="form-group">

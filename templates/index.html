@@ -13,21 +13,21 @@
 
         <div class="carousel-inner">
             <!-- Item 0 -->
-            <div class="item" role="listbox">
-                <img src="{% static 'images/bg-halloween.jpg' %}" alt="Halloween Offer" class="img-responsive" />
+            <div class="item active" role="listbox">
+                <img src="{% static 'images/bg-halloween.jpg' %}" alt="Halloween Offer" class="img-responsive " />
                 <div class="carousel-caption">
                     <h1>Halloween Special Offer</h1>
                     <h2>Terrific Discounts in All SPSS Software!</h2>
-                    <a class="btn btn-warning" href="{% url 'contact' %}">Contact us</a></br>
+                    <a class="btn btn-warning" href="{% url 'contact' %}">Contact us to find out more</a></br>
                 </div>
             </div>
             <!-- Item 1 -->
-            <div id="0" class="item active" role="listbox">
+            <div id="0" class="item" role="listbox">
                 <img src="{% static 'images/bg-man.jpg' %}" alt="Affordable SPSS Software"  class="img-responsive" />
                 <div class="carousel-caption">
                     <h2>Looking for affordable SPSS Software?</h2>
                     <h1>We can help you!</h1>
-                    <a class="btn btn-warning" href="{% url 'products' %}">Learn more</a></br>
+                    <a class="btn btn-warning" href="{% url 'products' %}">Learn more about our products</a></br>
                 </div>
             </div>
             <!-- Item 2 -->
@@ -36,7 +36,7 @@
                 <div class="carousel-caption">
                     <h1>easy SPSS Blog</h1>
                     <h2>Market insights, SPSS tips and tricks, <br/>and loads of advice to help you succeed!</h2>
-                    <a class="btn btn-warning" href="{% url 'blog' %}">Visit our Blog</a></br>
+                    <a class="btn btn-warning" href="{% url 'blog' %}">Visit our SPSS & Analytics Blog</a></br>
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-md-2">
                     <div id="who-we-are-img"><img src="{% static 'images/who-we-are.jpg' %}" alt="Who we are"
-                                                  class="img-responsive" > </div>
+                                                  class="img-responsive img-rounded" > </div>
                 </div>
             </div>
             <!-- end Who we are -->
@@ -93,8 +93,9 @@
             <div class="row">
                 <div class="col-md-2 col-md-offset-1">
                     <div id="what-we-offer"><img src="{% static 'images/what-we-offer.jpg' %}" alt="What we offer"
-                                                class="img-responsive" ></div>
+                                                class="img-responsive  img-rounded" ></div>
                 </div>
+
                 <div class="col-md-8 ">
                     <div id="what-we-offer" class="border-right-teal">
                         <p><b>IBM SPSS Software</b> enables customers across industries to bring data to the heart of their

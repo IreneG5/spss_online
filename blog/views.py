@@ -7,14 +7,16 @@ from django.utils import timezone
 from .models import Post, Vote
 
 
-# Shows a list of all published posts sorted by published date
 def post_list(request):
+    """ Return a list with all published posts sorted by published date. """
+
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, "blog/blog_posts.html", {'posts': posts})
 
 
-# Shows the post details and increment the views every time the post is visited.
 def post_detail(request, post_id):
+    """ Take a post id and return the post details. Increment views every time the post template is rendered."""
+
     post = get_object_or_404(Post, pk=post_id)
     post.views += 1
     post.save()
@@ -26,8 +28,10 @@ def post_detail(request, post_id):
     return render(request, "blog/post_detail.html", args)
 
 
-# After a user vote up, this view take the user back to the post detail with the new vote count and a message
 def post_voteup(request, post_id):
+    """ Take a post id, check if the user has already voted, if it hasn't, register the vote and increase the post score.
+    Return to the post detail template with the new score and a message """
+
     user = request.user
     user_post_vote = Vote.objects.filter(post_id=post_id).filter(user_id=user.id)
     # Check if the user has already voted in this post
@@ -46,6 +50,8 @@ def post_voteup(request, post_id):
 
 # After a user vote down, this view take the user back to the post detail with the new vote count and a message
 def post_votedown(request, post_id):
+    """ Take a post id, check if the user has already voted, if it hasn't, register the vote and decrease the post score.
+        Return to the post detail template with the new score and a message """
     user = request.user
     user_post_vote = Vote.objects.filter(post_id=post_id).filter(user_id=user.id)
 
@@ -61,8 +67,4 @@ def post_votedown(request, post_id):
         messages.success(request, "Your vote has been logged", extra_tags='alert alert-success')
 
     return redirect(reverse('post-detail', args={post_id}))
-
-
-
-
 

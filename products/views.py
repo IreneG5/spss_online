@@ -15,4 +15,3 @@ def all_products(request):
     return render(request, "products/products.html", args)
 
 
-

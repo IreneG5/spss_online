@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-import uuid
 from django.db import models
 from django.conf import settings
-from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.ipn.signals import valid_ipn_received
 from django.utils import timezone
 from signals import subscription_created
@@ -37,8 +35,4 @@ class Purchase (models.Model):
         return '%s - %s' %(self.product.name, self.user.email)
 
 
-
-
 valid_ipn_received.connect(subscription_created)
-# Paypal signal for cancel not working properly
-# valid_ipn_received.connect(subscription_was_cancelled)

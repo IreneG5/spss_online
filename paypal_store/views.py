@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import time
 import arrow
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.contrib import auth, messages
 from django import template
@@ -13,6 +14,7 @@ register = template.Library()
 
 
 @csrf_exempt
+@login_required(login_url='/login/')
 def paypal_return(request):
     # Check that the last purchase for the user logged in was saved in the last 3 minutes
     # (to give the user time to return to the Merchant's website)
@@ -22,28 +24,20 @@ def paypal_return(request):
         year = last_purchase.license_end.year - int(last_purchase.product.license_type[0])
         last_purchase_date = last_purchase.license_end.replace(year=year)
 
-        print user.id
-        print last_purchase.user_id
-        print last_purchase_date
-        print arrow.utcnow().replace(seconds=-180).datetime
-
         # Check every 3 seconds (up to 30 seconds) if the purchase was saved in case there PayPal signal is delayed
         not_found = 0
-        while not_found < 10: # 10 for production
+        while not_found < 10:
             if last_purchase_date < arrow.utcnow().replace(seconds=-180).datetime:
                 not_found += 1
-                # print not_found
                 time.sleep(3)
             else:
-                # print "Found"
                 break
 
         if not_found == 10:
-
             messages.error(request, "There was a problem retrieving your purchase.",
                            extra_tags='alert alert-danger')
             args = {'html': "Please refresh the page. "
-                            "If the problem persists contact PayPal for further assistance"}
+                            "If the problem persists contact PayPal for further assistance."}
         else:
             args = {'post': request.POST, 'get': request.GET, 'last_purchase': last_purchase}
 
@@ -55,6 +49,7 @@ def paypal_return(request):
     return render(request, 'paypal/paypal_return.html', args)
 
 
+@login_required(login_url='/login/')
 def paypal_cancel(request):
     args = {'post': request.POST, 'get': request.GET}
     return render(request, 'paypal/paypal_cancel.html', args)

@@ -33,8 +33,8 @@
                         <!-- Metrics on votes and views. Social media sharing. -->
                         &emsp;<span class="badge"> {{ post.score }}
                             {% if post.score == 1 %}point{% else %}points{% endif %}</span>
-                        &emsp;&emsp;<span class="badge">{{ post.views }} views</span>
-                        &emsp;&emsp;<a href="https://twitter.com/intent/tweet?url={{ current_path }}&via=easySPSS&text={{ post.title }}"
+                        &emsp;&emsp;<span class="badge">{{ post.views }} views</span>&emsp;&emsp;
+                        <a href="https://twitter.com/intent/tweet?url={{ current_path }}&via=easySPSS&text={{ post.title }}"
                        target="_blank"><img src="{% static 'images/tweet.png' %}"/></a>
                     </p>
                 </div>
