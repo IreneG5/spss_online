@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from accounts.models import User
 
 
-
 class UserRegistrationForm(UserCreationForm):
 
     # Extra fields not included in the User Model
@@ -30,6 +29,22 @@ class UserRegistrationForm(UserCreationForm):
             message = "Please enter your password"
             raise forms.ValidationError(message)
 
+        min_length = 8
+
+        if len(password1) < min_length:
+            message = "Password must be at least 8 characters long"
+            raise forms.ValidationError(message)
+
+        # check for digit
+        if not any(char.isdigit() for char in password1):
+            message = "Password must contain at least 1 digit"
+            raise forms.ValidationError(message)
+
+        # check for letter
+        if not any(char.isalpha() for char in password1):
+            message = "Password must contain at least 1 letter"
+            raise forms.ValidationError(message)
+
         return password1
 
     def clean_password2(self):
@@ -52,6 +67,12 @@ class UserRegistrationForm(UserCreationForm):
         if not email:
             message = "Please enter your email address"
             raise forms.ValidationError(message)
+        else:
+            users = User.objects.all()
+            for user in users:
+                if user.email == email:
+                    message = "That email address is already registered"
+                    raise forms.ValidationError(message)
 
         return email
 
@@ -100,7 +121,7 @@ class UserLoginForm(forms.Form):
 
 
 class UserForm(forms.Form):
-    email_address = forms.EmailField(widget = forms.TextInput(attrs = {'class':'required'}))
+    email_address = forms.EmailField(widget=forms.TextInput(attrs={'class': 'required'}))
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)

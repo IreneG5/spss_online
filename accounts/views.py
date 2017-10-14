@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 import arrow
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
@@ -52,11 +51,8 @@ def profile(request):
             tickets = Ticket.objects.filter(user_id=request.user.id).order_by('-opened_date')
             args = {'purchases': purchases, 'today': today, 'expire_soon': expire_soon, 'tickets': tickets}
         else:
-            args={}
+            args = {}
     return render(request, "profile.html", args)
-
-
-
 
 
 def login(request):
