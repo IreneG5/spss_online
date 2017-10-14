@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% load ticket_extras %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            {% if user.is_customer and not user.is_staff %} <!-- and is_customer-->
+            <!-- Staff can't open tickets on the site as it needs to be owned by a customer.  -->
+            {% if user.is_customer and not user.is_staff %}
                 <p><a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a> </p>
+                <!-- Customers not active can't open or edit tickets -->
             {% elif not user.is_staff %}
                 <p class="alert alert-warning">Only Active Customers can open and update tickets.
                            If your account is inactive but you need help with an open ticket please
@@ -25,7 +28,6 @@
                             <th>Closed</th>
                             <th>Comments</th>
                             <th>Last comment</th>
-
                         </tr></thead>
                         <tbody>
                             {% for ticket in tickets  %}
@@ -53,5 +55,4 @@
         {% endif %}
         </div>
     </div>
-
 {% endblock %}
