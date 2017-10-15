@@ -4,7 +4,6 @@ from ..models import Post
 register = template.Library()
 
 
-#
 @register.inclusion_tag('blog/most_voted_posts.html')
 def get_most_voted_posts():
     """ Return a list with the 3 posts with higher score """
@@ -19,4 +18,3 @@ def get_most_viewed_posts():
     posts = Post.objects.all().order_by('-views')[:3]
     print posts
     return {'posts': posts}
-

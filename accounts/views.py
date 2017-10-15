@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
+from django.core.mail import send_mail
 from django import template
 from accounts.forms import UserRegistrationForm, UserLoginForm
 from products.models import Purchase
@@ -15,14 +16,20 @@ register = template.Library()
 
 
 def register(request):
+    """
+    Render register.html template with RegistrationForm and process form if valid
+    Send an welcome email to the user when the registration is successful
+    """
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             user = auth.authenticate(email=request.POST.get('email'),
-                                   password=request.POST.get('password1'))
+                                     password=request.POST.get('password1'))
             if user:
-                messages.info(request, "Thanks for registering. You are now logged in.", extra_tags='alert alert-success')
+                send_email(request, user)
+                messages.info(request, "Thanks for registering. You are now logged in.",
+                              extra_tags='alert alert-success')
                 auth.login(request, user)
                 return redirect(reverse('profile'))
             else:
@@ -37,6 +44,11 @@ def register(request):
 
 @login_required(login_url='/login/')
 def profile(request):
+    """
+    Render profile.html template.
+    Some sections are different depending on the role of the user (registered, customer, staff)
+    Use Purchases and Tickets models to show user its products and tickets
+    """
     user = request.user
     if user.is_staff:
         # Get list of all tickets for staff user
@@ -56,6 +68,7 @@ def profile(request):
 
 
 def login(request):
+    """ Render profile.html template with UserLoginForm. If form is valid, log the user in """
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
@@ -78,9 +91,28 @@ def login(request):
 
 
 def logout(request):
+    """ Log the authenticated user out """
     auth.logout(request)
     messages.success(request, 'You have successfully logged out', extra_tags='alert alert-success')
     return redirect(reverse('index'))
 
 
+def send_email(request, contact):
+    """ Send an welcome email to the user """
 
+    subject = "Thank you for registering and Welcome to easySPSS."
+    message = "Hi %s,\n\n" \
+              "Welcome to easySPSS!\n\n" \
+              "You can now visit your easySPSS at your convenience on http://spss-online.herokuapp.com\n\n" \
+              "In easySPSS you will be able to:\n" \
+              "- Buy SPSS Products online\n"\
+              "- See all your purchases in one place\n"\
+              "- Open support tickets if you need technical help\n"\
+              "- Visit, comment and vote in our blog\n"\
+              "- Avail the latest offers and discounts\n"\
+              "- And much more...\n\n\n"\
+              "Looking forward to see you around\n\n" \
+              "Kind regards\n easySPSS Team" % contact.first_name
+
+    from_email = "easyspssweb@gmail.com"
+    send_mail(subject, message, from_email, [contact.email])

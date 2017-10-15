@@ -4,8 +4,13 @@ from accounts.models import User
 
 
 class UserRegistrationForm(UserCreationForm):
+    """
+    Render form to allow registration.
+    All fields are required.
+    Additional validation for password: not empty, confirmation match and password strength
+    Additional validation for email: unique email
+    """
 
-    # Extra fields not included in the User Model
     company = forms.CharField(max_length=100, label='Company')
 
     password1 = forms.CharField(
@@ -24,6 +29,7 @@ class UserRegistrationForm(UserCreationForm):
         exclude = ['username']
 
     def clean_password1(self):
+        # Validate password1 not empty and strength
         password1 = self.cleaned_data.get('password1')
         if not password1:
             message = "Please enter your password"
@@ -31,6 +37,7 @@ class UserRegistrationForm(UserCreationForm):
 
         min_length = 8
 
+        # check for length
         if len(password1) < min_length:
             message = "Password must be at least 8 characters long"
             raise forms.ValidationError(message)
@@ -48,6 +55,7 @@ class UserRegistrationForm(UserCreationForm):
         return password1
 
     def clean_password2(self):
+        # Validate password 2 not empty and matches password1
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
 
@@ -62,6 +70,7 @@ class UserRegistrationForm(UserCreationForm):
         return password2
 
     def clean_email(self):
+        # Validate email not empty and unique
         email = self.cleaned_data.get('email')
 
         if not email:
@@ -77,6 +86,7 @@ class UserRegistrationForm(UserCreationForm):
         return email
 
     def clean_first_name(self):
+        # Validate firs_name not empty
         first_name = self.cleaned_data.get('first_name')
         if not first_name:
             message = "Please enter your first name"
@@ -84,6 +94,7 @@ class UserRegistrationForm(UserCreationForm):
         return first_name
 
     def clean_last_name(self):
+        # Validate last_name not empty
         last_name = self.cleaned_data.get('last_name')
         if not last_name:
             message = "Please enter your last name"
@@ -91,6 +102,7 @@ class UserRegistrationForm(UserCreationForm):
         return last_name
 
     def clean_company(self):
+        # Validate company not empty
         company = self.cleaned_data.get('company')
         if not company:
             message = "Please enter your company name"
@@ -99,8 +111,6 @@ class UserRegistrationForm(UserCreationForm):
 
     def save(self, commit=True):
         instance = super(UserRegistrationForm, self).save(commit=False)
-
-        # automatically set to email address to create a unique identifier
         instance.username = instance.email
 
         if commit:
@@ -116,21 +126,7 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserLoginForm(forms.Form):
+    """ Form to authenticate user using email and password """
+
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
-
-
-class UserForm(forms.Form):
-    email_address = forms.EmailField(widget=forms.TextInput(attrs={'class': 'required'}))
-
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super(UserForm, self).__init__(*args, **kwargs)
-
-    def clean_email_address(self):
-        email = self.cleaned_data.get('email_address')
-        if self.user and self.user.email == email:
-            return email
-        if User.objects.filter(email=email).count():
-            raise forms.ValidationError(u'That email address already exists.')
-        return email

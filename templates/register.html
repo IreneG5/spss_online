@@ -1,8 +1,10 @@
 {%  extends "base.html" %}
 {% load static %}
 {% load bootstrap_tags %}
+
 {% block content %}
     <div class="row">
+        <!-- text content -->
         <div class="col-md-6">
             <h1>Register to get more insights!</h1>
             <p class="spacer">&nbsp;</p>
@@ -24,9 +26,10 @@
                     &emsp;<a href="http://www.linkedin.com" target="_blank"><img src="{% static 'images/sm-li.png' %}"/></a>
                 </div>
         </div>
+        <!-- end text content -->
+        <!-- registration form -->
         <div class="col-md-6">
             <p class="spacer">&nbsp;</p>
-
             <form role="form" id="register-form" method="post" action="{% url 'register' %}">
                 <legend>Fill out the form below to create your account!</legend>
                 {% csrf_token %}
@@ -36,6 +39,7 @@
                 </div>
             </form>
         </div>
+    <!-- end registration form -->
     </div>
 {% endblock %}
 

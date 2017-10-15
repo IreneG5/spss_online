@@ -3,7 +3,6 @@ import views
 
 urlpatterns = [
     url(r'^tickets/$', views.tickets_list, name='tickets-list'),
-
     url(r'^tickets/(?P<ticket_id>\d+)/$', views.ticket_detail, name='ticket-detail'),
     url(r'^new_ticket/$', views.new_ticket, name='new-ticket'),
     url(r'^new_comment/(?P<ticket_id>\d+)/$', views.new_comment, name='new-comment'),

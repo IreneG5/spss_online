@@ -3,12 +3,12 @@
 {% load staticfiles %}
 
 {% block head_js %}
+    <!-- load tinymce for comment field -->
     <script src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
     <script>
         tinyMCE.init({mode: "textareas", theme: 'modern', plugins: 'paste'})
     </script>
 {% endblock %}
-}
 
 {% block content %}
     <div class="row">

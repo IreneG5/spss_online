@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="row">
-            <!-- Table with ticket details -->
+            <!-- ticket details -->
             <div class="col-md-9">
                 <p><b>Product:</b> {{ ticket.product }}</p>
                 <p><b>Reason: </b>{{ ticket.get_reason_display }}</p>
@@ -84,6 +84,7 @@
                     {% endfor %}
                 </tbody></table>
             </div>
+            <!-- end ticket details -->
         </div>
     {% endif %}
 {% endblock %}

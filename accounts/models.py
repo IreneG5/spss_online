@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 import arrow
 from django.db import models
 from products.models import Purchase
@@ -12,12 +11,11 @@ class AccountUserManager(UserManager):
     def _create_user(self, username, email, password,
                      is_staff, is_superuser, first_name="Default", last_name="Default", **extra_fields):
         """
-        Creates and saves a User with the given username, email and password.
+        Create and save a User with the given details. Default values given to allows create superuser in terminal.
         """
+
         first_name = email
-
         last_name = email
-
         now = timezone.now()
         if not email:
             raise ValueError('The username must be set')
@@ -34,12 +32,13 @@ class AccountUserManager(UserManager):
 
 
 class User(AbstractUser):
+        """ Extra fields to the User model """
 
         company = models.CharField(max_length=100, default='')
         objects = AccountUserManager()
 
         def is_customer(self):
-            is_customer = False
+            """ Define if User is a customer by checking if it has any active license """
             try:
                 purchases = Purchase.objects.filter(user_id=self.id)
             except Exception:

@@ -6,7 +6,7 @@ from paypal.standard.ipn.signals import valid_ipn_received
 from django.utils import timezone
 from signals import subscription_created
 
-
+# Types of licenses for the license_type field in Product
 license_types = (
     ('1 year', '1'),
     ('2 years', '2'),
@@ -14,6 +14,8 @@ license_types = (
 
 
 class Product(models.Model):
+    """ Product contains its own fields. It has no relation with any other Model """
+
     code = models.CharField(max_length=20, default="")
     name = models.CharField(max_length=100, default="")
     osystem = models.CharField(max_length=10, default="")
@@ -27,6 +29,11 @@ class Product(models.Model):
 
 
 class Purchase (models.Model):
+    """
+    Purchase is linked to a product and a user.
+    It also saves calculate when the license for the product bought in that purchase ends.
+    """
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='purchases')
     product = models.ForeignKey(Product)
     license_end = models.DateTimeField(default=timezone.now)

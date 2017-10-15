@@ -67,4 +67,3 @@ def post_votedown(request, post_id):
         messages.success(request, "Your vote has been logged", extra_tags='alert alert-success')
 
     return redirect(reverse('post-detail', args={post_id}))
-

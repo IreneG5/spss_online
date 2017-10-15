@@ -25,10 +25,10 @@ DATABASES = {
 # Debug Toolbar
 INTERNAL_IPS = ('127.0.0.1',)
 
-ALLOWED_HOSTS = ['127.0.0.1', '08d3d375.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', '934896b0.ngrok.io']
 
 # PayPal Settings
-SITE_URL = 'http://08d3d375.ngrok.io'
-PAYPAL_NOTIFY_URL = 'http://08d3d375.ngrok.io/a-very-hard-to-guess-url/'
+SITE_URL = 'http://934896b0.ngrok.io'
+PAYPAL_NOTIFY_URL = 'http://934896b0.ngrok.io/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'irene.g5555-easySPSS1@gmail.com'
 

@@ -16,8 +16,11 @@ register = template.Library()
 @csrf_exempt
 @login_required(login_url='/login/')
 def paypal_return(request):
-    # Check that the last purchase for the user logged in was saved in the last 3 minutes
-    # (to give the user time to return to the Merchant's website)
+    """
+    Render paypal_return.html template when the purchase through paypal finish successfully (on PayPal side).
+    Retrieve the last purchase for the user (checking it was made in the last 3 minutes) and show details
+    on the screen.
+    """
     if User.is_authenticated:
         user = auth.get_user(request)
         last_purchase = Purchase.objects.filter(user_id=user).last()
@@ -51,6 +54,8 @@ def paypal_return(request):
 
 @login_required(login_url='/login/')
 def paypal_cancel(request):
+    """ Render paypal_cancel.html template when the user click cancel during a purchase process in PayPal."""
+
     args = {'post': request.POST, 'get': request.GET}
     return render(request, 'paypal/paypal_cancel.html', args)
 
