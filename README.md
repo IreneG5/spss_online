@@ -233,7 +233,7 @@ This project was deployed in Heroku and it uses automatic deploys from GitHub
 - Phase 1: Local development
 SQLite to manage the DB locally. All the Static and Media files were stored locally for the first phase of the project.
 - Phase 2: Deployment and local development with remote static & media files
-An AWS was set up to manage and host all the static and media files. Settings were updated accordingly to point to the online resources.
+An AWS account was set up to manage and host all the static and media files. Settings were updated accordingly to point to the online resources.
 The database is now hosted in Heroku and MySQL Workbench is used to query it if need it.
 
 
