@@ -1,4 +1,5 @@
 ## Manual Tests
+
 **Menu**
 |Area/page|No.|User Type|Functionality|Test Condition(Pre-condition) |Test Case|Expected Result|Steps to replicate|Pass/Fail|Remarks|
 |---|---|---|---|---|---|---|---|---|---|
@@ -6,8 +7,11 @@
 |menu|2|Visitor|Not logged users can't see My Profile, My Tickets and Log out|Not logged user|If the user can see My Profile, My Tickets and Log out items in the menu|Should not be able to see My Profile, My Tickets and Log Out items in the menu||Pass||
 |menu|3|Any logged in|View My Profile, My Tickets and Log out items in the menu|Logged user|If the user can see My Profile, My Tickets and Log out items in the menu|Should be able to see My Profile, My Tickets and Log Out items in the menu|Access website, log in and check the menu|Pass||
 |menu|4|Any logged in|Doesn't view Register and log in items in the menu|Logged user|If the user can see Register and Log in items in the menu|Shouldn't be ablet o see Register and Log in in the menu|Access website, log in and check the menu|Pass||
+
+
 **Home**
 Home page content is similar for all users
+
 
 **Products**
 
@@ -18,16 +22,21 @@ Home page content is similar for all users
 |products|3|Any logged in|View subscribe buttons to buy products|Logged user|If the user can see the button to buy products|Should be able to see the button|Access the website, log in with any user and check the products page|Pass||
 |products|4|Active Customer|View active products on the right column|Logged user that is not an active customer|If the user can see the active products|Shouldn't be able to see the active products as it doesn't have any|Access the website, log in with an inactive customer user and check the products page|Pass||
 
+
 **PayPal**
+
 |Area/page|No.|User Type|Functionality|Test Condition(Pre-condition) |Test Case|Expected Result|Steps to replicate|Pass/Fail|Remarks|
 |---|---|---|---|---|---|---|---|---|---|
 |paypal_store|1|Any logged in|Buy product through Paypal and details are saved in user's purchases|Logged user|If the user can buy a product using Paypal easySPSS store|Should be able to go through the paypal process and see the paypal-return page with the last purchase when finished|Access the website, log in, go to products page, click Subscribe button in a product, go through the paypal process and when it finish click on Return to Merchant's website|Pass|Sometimes if the user click the button very quicky, there is an error on Heroku application "Application error. An error occurred in the application and your page could not be served. If you are the application owner, check your logs for details.", but refreshing the page solves the problem|
 |paypal_store|2|Any logged in|Buy product through Paypal 2 concurrent users and details are saved correctly in each user's purchases|2 logged users|If the users can buy a product through paypal at the same time|Should be able to buy simultaneasly |Access the website from 2 different browsers and log in a different user in each. Go to products in both of them and follow the process to buy at the same time.|Pass||
 
+
 **Blog**
 Blog content is similar for all users
 
+
 **Post Details**
+
 |Area/page|No.|User Type|Functionality|Test Condition(Pre-condition) |Test Case|Expected Result|Steps to replicate|Pass/Fail|Remarks|
 |---|---|---|---|---|---|---|---|---|---|
 |post_details|1|Visitor|Not logged users can't vote blog posts|Not logged user|If the user can see the login to vote message instead of the voting icons||Access blog post page, click in one of the blog posts to see details and check content right beside number of views and votes in the blog post details|Pass||
@@ -35,7 +44,9 @@ Blog content is similar for all users
 |post_details|3|Any logged in|Logged users can vote blog posts|Logged user|If the user can see the voting icons below the blog post details|Should be able to see the voting icons|Access blog post page, click in one of the blog posts to see details and check content right beside number of views and votes in the blog post details|Pass||
 |post_details|4|Any logged in|Logged users can comment in posts|Logged user|If the user can see the disqus comments section below the post content|Should be able to see the disqus comments section|Access blog post page, click in one of the blog posts to see details and check content below the post detail.|Pass||
 
+
 **Profile**
+
 |Area/page|No.|User Type|Functionality|Test Condition(Pre-condition) |Test Case|Expected Result|Steps to replicate|Pass/Fail|Remarks|
 |---|---|---|---|---|---|---|---|---|---|
 |profile|1|Visitor|Redirect to login page if user not logged in|Not loggd in user|If the user gets redirected to login page when trying to access the profile|Should be redirected to login page|Type web URL + /profile |Pass||
@@ -53,6 +64,7 @@ Blog content is similar for all users
 
 
 **Tickets**
+
 |Area/page|No.|User Type|Functionality|Test Condition(Pre-condition) |Test Case|Expected Result|Steps to replicate|Pass/Fail|Remarks|
 |---|---|---|---|---|---|---|---|---|---|
 |tickets|1|Visitor|Redirect to login page if user not logged in|Not logged user|If the user gets redirected to login page when trying to access the tickets page|Should be redirected to login page|Type web URL + /tickets|Pass||
@@ -63,7 +75,9 @@ Blog content is similar for all users
 |tickets|6|Staff|View tickets table with customer name and status code|Logged user that is staff. At least 1 ticket exists.|If user can see the table with the customer name for each ticket|Should be able to see the table including Customer Name|Access the website, log in with a staff user and check the tickets page|Pass||
 |tickets|7|Active Customer|Can Open New ticket|Logged user that is an active customer|If open ticket form renders when the button is clicked and saves the details when the form is valid|Should be able to fill the details and save the ticket|Access the website, log in with an active customer user, go to the tickets page and click Open New ticket, add the details and save|Pass||
 
+
 **Ticket Detail**
+
 |Area/page|No.|User Type|Functionality|Test Condition(Pre-condition) |Test Case|Expected Result|Steps to replicate|Pass/Fail|Remarks|
 |---|---|---|---|---|---|---|---|---|---|
 |ticket_detail|1|Visitor|Redirect to login page if user not logged in|Not logged user|If the user gets redirected to login page when trying to access the tickets page|Should be redirected to login page|Type web URL + /tickets|Pass||

@@ -141,6 +141,7 @@ Blog and Tickets apps contain their own urls.py with their specific routes and a
 
 Represent the data model for each app in the form of a relational database. Models related to each app are defined in the models.py file located inside the specific app.
 **Overview**:
+
 |App|Model|fields|
 |---|---|---|
 |accounts|User|username, email,  password,  is_staff, is_superuser, is_active, first_name, last_name, date_joined, company, is_customer (attribute)|
@@ -195,7 +196,8 @@ Views are Python funcions that define the busines logic that link the templates 
 Views are stored in the `views.py` file inside each app.
 
 **Overview**:
-|App|     view|models used|return to page|
+
+|App|view|models used|return to page|
 |---|---|---|---|
 |accounts|register|accounts.User|register|
 |accounts|profile|accounts.User, products.Purchase, tickets.Ticket|profile|
@@ -223,7 +225,6 @@ Views are stored in the `views.py` file inside each app.
 |tickets|close_ticket|tickets.Ticket|ticket detail|
 |tickets|reopen_ticket|tickets.Ticket|ticket detail|
 |tickets|delete_comment|tickets.Ticket, tickets.Comment	|ticket detail|
-
 
 # Deployment
 This project was deployed in Heroku and it uses automatic deploys from GitHub
