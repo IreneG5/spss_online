@@ -248,7 +248,7 @@ These are the users available for testing, please do not take any action that ch
 - Registered User (never was a customer): rose.tyler@gmail.com pass: 123
 - Inactive Customer: jessica.jones@gmail.com pass: 123
 
-[In this file] you can see a series of tables with an summary of the tests. I have only included the ones testing a more complex funcionality that depends on the type of user or other parameters.
+[In this file](testing_tables.md) you can see a series of tables with an summary of the tests. I have only included the ones testing a more complex funcionality that depends on the type of user or other parameters.
 
 Additional manual tests were run on the products and paypal apps due to their complexity.
 More information about this challenge in the challenges and know bugs section.

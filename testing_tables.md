@@ -1,6 +1,7 @@
 ## Manual Tests
 
 **Menu**
+
 |Area/page|No.|User Type|Functionality|Test Condition(Pre-condition) |Test Case|Expected Result|Steps to replicate|Pass/Fail|Remarks|
 |---|---|---|---|---|---|---|---|---|---|
 |menu|1|Visitor|View Register/Login Menu in all pages|Not logged user|If the user can see the register and login menu items|Should be able to see the menu items to log in and register|Access website without login in|Pass||
