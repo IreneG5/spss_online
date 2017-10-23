@@ -3,8 +3,7 @@
 *.pyc
 *.py[co]
 
-db.sqlite3
 
 ngrok.exe
 
-settings/dev.py
+/settings/dev.py

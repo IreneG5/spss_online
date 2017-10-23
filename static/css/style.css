@@ -10,6 +10,10 @@
 /*      General       */
 /**********************/
 
+.overflow-hidden{
+    overflow: scroll;
+}
+
 h1, h2, h3, h4, h5, h6{
     color: #006080;
 }
@@ -59,7 +63,7 @@ h1, h2, h3, h4, h5, h6{
     border-right:10px solid #006080;
     padding-right: 20px;
     padding-left: 5px;
-    text-align: right;
+    text-align: left;
 }
 
 

@@ -27,7 +27,7 @@ def paypal_return(request):
         year = last_purchase.license_end.year - int(last_purchase.product.license_type[0])
         last_purchase_date = last_purchase.license_end.replace(year=year)
 
-        # Check every 3 seconds (up to 30 seconds) if the purchase was saved in case there PayPal signal is delayed
+        # Check every 3 seconds (up to 30 seconds) if the purchase was saved in case the PayPal signal is delayed
         not_found = 0
         while not_found < 10:
             if last_purchase_date < arrow.utcnow().replace(seconds=-180).datetime:

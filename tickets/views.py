@@ -16,7 +16,9 @@ from django.core.mail import send_mail
 @login_required(login_url='/login/')
 def tickets_list(request):
     """
-    Return a list with the relevant tickets for the user authenticated to the ticket_list template.
+    Show tickets page
+    Return a list with the relevant tickets for the user
+    authenticated to the ticket_list template.
     - If the user is staff: return all tickets
     - If the user is customer/registered: return its own tickets
     """
@@ -26,9 +28,13 @@ def tickets_list(request):
         # Get list of all tickets for staff user
         tickets = Ticket.objects.all().order_by('-opened_date')
         comments = Comment.objects.all()
+        for ticket in tickets:
+            if comments.count() > 1 and ticket.status != 'CLS':
+                update_pending_status(request, ticket)
     else:
         # Get list of tickets for the logged user
-        tickets = Ticket.objects.filter(user_id=user.id).order_by('-opened_date')
+        tickets = Ticket.objects.filter(user_id=user.id)\
+            .order_by('-opened_date')
         comments = Comment.objects.filter(user_id=user.id)
 
     args = {'tickets': tickets, 'comments': comments}
@@ -38,12 +44,18 @@ def tickets_list(request):
 @login_required(login_url='/login/')
 def ticket_detail(request, ticket_id):
     """
-    Get the ticket with the id passed and return a the details and comments associated with that ticket
+    Show ticket detail page.
+    Get the ticket with the id passed and return a the details
+    and comments associated with that ticket
     to the ticket_detail template
     """
 
     ticket = get_object_or_404(Ticket, pk=ticket_id)
-    comments = Comment.objects.filter(ticket_id=ticket_id).order_by('created_date')
+    comments = Comment.objects.filter(ticket_id=ticket_id)\
+        .order_by('created_date')
+    if comments.count() > 1 and ticket.status != 'CLS':
+        update_pending_status(request, ticket)
+
     args = {'ticket': ticket, 'comments': comments}
     args.update(csrf(request))
     return render(request, 'tickets/ticket_detail.html', args)
@@ -52,8 +64,11 @@ def ticket_detail(request, ticket_id):
 @login_required(login_url='/login/')
 def new_ticket(request):
     """
-    Show the new ticket and new comment forms and save the objects when both forms are validated.
-    Tickets are associated to active product licenses when created. Only active licenses are showed in the dropdown.
+    Register a new ticket and comment.
+    Show the new ticket and new comment forms and save the
+    objects when both forms are validated.
+    Tickets are associated to active product licenses when created.
+    Only active licenses are showed in the dropdown.
     """
 
     if request.method == 'POST':
@@ -62,7 +77,8 @@ def new_ticket(request):
         active_purchases = Purchase.objects.filter(license_end__gte=timezone.now())
         purchases = user_purchases & active_purchases
         active_products = [purchase.product_id for purchase in purchases]
-        ticket_form.fields['product'].queryset = Product.objects.filter(pk__in=active_products)
+        ticket_form.fields['product'].queryset = Product.objects\
+            .filter(pk__in=active_products)
         comment_form = CommentForm(request.POST)
 
         if ticket_form.is_valid() and comment_form.is_valid():
@@ -76,18 +92,22 @@ def new_ticket(request):
             comment.save()
 
             messages.success(request, "Your ticket has been logged.\n"
-                                      "We will send you an email when you get a new response."
-                             , extra_tags='alert alert-success')
+                                      "We will send you an email"
+                                      "when you get a new response.",
+                             extra_tags='alert alert-success')
             return redirect(reverse('ticket-detail', args={ticket.pk}))
 
     else:
         ticket_form = TicketForm()
-        # Set up the list of products so it only shows the active products for the user
+        # Set up the list of products so it only shows
+        # the active products for the user
         user_purchases = Purchase.objects.filter(user=request.user)
-        active_purchases = Purchase.objects.filter(license_end__gte=timezone.now())
+        active_purchases = Purchase.objects\
+            .filter(license_end__gte=timezone.now())
         purchases = user_purchases & active_purchases
         active_products = [purchase.product_id for purchase in purchases]
-        ticket_form.fields['product'].queryset = Product.objects.filter(pk__in=active_products)
+        ticket_form.fields['product'].queryset = Product.objects\
+            .filter(pk__in=active_products)
 
         comment_form = CommentForm(request.POST)
 
@@ -100,8 +120,9 @@ def new_ticket(request):
 @login_required(login_url='/login/')
 def new_comment(request, ticket_id):
     """
-    Get the ticket associated with the id passed, show new comment form and
-    save the comment when the form is validated
+    Register a new comment in a given ticket.
+    Get the ticket associated with the id passed,
+    show new comment form and save the comment when the form is validated
     """
 
     ticket = get_object_or_404(Ticket, pk=ticket_id)
@@ -112,11 +133,11 @@ def new_comment(request, ticket_id):
             comment.ticket = ticket
             comment.user = request.user
             comment.save()
-            messages.success(request, "Your comment has been logged", extra_tags='alert alert-success')
+            messages.success(request, "Your comment has been logged",
+                             extra_tags='alert alert-success')
             if comment.user.is_staff:
                 send_email_comment(request, ticket, comment)
 
-            update_pending_status(request, ticket)
             return redirect(reverse('ticket-detail', args={ticket.pk}))
     else:
         comment_form = CommentForm(request.POST)
@@ -132,7 +153,13 @@ def new_comment(request, ticket_id):
 
 
 def update_pending_status(request, ticket):
-    """ Get the last comment of the ticket after a comment is saved and update the ticket status in concordance """
+    """
+    Function to update status depending on last commented user.
+    Get the last comment of the ticket and update the
+    ticket status in concordance:
+     Pending Customer Response (PCR) if the last comment was from a staff user
+     and Pending easySPSS Reponse (PER) if the last comment was from a customer
+     """
 
     last_comment = ticket.comments.all().order_by('created_date').last()
     if last_comment.user.is_staff:
@@ -143,48 +170,63 @@ def update_pending_status(request, ticket):
 
 
 def close_ticket(request, ticket_id):
-    """ Change the ticket status to closed and return to ticket detail page """
+    """
+    Close an open ticket.
+    Change the ticket status to closed and return to ticket detail page
+    """
+
     ticket = get_object_or_404(Ticket, pk=ticket_id)
     ticket.status = "CLS"
     ticket.closed_date = timezone.now()
     ticket.save()
-    messages.success(request, "The ticket has been closed", extra_tags='alert alert-success')
+    messages.success(request, "The ticket has been closed",
+                     extra_tags='alert alert-success')
     return redirect(reverse('ticket-detail', args={ticket_id}))
 
 
 def reopen_ticket(request, ticket_id):
-    """ Change the ticket status depending on the last comment and return to ticket detail page """
+    """
+    Reopen a closed ticket
+    Change the ticket status depending on the last comment
+    and return to ticket detail page
+    """
 
     ticket = get_object_or_404(Ticket, pk=ticket_id)
-    last_comment = ticket.comments.all().order_by('created_date').last()
-    if last_comment.user.is_staff:
-        ticket.status = "PCR"
-    else:
-        ticket.status = "PER"
+    update_pending_status(request, ticket)
     ticket.closed_date = None
     ticket.save()
-    messages.success(request, "The ticket has been re-opened", extra_tags='alert alert-success')
+    messages.success(request, "The ticket has been re-opened",
+                     extra_tags='alert alert-success')
     return redirect(reverse('ticket-detail', args={ticket_id}))
 
 
 def delete_comment(request, ticket_id, comment_id):
-    """ Get the comment, delete it and return to ticket detail page """
+    """
+    Delete a comment.
+    Get the comment, delete it and return to ticket detail page
+    """
 
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
-    messages.success(request, "The comment was deleted!", extra_tags='alert alert-success')
+    messages.success(request, "The comment was deleted!",
+                     extra_tags='alert alert-success')
 
     return redirect(reverse('ticket-detail', args={ticket_id}))
 
 
 def send_email_comment(request, ticket, comment):
-        subject = "New comment in ticket: %s" % ticket.subject
-        message = "Hi %s,\n\n" \
-                  "A new comment has been added to ticket '%s'.\n\n" \
-                  "You can see the details in 'My Tickets':" \
-                  "https://spss-online.herokuapp.com/tickets/%s\n\n"\
-                  "Kind regards,\n easySPSS Team"\
-                  % (comment.user.first_name, comment.user.last_name, ticket.id)
+    """
+    Send email to user.
+    Send a notification email to the user when a staff member
+    adds a new comment.
+    """
+    subject = "New comment in ticket: %s" % ticket.subject
+    message = "Hi %s,\n\n" \
+              "A new comment has been added to ticket '%s'.\n\n" \
+              "You can see the details in 'My Tickets':" \
+              "https://spss-online.herokuapp.com/tickets/%s\n\n"\
+              "Kind regards,\n easySPSS Team"\
+              % (comment.user.first_name, ticket.subject, ticket.id)
 
-        from_email = "easyspssweb@gmail.com"
-        send_mail(subject, message, from_email, [ticket.user.email])
+    from_email = "easyspssweb@gmail.com"
+    send_mail(subject, message, from_email, [ticket.user.email])

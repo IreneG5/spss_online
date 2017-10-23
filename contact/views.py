@@ -10,15 +10,18 @@ from .forms import ContactForm
 # Create your views here.
 def get_contact(request):
     """
-    Return the contact page with form. Save the form when it is valid and return a message.
+    Shows contact page.
+    Renders the contact page with form.
+    Save the form details when it is valid and return a message.
     Use Google Maps Embed API to show the map
     """
-    
+
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
             contact = contact_form.save()
-            messages.success(request, "Your query has been sent. We will get in touch shortly",
+            messages.success(request, "Your query has been sent. "
+                                      "We will get in touch shortly",
                              extra_tags='alert alert-success')
             send_email(request, contact)
             send_email_notification(request, contact)
@@ -29,7 +32,8 @@ def get_contact(request):
         user = request.user
         # if user is logged in, pre-populate fields in form
         if user.is_authenticated:
-            contact_form = ContactForm(initial={'first_name': user.first_name, 'last_name': user.last_name,
+            contact_form = ContactForm(initial={'first_name': user.first_name,
+                                                'last_name': user.last_name,
                                                 'email': user.email})
         else:
             contact_form = ContactForm()
@@ -40,7 +44,7 @@ def get_contact(request):
 
 
 def send_email(request, contact):
-    """ Send an email to the email address in the contact us form"""
+    """ Send an email to the email address in the contact us form """
 
     subject = "Thank you for your query."
     message = "Hi %s,\n\n" \
@@ -55,7 +59,10 @@ def send_email(request, contact):
 
 
 def send_email_notification(request, contact):
-    """ Send a notification email to the company's email address indicating they have received a new query """
+    """
+    Send a notification email to the company's email address
+    indicating they have received a new query
+    """
 
     subject = "You have a new query."
     message = "Hi,\n\n" \
@@ -63,7 +70,10 @@ def send_email_notification(request, contact):
               "Please get in touch shortly.\n\n" \
               "Email address: %s\n"\
               "Query:\n %s\n\n\n"\
-              "Kind regards,\n easySPSS Team" % (contact.first_name, contact.last_name, contact.email, contact.query)
+              "Kind regards,\n easySPSS Team" % (contact.first_name,
+                                                 contact.last_name,
+                                                 contact.email,
+                                                 contact.query)
 
     from_email = "easyspssweb@gmail.com"
     send_mail(subject, message, from_email, ['easyspssweb@gmail.com'])

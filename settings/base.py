@@ -80,6 +80,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'spss_online.wsgi.application'
 
 
@@ -88,16 +89,21 @@ WSGI_APPLICATION = 'spss_online.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+            'django.contrib.auth.password_validation'
+            '.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -142,7 +148,8 @@ MEDIA_URL = '/media/'
 
 
 # tinymce
-TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR,
+                               "static", 'js', 'tinymce', 'tinymce.min.js')
 
 # Disqus
 DISQUS_WEBSITE_SHORTNAME = 'spssblog'
@@ -158,7 +165,8 @@ AWS_STORAGE_BUCKET_NAME = 'spssonlinebucket'
 AWS_S3_REGION_NAME = 'eu-west-1'  # e.g. us-east-2
 
 # Get the Keys from the Environmental Variables
-s3 = S3Connection(os.environ['AWS_ACCESS_KEY_ID'], os.environ['AWS_SECRET_ACCESS_KEY'])
+s3 = S3Connection(os.environ['AWS_ACCESS_KEY_ID'],
+                  os.environ['AWS_SECRET_ACCESS_KEY'])
 
 # Tell django-storage the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
@@ -170,4 +178,3 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-

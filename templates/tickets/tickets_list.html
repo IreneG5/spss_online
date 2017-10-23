@@ -8,10 +8,10 @@
             <!-- buttons & alerts -->
             <!-- Staff can't open tickets on the site as it needs to be linked to a customer.  -->
             {% if user.is_customer and not user.is_staff %}
-                <p><a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a> </p>
+                <p id="open-ticket"><a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a> </p>
                 <!-- Non active Customers can't open or edit tickets -->
             {% elif not user.is_staff %}
-                <p class="alert alert-warning">Only Active Customers can open and update tickets.
+                <p id="tickets-inactive-msg" class="alert alert-warning">Only Active Customers can open and update tickets.
                            If your account is inactive but you need help with an open ticket please
                     <a href="{% url 'contact' %}">contact us</a>.</p>
             {% endif %}
@@ -36,7 +36,7 @@
                             {% for ticket in tickets  %}
                                 <tr>
                                  {% if user.is_staff %}
-                                    <td>{{ ticket.status }}</td>
+                                    <td id="status-{{ ticket.id }}">{{ ticket.status }}</td>
                                      <td>{{ ticket.user.first_name }} {{ ticket.user.last_name }}</td>
                                  {% else %}
                                     <td>{{ ticket.get_status_display }}</td>

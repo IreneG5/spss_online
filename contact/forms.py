@@ -4,7 +4,7 @@ from .models import Contact
 
 class ContactForm(forms.ModelForm):
     """
-    Form to create contact easySPSS
+    Form to send a query.
     After filling out the form users will receive an email.
     """
 
@@ -20,4 +20,3 @@ class ContactForm(forms.ModelForm):
             raise forms.ValidationError(message)
 
         return email
-

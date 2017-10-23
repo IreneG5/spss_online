@@ -14,32 +14,41 @@ license_types = (
 
 
 class Product(models.Model):
-    """ Product contains its own fields. It has no relation with any other Model """
+    """
+    Store the products of the company.
+    Products are created in the admin panel.
+    Products have no relation with any other Model
+    """
 
     code = models.CharField(max_length=20, default="")
     name = models.CharField(max_length=100, default="")
     osystem = models.CharField(max_length=10, default="")
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
-    license_type = models.CharField(max_length=50, choices=license_types, default='1')
+    license_type = models.CharField(max_length=50, choices=license_types,
+                                    default='1')
     image = models.ImageField(upload_to="productimage/", blank=True, null=True)
 
     def __unicode__(self):
-        return '%s (%s)' %(self.name, self.code)
+        return '%s (%s)' % (self.name, self.code)
 
 
 class Purchase (models.Model):
     """
-    Purchase is linked to a product and a user.
-    It also saves calculate when the license for the product bought in that purchase ends.
+    Store the purchases made by the user through PayPal.
+    Purchases have a one to many relation with Products and Users models.
+    Calculate when the license will expire depending on the type of
+    license bought.
     """
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='purchases')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             related_name='purchases')
     product = models.ForeignKey(Product)
     license_end = models.DateTimeField(default=timezone.now)
 
     def __unicode__(self):
-        return '%s - %s' %(self.product.name, self.user.email)
+        return '%s - %s' % (self.product.name, self.user.email)
 
 
+# Listen form the Paypal ipn signal
 valid_ipn_received.connect(subscription_created)

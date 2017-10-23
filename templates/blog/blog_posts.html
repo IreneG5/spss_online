@@ -19,7 +19,7 @@
                         <div class="col-sm-4 ">
                             <div class="blog-mini-item">
                                 <div class="blog-mini-title">
-                                    <h4><a href={% url 'post-detail' post.id %}>{{ post.title|truncatechars:40 }}</a></h4>
+                                    <h4><a href={% url 'post-detail' post.id %}>{{ post.title|truncatewords:7 }}</a></h4>
                                 </div>
                                 <div class="blog-mini-date">
                                     <i>{{ post.published_date| date }} | {{ post.category }}</i>
@@ -54,6 +54,7 @@
         <!-- right column -->
         <div class="col-sm-3">
             <!-- List of most voted posts -->
+
                 {% get_most_voted_posts %}
                 <div class="big-spacer">&nbsp;</div>
                 <!-- List of most viewed posts -->

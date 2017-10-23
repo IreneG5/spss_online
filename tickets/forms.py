@@ -6,7 +6,8 @@ from products.models import Purchase
 class TicketForm(forms.ModelForm):
     """
     Form to create new tickets
-    The field product only shows the products related to purchases whose license are active
+    The field product only shows the products related to
+    purchases whose license are active
     """
 
     product = forms.ModelChoiceField(queryset=Purchase.objects.all())
@@ -25,5 +26,3 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['comment']
-
-

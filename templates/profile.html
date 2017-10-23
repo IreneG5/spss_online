@@ -26,11 +26,11 @@
                             <li><b>User since:</b> {{ user.date_joined }}</li>
                         </ul>
                         {% if user.is_staff %}
-                            <p class="alert alert-info"><b>Your are a staff member of easySPSS</b>.</p>
+                            <p id="staff-msg" class="alert alert-info"><b>Your are a staff member of easySPSS</b>.</p>
                         {% elif user.is_customer %}
-                            <p class="alert alert-success"><b>Customer Account Status</b>: Active </p>
+                            <p id="active-msg" class="alert alert-success"><b>Customer Account Status</b>: Active </p>
                         {% else %}
-                            <p class="alert alert-warning"><b>Customer Account Status</b>: Inactive </p>
+                            <p id="inactive-msg" class="alert alert-warning"><b>Customer Account Status</b>: Inactive </p>
                         {% endif %}
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                                             {% if user.is_staff %} <td>{{ ticket.status }}</td>
                                             {% else %} <td>{{ ticket.get_status_display }}</td>
                                             {% endif %}
-                                            <td>{{ ticket.subject }}</td>
+                                            <td><a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.subject }}</a></td>
                                             <td>Opened: {{ ticket.opened_date | date}}</td>
                                             {% if user.is_staff %}
                                                 <td>By: {{ ticket.user.first_name }}&nbsp;{{ ticket.user.last_name }}</td>
@@ -150,7 +150,7 @@
                         <!-- User is not an active customer and have no tickets -->
                         {% elif not is_staff %}
                             <p class="aler alert-warning">Your are not an active customer.</p>
-                         {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -162,11 +162,11 @@
             <!-- Call to action shown depends on the type of user (registered, customer or staff)
             For the staff there is a section with shorcuts that change depending on the page -->
             {% if user.is_staff %}
-                <div class="cta">
+                <div id="cta-shortcuts" class="cta">
                     <p class="spacer"></p>
                     <h4><a href="{% url 'products' %}">
                         <span  class="glyphicon glyphicon-shopping-cart"></span>&emsp;Products</a></h4>
-                    <h4><a href="{% url 'products' %}">
+                    <h4><a href="{% url 'blog' %}">
                         <span  class="glyphicon glyphicon-star"></span>&emsp;Blog</a></h4>
                     <h4><a href="{% url 'tickets-list' %}">
                         <span class="glyphicon glyphicon-briefcase"></span>&emsp;Tickets</a></h4>

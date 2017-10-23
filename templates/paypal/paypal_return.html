@@ -29,21 +29,6 @@
                         <p>You will receive an email with instructions to download and install your
                             software shortly in the email address you registered with us (note it could be
                             different than the one you used in Paypal) *</p>
-                        <p> You can save a name for this purchase to help you locate it in the future</p>
-                        <div>
-                            {% if last_purchase.name == "" %}
-                                <form method="post" action="{{ form_action }}">
-                                    {% csrf_token %}
-                                    {{ purchase_form }}
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Add Comment</button>
-                                        <a href="{% url 'ticket-detail' ticket_id %}" class="btn btn-default">Cancel</a>
-                                    </div>
-                                </form>
-                            {% else %}
-                                Purchase name: {{ last_purchase.name }}
-                            {% endif %}
-                        </div>
                     </div>
                 </div>
                 <div class="col-sm-12">

@@ -2,16 +2,13 @@
 {% block content %}
     <div class="row">
         <div class="col-md-9">
-            <h1>We are sorry you've cancelled the purchase of this item.</h1>
-            <ul>
-                <li>Product: {{ last_purchase.product }} {{ last_purchase.product.osystem }}</li>
-                <li>Price: {{ last_purchase.product.price }}</li>
-            </ul>
+            <h1>We are sorry you've cancelled the purchase.</h1>
+
             <p class="spacer">&nbsp;</p>
             <h4>Please let us know if there is something we can do to help.</h4>
             <p class="spacer">&nbsp;</p>
-            <p>Go to <a href="{% url 'products' %}"> products</a>.</p>
-            <p>Go to <a href="{% url 'profile' %}"> my profile</a>.</p>
+            <p>Go to <a href="{% url 'products' %}"> Products</a>.</p>
+            <p>Go to <a href="{% url 'profile' %}"> My Profile</a>.</p>
 
         </div>
         <div class="col-sm-3">

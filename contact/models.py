@@ -5,7 +5,8 @@ from django.db import models
 class Contact(models.Model):
     """
     Contact are queries that visitors or customers send to easySPSS.
-    They are not linked to users as there is no need to be registered or logged in to fill out the form.
+    They are not linked to users as there is no need to be registered
+    or logged in to fill out the form.
     """
 
     first_name = models.CharField(max_length=25)

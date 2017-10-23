@@ -7,7 +7,8 @@ class UserRegistrationForm(UserCreationForm):
     """
     Render form to allow registration.
     All fields are required.
-    Additional validation for password: not empty, confirmation match and password strength
+    Additional validation for password: not empty,
+    confirmation match and password strength
     Additional validation for email: unique email
     """
 
@@ -25,7 +26,8 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'company']
+        fields = ['first_name', 'last_name', 'email',
+                  'password1', 'password2', 'company']
         exclude = ['username']
 
     def clean_password1(self):
@@ -126,7 +128,7 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserLoginForm(forms.Form):
-    """ Form to authenticate user using email and password """
+    """ Render form to authenticate user using email and password """
 
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)

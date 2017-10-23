@@ -9,9 +9,11 @@ from django.utils import timezone
 # Create your models here.
 class AccountUserManager(UserManager):
     def _create_user(self, username, email, password,
-                     is_staff, is_superuser, first_name="Default", last_name="Default", **extra_fields):
+                     is_staff, is_superuser, first_name="Default",
+                     last_name="Default", **extra_fields):
         """
-        Create and save a User with the given details. Default values given to allows create superuser in terminal.
+        Create and save a User with the given details.
+        Default values given to allows create superuser in terminal.
         """
 
         first_name = email
@@ -24,7 +26,8 @@ class AccountUserManager(UserManager):
         user = self.model(username=email, email=email,
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser,
-                          date_joined=now, first_name=first_name, last_name=last_name, **extra_fields)
+                          date_joined=now, first_name=first_name,
+                          last_name=last_name, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
@@ -38,7 +41,11 @@ class User(AbstractUser):
         objects = AccountUserManager()
 
         def is_customer(self):
-            """ Define if User is a customer by checking if it has any active license """
+            """
+            Define if User is a customer by checking if it has
+            any active license
+            """
+
             try:
                 purchases = Purchase.objects.filter(user_id=self.id)
             except Exception:
@@ -47,5 +54,4 @@ class User(AbstractUser):
             for purchase in purchases:
                 if purchase.license_end > arrow.now():
                     return True
-
             return False

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
@@ -17,10 +16,13 @@ class Category(models.Model):
 
 class Post(models.Model):
     """
-    Each blog post contains its own fields and is liked to a user (author) and to a category.
+    Each blog post contains its own fields and is liked to a user
+    (author) and to a category.
     Blog posts are created on the admin panel
-    Score is calculated on the post_voteup and post_votedown views when the user vote on the post_detail page
-    Views are incremented on the post_detail view every time the post_detail template is rendered
+    Score is calculated on the post_voteup and post_votedown views
+    when the user vote on the post_detail page
+    Views are incremented on the post_detail view every time the
+    post_detail template is rendered
     """
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='blog')
@@ -43,9 +45,12 @@ class Post(models.Model):
 
 class Vote(models.Model):
     """
-    Votes for blog posts are stored in a different model to avoid a user voting multiple times.
-    Votes are linked to users and posts, allowing only one vote per user per post.
-    The vote value is saved on the post_voteup and post_votedown views when the user vote on the post_detail page
+    Votes for blog posts are stored in a different model to
+    avoid a user voting multiple times.
+    Votes are linked to users and posts, allowing only one
+    vote per user per post.
+    The vote value is saved on the post_voteup and post_votedown
+    views when the user vote on the post_detail page
     """
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='votes')

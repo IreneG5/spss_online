@@ -9,11 +9,11 @@
             <div class="col-md-6">
                 {% if not user.is_customer and not user.is_staff %}
                     <!--<a href="{#% url 'new-ticket' %#}" class="btn btn-primary disabled ">Open New Ticket </a>-->
-                    <p class="alert alert-warning">Only Active Customers can open and update tickets.
+                    <p id="ticket-inactive-msg" class="alert alert-warning">Only Active Customers can open and update tickets.
                            If your account is inactive but you need help with an open ticket please
                         <a href="{% url 'contact' %}">contact us</a>.</p>
                 {% endif %}
-                <h3 class=" {% if ticket.status == "CLS" %}text-danger{% else %} text-success{% endif %} ">
+                <h3 id="ticket-status" class="{% if ticket.status == "CLS" %}text-danger{% else %} text-success{% endif %} ">
                         Status: {{ ticket.get_status_display }}</h3>
              </div>
             <div class="col-md-6">
@@ -27,14 +27,14 @@
             <div class="col-md-6">
                 {% if user.is_customer or user.is_staff  %}
                     {% if ticket.status != "CLS" %}
-                        <a href="{% url 'new-comment' ticket.id %}" class="btn btn-default">Add Comment</a> &emsp;
-                        <a href="{% url 'close-ticket' ticket.id %}" class="btn btn-danger">Close Ticket</a>
+                        <a id="ticket-add-comment" href="{% url 'new-comment' ticket.id %}" class="btn btn-default">Add Comment</a> &emsp;
+                        <a  id="ticket-close-ticket" href="{% url 'close-ticket' ticket.id %}" class="btn btn-danger">Close Ticket</a>
                     {% else %}
-                        <a href="{% url 'reopen-ticket' ticket.id %}" class="btn btn-warning">Reopen Ticket</a>
+                        <a  id="ticket-reopen-ticket" href="{% url 'reopen-ticket' ticket.id %}" class="btn btn-warning">Reopen Ticket</a>
                     {% endif %}
                     </div><div class="col-md-6">
                         {% if not user.is_staff %}
-                            <a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a>
+                            <a  id="ticket-new-ticket" href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a>
                         {% endif %}
                 {% else %}
                      </div><div class="col-md-6">
@@ -74,7 +74,7 @@
                             {% if ticket.status != "CLS" and user.is_staff %}
                                 {% if ticket.comments.count > 1 %}
                                    <div class="pull-right">
-                                        <a href="{% url 'delete-comment' ticket.id comment.id %}">
+                                        <a id="ticket-delete-comment" href="{% url 'delete-comment' ticket.id comment.id %}">
                                             <i class="fa fa-trash-o"></i></a>
                                     </div>
                                 {% endif %}

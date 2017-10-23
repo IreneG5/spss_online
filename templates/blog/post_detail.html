@@ -22,12 +22,12 @@
                     <p>
                     <!-- Voting buttons or login message -->
                         {% if user.is_authenticated %}
-                            <a href="{% url 'voteup' post.id %}">
+                            <span id="voting" ><a href="{% url 'voteup' post.id %}">
                                 <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i></a>
                                 &emsp;<a href="{% url 'votedown' post.id %}">
-                                <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i></a>
+                                <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i></a></span>
                         {% else %}
-                            <span class="alert-warning"><a href="{% url 'login' %}">
+                            <span id="login-voting" class="alert-warning"><a href="{% url 'login' %}">
                                 <span class="glyphicon glyphicon-log-in"></span> Log in </a>to vote </span>
                         {% endif %}
                         <!-- Metrics on votes and views. Social media sharing. -->
@@ -54,13 +54,13 @@
                         <p class="spacer">&nbsp;</p>
                         <!-- disqus comments only if the user is loged in-->
                         {% if user.is_authenticated %}
-                            <p>{% load disqus_tags %}
+                            <p id="disqus">{% load disqus_tags %}
                                 {% set_disqus_title post.title %}
                                 {% disqus_show_comments %}
                             </p>
                         {% else %}
-                            <div class="alert alert-warning centered">
-                             <p><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in </a>&emsp;
+                            <div  class="alert alert-warning centered">
+                             <p id="login-disqus"><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in </a>&emsp;
                                  or &emsp;<a href="{% url 'register' %}"><span class="glyphicon glyphicon-pencil"></span> Register </a>
                                 <br>to see the comments. </p>
                             </div>
