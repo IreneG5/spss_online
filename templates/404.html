@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <br />
+            <h2>Oops!</h2>
+            <br />
+            <h4>We can't seem to find the page you are looking for.</h4>
+            <br />
+            <h5>You can go back to the <a href="{% url 'index' %}">home page</a>
+                or try one of the following sections:</h5>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1">
+                    <h5><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;
+                        <a href="{% url 'products' %}">Products</a></h5>
+                    <h5><span class="glyphicon glyphicon-star"></span>&nbsp;
+                        <a href="{% url 'blog' %}">Blog</a></h5>
+                </div>
+                <div class="col-md-4">
+                    {% if user.is_authenticated %}
+                        <h5><span class="glyphicon glyphicon-user"></span>&nbsp;
+                            <a href="{% url 'profile' %}">My Profile</a></h5>
+                        <h5><span class="glyphicon glyphicon-briefcase"></span>&nbsp;
+                            <a href="{% url 'tickets-list' %}">My Tickets</a></h5>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <br />
+                    <h4><span class="glyphicon glyphicon-envelope"></span>&nbsp;
+                        <a href="{% url 'contact' %}">Contact Us</a> if you need any help.</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img class="img-responsive" src="{% static 'images/404-question-mark.jpg' %}" alt="Not found" />
+        </div>
+    </div>
+{% endblock %}
