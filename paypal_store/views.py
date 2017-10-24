@@ -29,7 +29,6 @@ def paypal_return(request):
         user = auth.get_user(request)
         # Check every second (up to 15 seconds) if the purchase was saved in case the PayPal signal is delayed
         not_found = 0
-
         while not_found < 15:
             # Retrieve the last_purchase from the user
             last_purchase = Purchase.objects.filter(user_id=user).last()

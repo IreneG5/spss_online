@@ -27,12 +27,11 @@ def paypal_form_for(product, user):
     }
 
     if settings.DEBUG:
-        html = PayPalPaymentsForm(initial=paypal_dict,
-                                  button_type='subscribe').sandbox()
+        html = PayPalPaymentsForm(initial=paypal_dict, button_type='subscribe').sandbox()
     else:
-        html = PayPalPaymentsForm(initial=paypal_dict,
-                                  button_type='subscribe').render()
+        html = PayPalPaymentsForm(initial=paypal_dict, button_type='subscribe').render()
     return html
 
 
 register.simple_tag(paypal_form_for)
+

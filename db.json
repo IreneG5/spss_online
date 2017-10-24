@@ -217,6 +217,94 @@
     }
 },
 {
+    "model": "products.purchase",
+    "pk": 256,
+    "fields": {
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "product": 4,
+        "license_end": "2017-11-22T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 257,
+    "fields": {
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "product": 5,
+        "license_end": "2017-09-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 258,
+    "fields": {
+        "user": [
+            "jon.snow@gmail.com"
+        ],
+        "product": 1,
+        "license_end": "2018-09-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 259,
+    "fields": {
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "product": 2,
+        "license_end": "2017-11-22T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 260,
+    "fields": {
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "product": 5,
+        "license_end": "2017-09-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 262,
+    "fields": {
+        "user": [
+            "jessica.jones@gmail.com"
+        ],
+        "product": 1,
+        "license_end": "2017-10-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 264,
+    "fields": {
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "product": 2,
+        "license_end": "2018-10-05T12:45:24Z"
+    }
+},
+{
+    "model": "products.purchase",
+    "pk": 265,
+    "fields": {
+        "user": [
+            "arya.stark@gmail.com"
+        ],
+        "product": 2,
+        "license_end": "2017-12-22T12:45:24Z"
+    }
+},
+{
     "model": "blog.category",
     "pk": 1,
     "fields": {
