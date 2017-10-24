@@ -8,7 +8,7 @@ DEBUG = False
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # Load the ClearDB connection details from the environment variable
 DATABASES = {
-    'default': dj_database_url.config('CLEARDB_DATABASE_URL')
+    'default': dj_database_url.config('DATABASE_URL')
 }
 
 
