@@ -28,9 +28,10 @@
                         {% if user.is_staff %}
                             <p id="staff-msg" class="alert alert-info"><b>Your are a staff member of easySPSS</b>.</p>
                         {% elif user.is_customer %}
-                            <p id="active-msg" class="alert alert-success"><b>Customer Account Status</b>: Active </p>
+                            <p id="active-msg" class="alert alert-success"><b>Customer Account Status</b>: Active</p>
                         {% else %}
-                            <p id="inactive-msg" class="alert alert-warning"><b>Customer Account Status</b>: Inactive </p>
+                            <p id="inactive-msg" class="alert alert-warning"><b>Customer Account Status</b>:
+                                Inactive</p>
                         {% endif %}
                     </div>
                 </div>
@@ -108,7 +109,8 @@
                             <!-- collapse tickets section by clicking on the header -->
                             <h3><span  class="glyphicon glyphicon-briefcase"></span>
                                 <a data-toggle="collapse"  href="#tickets" >
-                                    <!-- staff users can see all ticket's, customer users s can see only their tickets -->
+                                    <!-- staff users can see all ticket's,
+                                    customer users s can see only their tickets -->
                                     {% if user.is_staff %} Customer's Tickets
                                     {% else %} Your Tickets
                                     {% endif %}
@@ -119,10 +121,10 @@
                             </h5>
                         </div>
                     </div>
-                    <!-- tickets table with all the tickets the user opened, or all tickets for staff.
+                    <!-- tickets table with all the tickets that the user opened, or all tickets for staff.
                     Information shown changes depending on the user role (staff or customer).
-                    e.g. staff see the status code instead of the full status text, they  see who opened the case
-                    and the reason too -->
+                    e.g. staff see the status code instead of the full status text, they also see who opened the case
+                    and the reason -->
                     <div id="tickets" class="collapse in border-left-teal">
                         {% if tickets > 0 %}
                                 <table class="table"><tbody>
@@ -131,7 +133,9 @@
                                             {% if user.is_staff %} <td>{{ ticket.status }}</td>
                                             {% else %} <td>{{ ticket.get_status_display }}</td>
                                             {% endif %}
-                                            <td><a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.subject }}</a></td>
+                                            <td>
+                                                <a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.subject }}</a>
+                                            </td>
                                             <td>Opened: {{ ticket.opened_date | date}}</td>
                                             {% if user.is_staff %}
                                                 <td>By: {{ ticket.user.first_name }}&nbsp;{{ ticket.user.last_name }}</td>

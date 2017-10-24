@@ -11,14 +11,14 @@
                 <p id="open-ticket"><a href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a> </p>
                 <!-- Non active Customers can't open or edit tickets -->
             {% elif not user.is_staff %}
-                <p id="tickets-inactive-msg" class="alert alert-warning">Only Active Customers can open and update tickets.
-                           If your account is inactive but you need help with an open ticket please
+                <p id="tickets-inactive-msg" class="alert alert-warning">Only Active Customers can open and update
+                    tickets. If your account is inactive but you need help with an open ticket please
                     <a href="{% url 'contact' %}">contact us</a>.</p>
             {% endif %}
             <!-- end buttons and alerts -->
             <!-- Tickets table. Some information changes depending on the type of user -->
             {% if tickets %}
-                <section class="ticket">
+                <div class="ticket">
                     <table class="table ">
                         <thead><tr>
                             <th>Status</th>
@@ -34,25 +34,27 @@
                         </tr></thead>
                         <tbody>
                             {% for ticket in tickets  %}
-                                <tr>
-                                 {% if user.is_staff %}
-                                    <td id="status-{{ ticket.id }}">{{ ticket.status }}</td>
-                                     <td>{{ ticket.user.first_name }} {{ ticket.user.last_name }}</td>
-                                 {% else %}
-                                    <td>{{ ticket.get_status_display }}</td>
-                                 {%  endif %}
-                                    <td><a href="{{ ticket.id }}">{{ ticket.subject |truncatewords_html:10 }}</a></td>
-                                    <td>{{ ticket.product.code }}</td>
-                                    <td>{{ ticket.opened_date | date}}</td>
-                                    <td>{% if ticket.closed_date  %}
-                                        {{ ticket.closed_date | date}} {% endif %}</td>
-                                    <td><span class="badge">{{ ticket.comments.count }}</span></td>
-                                    <td>{% last_comment_date ticket %}</td>
-                                </tr>
+                                {% if ticket.comments.count > 0 %}
+                                    <tr>
+                                     {% if user.is_staff %}
+                                        <td id="status-{{ ticket.id }}">{{ ticket.status }}</td>
+                                         <td>{{ ticket.user.first_name }} {{ ticket.user.last_name }}</td>
+                                     {% else %}
+                                        <td>{{ ticket.get_status_display }}</td>
+                                     {%  endif %}
+                                        <td><a href="{{ ticket.id }}">{{ ticket.subject |truncatewords_html:10 }}</a></td>
+                                        <td>{{ ticket.product.code }}</td>
+                                        <td>{{ ticket.opened_date | date}}</td>
+                                        <td>{% if ticket.closed_date  %}
+                                            {{ ticket.closed_date | date}} {% endif %}</td>
+                                        <td><span class="badge">{{ ticket.comments.count }}</span></td>
+                                        <td>{% last_comment_date ticket %}</td>
+                                    </tr>
+                                {% endif %}
                             {% endfor %}
                         </tbody>
                     </table>
-                </section>
+                </div>
             {% else %}
                 <p>No tickets to show.</p>
             {% endif %}

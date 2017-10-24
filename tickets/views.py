@@ -29,7 +29,7 @@ def tickets_list(request):
         tickets = Ticket.objects.all().order_by('-opened_date')
         comments = Comment.objects.all()
         for ticket in tickets:
-            if comments.count() > 1 and ticket.status != 'CLS':
+            if ticket.comments.count() > 1 and ticket.status != 'CLS':
                 update_pending_status(request, ticket)
     else:
         # Get list of tickets for the logged user

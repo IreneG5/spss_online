@@ -1,14 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 {% load bootstrap_tags %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            <img class="img-responsive centered" src="{% static 'images/logo-m.png' %}" alt="easySPSS" />
+            <h4>Login to get more from easySPSS</h4><hr>
             <form role="form" method="post" action="{% url 'login' %}">
-                <legend>Login</legend>
+
                 {% csrf_token %}
                 {{ form| as_bootstrap }}
-                <div class="form-group">
+                <div class="form-group centered">
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>

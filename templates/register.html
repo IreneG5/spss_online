@@ -19,19 +19,24 @@
             <p class="spacer">&nbsp;</p>
             <h4>Register today!</h4>
             <p class="spacer">&nbsp;</p>
-            <p>Don't forget to follow us on social media to stay up to date!</p>
+            <p>Follow us on social media to stay up to date!</p>
                 <div>
-                    <a href="http://www.facebook.com" target="_blank"><img src="{% static 'images/sm-fb.png' %}"/></a>
-                    &emsp;<a href="http://www.twitter.com" target="_blank"><img src="{% static 'images/sm-tw.png' %}"/></a>
-                    &emsp;<a href="http://www.linkedin.com" target="_blank"><img src="{% static 'images/sm-li.png' %}"/></a>
+                    <a href="http://www.facebook.com" target="_blank">
+                        <img src="{% static 'images/sm-fb.png' %}" alt="Facebook" /></a>
+                    &emsp;<a href="http://www.twitter.com" target="_blank">
+                    <img src="{% static 'images/sm-tw.png' %}" alt="Twitter" /></a>
+                    &emsp;<a href="http://www.linkedin.com" target="_blank">
+                    <img src="{% static 'images/sm-li.png' %}" alt="LinkedIn" /></a>
                 </div>
         </div>
         <!-- end text content -->
         <!-- registration form -->
         <div class="col-md-6">
+
             <p class="spacer">&nbsp;</p>
-            <form role="form" id="register-form" method="post" action="{% url 'register' %}">
-                <legend>Fill out the form below to create your account!</legend>
+            <h4>Sign up below to create your account.</h4><hr>
+            <form id="register-form" method="post" action="{% url 'register' %}">
+
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
                 <div class="form-group">

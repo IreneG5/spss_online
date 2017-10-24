@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6 ">
                 <div class="centered">{{ post.score }} {% if post.score == 1 %}point{% else %}points{% endif %}</div>
-                <div><img class="img-responsive" src="{{ post.image.url }}"></div>
+                <div><img class="img-responsive" src="{{ post.image.url }}" alt="{{ post.title|truncatewords:7 }}" /></div>
             </div>
         </div>
         {% if forloop.last %}

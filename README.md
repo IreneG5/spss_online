@@ -22,6 +22,7 @@ You can view the deployed version on http://spss-online-herokuapp.com
   - [Testing tables](/testing_tables.md)
 - [Installation](#installation)
 - [Challenges and known bugs](#challenges-and-known-bugs)
+- [Future additions and improvements](#future-additions-and-improvements)
 
 
 ## Overview
@@ -143,10 +144,10 @@ the admin panel.
 compute if the user is an active customer or not. This field is calculated when the user made the purchase, adding 1 or 
 2 years (depending on the license) to the date of the purchase. If there is at least one licence that ends in the 
 future, the user is considered an active customer.
-- This field is also used to identify the different users the customer has: active, expiring soon or expired. This 
+  - This field is also used to identify the different users the customer has: active, expiring soon or expired. This 
 allows to highlight them with the right message in the products section of the profile page, and show only the active 
 one in the products page. 
-- This field is also used when a user is opening a new ticket as it is only allowed to open a ticket for active 
+  - This field is also used when a user is opening a new ticket as it is only allowed to open a ticket for active 
 products (see more in the tickets' app).
 
 
@@ -187,9 +188,12 @@ license for the same or other product.
 - If a case is still open when the license expires and the user does not have any other active license, the user won't 
 be able to update the ticket, instead there is a message at the top of the page advising the user to contact easySPSS 
 if that is the case to finish the resolution of the case. Staff members will be able to edit/close the ticket for them.
-- Staff members can add comments to any customer case, but can't open cases from the app as, the form automatically 
+- Staff members can add comments to any customer case, but can't open cases from the app as the form automatically 
 takes the logged user as the owner of the ticket. Staff members can create tickets from the admin panel as it is 
-possible to select the author from there. 
+possible to select the owner (user) of the ticket from there. 
+As in the admin panel is not possible to show together tickets and comments, staff users will need to create
+a ticket first and then a comment associated to that ticket. If no comment is created the ticket will not be shown 
+in the front end.   
 
 
 #### contact
@@ -406,6 +410,22 @@ The source code of the published pages have been validated with [W3C MarkUp Vali
 There are some known errors in some pages such as: the "Tweet" functionality in the blog post section, which contains 
 spaces in the href value of the link as the pre-populated text is built using the title value of the blog post;
 and duplicated IDs in the products page, due to the paypal_form_for created as many times as the number of products.  
+
+
+## Future additions and improvements
+
+I have some ideas that I didn't have the time to build for this project, but that I will probably keep working on
+if this app goes into production for my company. 
+- **Purchase Name**: Add a field to the Purchase model to save the name of the purchase after it is successfully saved
+ (in the paypal_return page).
+It will allow users to add a name that will be shown in the products and profile pages so that they can 
+easily locate it. E.g. names "SPSS 24 Anna's Laptop", "Main computer training room".
+- **Ticket History**: Add a new model to Tickets to store the historical events with dates. E.g. change of status, new comments, etc.
+- **Sortable Columns**: Make the columns in the tables sortable.
+- **Loading Spin**: Add a template with a loading spin to render while the user is waiting for the site to come back from the PayPal site 
+to the paypal_return page.
+- **Tickets Stats Graph**: Add a graph to show users how many cases have been opened/closed in the 30 days using 
+[django chartit](https://github.com/chartit/django-chartit). 
 
 
 

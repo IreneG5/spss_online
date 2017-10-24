@@ -26,7 +26,8 @@
                                 </div>
                                 {% if post.image.url %}
                                     <div class="blog-mini-image">
-                                        <img class="img-responsive" src="{{ post.image.url }}">
+                                        <img class="img-responsive" src="{{ post.image.url }}"
+                                             alt="{{ post.title|truncatewords:7 }}" />
                                     </div>
                                 {% endif %}
                                 <div class="blog-mini-content">{{ post.content|truncatewords:15 |linebreaksbr}}

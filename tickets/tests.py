@@ -483,10 +483,10 @@ class TicketDetailPageCantDeleteCommentsTest(TestCase):
                                             user=self.user_active,
                                             product=self.product)
         self.ticket.save()
-        self.comment_active = Comment.objects\
-            .create(user=self.user_active, ticket=self.ticket,
-                    comment='test-active',
-                    created_date="2017-10-01T00:00Z")
+        self.comment_active = Comment.objects.create(user=self.user_active,
+                                                     ticket=self.ticket,
+                                                     comment='test-active',
+                                                     created_date="2017-10-01T00:00Z")
         self.comment_active.save()
 
     def test_staff_cant_delete_comments_if_less_than_two(self):

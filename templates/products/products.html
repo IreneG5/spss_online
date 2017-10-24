@@ -21,10 +21,10 @@
                 <p><b>IBM SPSS software offers advanced techniques in an easy-to-use package to help you
                 find new opportunities, improve efficiency and minimize risk.</b></p>
                 <ul>
-                <li><b>IBM SPSS Statistics</b> is an integrated family of products that addresses the entire analytical process,
-                    from planning to data collection, analysis, reporting and deployment.</li>
-                <li><b>IBM SPSS Modeler</b> is an extensive predictive analytics platform that is designed to bring predictive
-                    intelligence to decisions made by individuals, groups, systems and the enterprise.</li>
+                <li><b>IBM SPSS Statistics</b> is an integrated family of products that addresses the entire analytical
+                    process, from planning to data collection, analysis, reporting and deployment.</li>
+                <li><b>IBM SPSS Modeler</b> is an extensive predictive analytics platform that is designed to bring
+                    predictive intelligence to decisions made by individuals, groups, systems and the enterprise.</li>
                 </ul>
             </div>
         </div>
@@ -69,7 +69,9 @@
                                     </h4>
                                 </div>
                                 {% if products.image.url != "" %}
-                                    <div class="product-mini-image"><img class="img-responsive centered" src=" {{ product.image.url }}"></div>
+                                    <div class="product-mini-image">
+                                        <img class="img-responsive centered" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    </div>
                                 {% endif %}
                                 <div>
                                     <h4>{{ product.license_type }} - £{{ product.price }}
@@ -78,9 +80,13 @@
                                 <div>
                                     {% if user.is_authenticated %}
                                         <br />
-                                        <div class="product-mini-paypal-button img-responsive">{% paypal_form_for product user %}</div>
+                                        <div class="product-mini-paypal-button img-responsive">
+                                            {% paypal_form_for product user %}
+                                        </div>
                                     {% else %}
-                                        <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a>
+                                        <a href="{% url 'login' %}">
+                                            <span class="glyphicon glyphicon-log-in"></span> Log in
+                                        </a>
                                     {% endif %}
                                     <br><br>
                                 </div>
@@ -105,9 +111,12 @@
             {% if user.is_staff %}
                 <div class="cta">
                     <p class="spacer"></p>
-                    <h4><a href="{% url 'profile' %}"><span  class="glyphicon glyphicon-user"></span>&emsp;Profile</a></h4>
-                    <h4><a href="{% url 'blog' %}"> <span  class="glyphicon glyphicon-star"></span>&emsp;Blog</a></h4>
-                    <h4><a href="{% url 'tickets-list' %}"><span  class="glyphicon glyphicon-briefcase"></span>&emsp;Tickets</a></h4>
+                    <h4><a href="{% url 'profile' %}">
+                        <span  class="glyphicon glyphicon-user"></span>&emsp;Profile</a></h4>
+                    <h4><a href="{% url 'blog' %}">
+                        <span  class="glyphicon glyphicon-star"></span>&emsp;Blog</a></h4>
+                    <h4><a href="{% url 'tickets-list' %}">
+                        <span  class="glyphicon glyphicon-briefcase"></span>&emsp;Tickets</a></h4>
                     <p class="spacer"></p>
                 </div>
             {% elif user.is_customer %}

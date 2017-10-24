@@ -223,6 +223,7 @@ h1, h2, h3, h4, h5, h6{
 /* Sections */
 #who-we-are-img #what-we-offer-img{
     padding: 10px;
+    border: 1px solid #20B2AA;
 }
 
 

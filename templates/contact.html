@@ -34,9 +34,8 @@
 
             <!-- Google Maps -->
             <div class="google-maps">
-                <iframe src="https://www.google.com/maps/embed/v1/place?q=Parnell%20Street,%20Dublin&zoom=17
-                              &key=AIzaSyAbzMX0kT_kvJbDMsKlYTQapOAw4-iiydU"
-                                width="400" height="350" frameborder="0" style="border:0" allowfullscreen>
+                <iframe src="https://www.google.com/maps/embed/v1/place?q=Parnell%20Street,%20Dublin&zoom=17&key=AIzaSyAbzMX0kT_kvJbDMsKlYTQapOAw4-iiydU"
+                                width="400" height="350"  style="border:0" allowfullscreen>
                 </iframe>
             </div>
             <!-- end Google Maps -->
@@ -44,9 +43,9 @@
 
         <!-- Contact form -->
         <div class="col-md-4">
-            <div class="spacer">&nbsp;</div>
-            <form role="form" method="post" action="{% url 'contact' %}">
-                <legend>Get in touch!</legend>
+
+            <h4>Send us your query below</h4><hr>
+            <form method="post" action="{% url 'contact' %}">
                 {% csrf_token %}
                 {{ form | as_bootstrap}}
                 <div class="form-group">

@@ -35,7 +35,7 @@
                             {% if post.score == 1 %}point{% else %}points{% endif %}</span>
                         &emsp;&emsp;<span class="badge">{{ post.views }} views</span>&emsp;&emsp;
                         <a href="https://twitter.com/intent/tweet?url={{ current_path }}&via=easySPSS&text={{ post.title }}"
-                       target="_blank"><img src="{% static 'images/tweet.png' %}"/></a>
+                       target="_blank"><img src="{% static 'images/tweet.png' %}" alt="tweet"/></a>
                     </p>
                 </div>
                 <div class="col-sm-2">
@@ -47,7 +47,9 @@
             <!-- content -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="centered"><img class="img-responsive" src="{{ post.image.url }}" ></div>
+                    <div class="centered">
+                        <img class="img-responsive" src="{{ post.image.url }}" alt="{{ post.title|truncatewords:7 }}"/>
+                    </div>
                     <div>
                         <br>
                         <p>{{ post.content|linebreaksbr  }}...</p>
@@ -60,9 +62,15 @@
                             </p>
                         {% else %}
                             <div  class="alert alert-warning centered">
-                             <p id="login-disqus"><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in </a>&emsp;
-                                 or &emsp;<a href="{% url 'register' %}"><span class="glyphicon glyphicon-pencil"></span> Register </a>
-                                <br>to see the comments. </p>
+                             <p id="login-disqus">
+                                 <a href="{% url 'login' %}">
+                                     <span class="glyphicon glyphicon-log-in"></span> Log in
+                                 </a>&emsp;or&emsp;
+                                 <a href="{% url 'register' %}">
+                                     <span class="glyphicon glyphicon-pencil"></span> Register
+                                 </a>
+                                <br>to see the comments.
+                             </p>
                             </div>
                         {% endif %}
                     </div>
