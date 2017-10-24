@@ -1,6 +1,6 @@
 # easySPSS (spss-online)
 ###### E-commerce & Blog web application with User Authentication, PayPal Payments and Support Tickets functionality
-Final project for the Code Institute's online program. easySPSS is a fictional e-commerce platform. The content is based on the company I work for, which currently uses digital marketing to promote SPSS software but only sells through more traditional channels. The reason I chose to build this web app is because it is in my company's plan to move to an e-commerce model in the future soon.
+Final project for the Code Institute's online program. easySPSS is a fictional e-commerce platform. The content is based on the company I work for, which currently uses digital marketing to promote SPSS software but only sells through more traditional channels. The reason I chose to build this web app is because it is in my company's plan to move to an e-commerce model in the future.
 
 You can view the deployed version on http://spss-online-herokuapp.com
 
@@ -30,7 +30,7 @@ The objective of this website is to sell SPSS software (licenses) online, provid
 visitors learn more about SPSS software and the world of Analytics in a blog.
 
 ## User Roles
-There are 4 different user roles with different access level (more detailed information in views and testing section). 
+There are 4 different user roles with different access levels (more detailed information in [views](#views) and [testing](#testing) section). 
 Each user can see specific messages for them in the different parts of the website (status messages, messages 
 indicating functionality or different call to actions. This is an overview of their functionality:
 
@@ -47,21 +47,21 @@ but have some limitations, visitors:
 
 - **Registered users/inactive customers**: Users that registered to the web page using the registration form and are 
 logged in but they don't have any active license. 
-  - **Registered users**: they don't have an active license because they haven't buy any product yet.
+  - **Registered users**: they don't have an active license because they haven't bought any products yet.
   - **Inactive customers**: they don't have an active license because the products they bought have expired licenses 
   and they have not renewed. 
   
-  I decided to unify these 2 types of users in the same use case as they basically have the same functionality. The 
-  only differences are that: inactive customers might have old cases and it make sense that they can still access those 
-  tickets for future reference, but also makes sense for registered users to see this section as it is a way to encourage them to buy a product so they can access this functionality; inactive customers have old products that are shown in the profile page with a link the products page, and it also makes sense to show this section to registered users so they know where their products would be if they buy them.
+  I decided to unify these 2 users types in the same use case as they basically have the same functionality. The 
+  only differences are that: inactive customers might have old cases and it makes sense that they can still access those 
+  tickets for future reference, but also makes sense for registered users to see this section as it is a way to encourage them to buy a product so they can access this functionality; inactive customers have old products that are shown in the profile page with a link the products page, and it also makes sense to show this section to registered users so they know where their products would be if they were to buy them.
   
-  These type of users have visitors' access plus:
+  These users types have visitors' access plus:
   - can vote and comment in blog posts.
   - can see their profile, tickets page and old tickets details (if any)
-  - can't open new ticket or edit existing tickets.
+  - can't open new tickets or edit existing tickets.
   - see a call to action with a discount offer and a link to contact us in the profile and products pages.
 
-  To identify these type of users the code uses: a new attribute called `is_customer` that is computed in the User 
+  To identify these type of user, the code uses: a new attribute called `is_customer` that is computed in the User 
   Model by checking if that particular logged user has any purchase with an active license. If that is positive, 
   `is_customer` is set up to True, otherwise it is set up to False - this last one is the case for these types of users.
   (More about active licenses in the products section)
@@ -73,7 +73,7 @@ They have registered users access plus:
   - can see their active products in the products page. 
   - see a call to action with a link to contact us in the products and profile page
   
-  To identify these type of users the code uses the attribute `is_customer` explained above. In this case this attribute
+  To identify these type of users, the code uses the attribute `is_customer` explained above. In this case this attribute
    is set up to True.(More about active licenses in the products section)
 
 
@@ -81,25 +81,23 @@ They have registered users access plus:
 (or in the terminal as a superuser). In addition to what the other users can do, staff users:
   - can manage the admin part of the website
   - can create products, blog categories and blog posts from the admin panel
-  - can add comments and close/reopen all customer's tickets within the admin panel or through the comments form and 
+  - can add comments and close/reopen all customers' tickets within the admin panel or through the comments form and 
   buttons on the ticket detail page. 
   - can't see "My Products" section in the profile.
-  - see a different tickets table in the profile and tickets page that includes the name of the customer that open each 
+  - see a different tickets table in the profile and tickets page that includes the name of the customer that opened each 
   tickets and the status code instead of the full status to save space.
   - can't open new tickets from the web page, only from the admin panel as the ticket has to be assigned to the 
   customer in order for the customer to see it in "My Tickets" section.
   - see a box with shortcuts to other sections in the profile and products page instead of the other call to actions.
 
-  To identify these type of users I use: 
-    - the `is_authenticated` field of the User model to check they are logged in
-    - the `is_staff` field of the User Model.
+  To identify these type of users, the code uses the `is_staff` field of the User Model.
   
   
 ## Technology used
-- **Django Framework** – The project is build in Django, using a django app for each piece of functionality / website 
+- **Django Framework** – The project is built in Django, using a django app for each piece of functionality / website 
 section (see apps section for more information).
 - **HTML, CSS** – For templates and styles.
-- **Javascript (jQuery)** – For improving the UX and add extra functionality (e.g. carousel in the home page and tool 
+- **Javascript (jQuery)** – For improving UX and adding extra functionality (e.g. carousel in the home page and tool 
 tips in the products page.)
 - **Bootstrap** – To structure and style the templates (e.g. glyphycons, alerts, tables, etc.)
 - **Flatpages** - To create the simple about us page
@@ -121,9 +119,9 @@ shortcuts to other parts of the web app.
 #### accounts
 Manage everything related to the users. The custom auth model allows user registration and authentication. 
 More functionality: 
-- The user receives an welcome email when he registers. 
+- The user receives an welcome email when they register. 
 - Any type of user can log in and out at any stage. 
-- When the user is logged in he can see his information in the profile page
+- When the user is logged in they can see their information in the profile page
 - Interacts with other apps to show products and tickets in the profile page
 There are 3 important fields that are used to manage the functionality of the different users: 
 - is_authenticated: to check if the user is logged in
@@ -137,27 +135,26 @@ Different types of users are explained in another section of this file.
 #### products
 products app manages everything related to the company's products and the purchases made by the users in two different 
 models.
-- Products are added via Django's admin panel. Purchases are stored when the user buys a product via PayPal or added in 
+- Products are added via Django's admin panel. Purchases are stored when the user buys a product via PayPal or one is added in 
 the admin panel.
-- It receives the PayPal signal and send the information to the PayPal app.
+- It receives the PayPal signal and sends the information to the PayPal app.
 - Apart from other fields in the model, Purchase model contains a field called license_end, this is the field used to 
 compute if the user is an active customer or not. This field is calculated when the user made the purchase, adding 1 or 
 2 years (depending on the license) to the date of the purchase. If there is at least one licence that ends in the 
 future, the user is considered an active customer.
   - This field is also used to identify the different users the customer has: active, expiring soon or expired. This 
-allows to highlight them with the right message in the products section of the profile page, and show only the active 
-one in the products page. 
+enables the right message to appear in the products section of the profile page and show only what is active in the products page. 
   - This field is also used when a user is opening a new ticket as it is only allowed to open a ticket for active 
 products (see more in the tickets' app).
 
 
 #### paypal_store
-paypal_store app manage the PayPal functionality to make the purchases possible. It processes the signal from paypal 
+paypal_store app manages the PayPal functionality to make the purchases possible. It processes the signal from paypal 
 after a purchase is made and shows the purchase's information on the return page.
 
 
 #### blog
-blog app manage everything related with the functionality of the blog and its blog posts. It shows the different blog 
+blog app manages everything related with the functionality of the blog and its blog posts. It shows the different blog 
 posts in the blog page, giving the user the ability to click on them to go to the blog post details. 
 - In the blog post detail users can see the details, image and content of the blog post, as well as the number of views
  and the score (votes) that the blog post has received. 
@@ -167,27 +164,26 @@ the blog post.
 updated. A user can only vote on a blog post once. 
 - If the user is logged in, the user will also be able to add a comment using the disqus section below the post content. 
 - On the right hand side of the blog and blog post page there are two boxes showing the "Top 3 voted" and "Top 3 
-viewed" showing the posts with the highest number of points. This boxes are dynamically changed every time a user 
-vote or view a blog post.
+viewed" showing the posts with the highest number of points. This boxes are automatically changed every time a user 
+votes or views a blog post.
 
 
 #### tickets
-Manages everything relate to customer's support cases (tickets).
-- Customers can open new tickets, only for their products which have an active license (e.g. If user bought 18 months 
-ago 2 year license for SPSS Statistics 24 Win 64 and 1 year license for SPSS Modeler Win24, will only be possible to 
+Manages everything related to customers' support cases (tickets).
+- Customers can open new tickets, only for their products which have an active license (e.g. If a user bought a 2 year license for SPSS Statistics 24 Win 64 and a 1 year license for SPSS Modeler Win24 18 months ago, it will only be possible to 
 open a case for SPSS Statistics 24 Win 64. If the customer has more than one active license for the same product it 
-will only be showed once.
+will only be showed once.)
 - Customers can also close the open tickets and reopen them again, and add comments to open tickets. 
-- The status of the ticket changes automatically, starting with "New" when the ticket is created and updating 
+- The status of the ticket changes automatically, starting with "New" when the ticket is created and is updated  
 according to the last user that commented: if it was the customer the status changes Pending easySPSS Response (PER), 
 and if it was a staff user it changes to Pending Customer Response (PCR). It changes to closed when the case is closed 
 and back to PER or PCR when its reopened. 
-- The customer receives an notification email when a member of staff add a comment.
-- If a case is still open when the license expires the user will be able to update it as long as it has another active 
+- The customer receives a notification email when a member of staff adds a comment.
+- If a case is still open when the license expires the user will be able to update it as long as they have another active 
 license for the same or other product.
-- If a case is still open when the license expires and the user does not have any other active license, the user won't 
-be able to update the ticket, instead there is a message at the top of the page advising the user to contact easySPSS 
-if that is the case to finish the resolution of the case. Staff members will be able to edit/close the ticket for them.
+- If a case is still open when the license expires and the user does not have any other active licenses, the user won't 
+be able to update the ticket, instead, there is a message at the top of the page advising the user to contact easySPSS 
+to finish the resolution of the case. Staff members will be able to edit/close the ticket for them.
 - Staff members can add comments to any customer case, but can't open cases from the app as the form automatically 
 takes the logged user as the owner of the ticket. Staff members can create tickets from the admin panel as it is 
 possible to select the owner (user) of the ticket from there. 
@@ -199,7 +195,7 @@ in the front end.
 #### contact
 Simple app that manages the contact us section of the website. It renders the contact.html template, which includes 
 information on how to contact easySPSS and a Google Maps map embedded on the page using Google Maps Embed API.
-It contains a contact form that anyone can fill in. If the user is logged in the form pre-populate the form with the 
+It contains a contact form that anyone can fill in. If the user is logged in, the form pre-populates the form with the 
 user's details. The visitor will receive a "thank you for your query" email, and an email will be sent to 
 easySPSSweb@gmail.com as a notification to the staff Team indicating they have received a query.
 
@@ -329,7 +325,7 @@ SQLite to manage the DB locally. All the Static and Media files were stored loca
 - Phase 2: Deployment and local development with remote static & media files
 An AWS account was set up to manage and host all the static and media files. Settings were updated accordingly to point 
 to the online resources.
-The database is now hosted in Heroku and MySQL Workbench is used to query it if need it.
+The database is now hosted in Heroku and MySQL Workbench is used to query it if it is needed.
 
 
 # Testing
@@ -353,11 +349,11 @@ database or let me know and I will do it for you in the deployed database.
 - Inactive Customer: jessica.jones@gmail.com (password: 123)
 
 
-[Here](testing_tables.md) you can find a series of tables with an summary of the tests. I have only included the 
+[Here](testing_tables.md) you can find a series of tables with a summary of the tests. I have only included the 
 ones testing a more complex functionality that depends on the type of user or other parameters.
 
 Additional manual tests were run on the products and paypal_store apps due to their complexity.
-(More information in the [challenges](#challenges-and-known-bugs) section).
+(More information in the [challenges and known bugs](#challenges-and-known-bugs) section).
 
 ### Automated tests
 
@@ -393,7 +389,7 @@ Deployed version in Heroku: []https://spss-online.herokuapp.com/]
 
 The lessons in the course were referring to a PayPal API signal that was no longer valid. I had to do a lot of research 
 to be able to properly read and process the signal.
-I did run many manual tests by buying products through the sandbox and encounter many difficulties such as the Paypal 
+I ran many manual tests by buying products through the sandbox and encountered many difficulties such as the Paypal 
 site not rendering properly sometimes, the signal being delayed and duplicated, the sandbox accounts being deactivated, 
 etc.
 
