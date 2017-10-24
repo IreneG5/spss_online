@@ -8,9 +8,9 @@
             <h2>Oops!</h2>
             <br />
             <h4>We can't seem to find the
-            {% if request.resolver_match.url_name == 'tickets-list' %}
+            {% if request.resolver_match.url_name == 'ticket-detail' %}
                 ticket
-            {% elif request.resolver_match.url_name == 'post-detail' %}>
+            {% elif request.resolver_match.url_name == 'post-detail' %}
                 blog post
             {% else %}
                 page

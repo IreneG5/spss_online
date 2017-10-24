@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <br />
+            <h2>Oops!</h2>
+            <br />
+            <h4>Something went wrong (500 - Server Error).</h4>
+            <br />
+            <h5>Try to refresh this page and, if it still doesn't work, please let us know.</h5>
+            <p class="spacer">&nbsp;</p>
+            <p class="centered">
+            <a class="btn btn-primary centered" href="mailto:easySPSSweb@gmail.com?subject=I got an 500 error in your website">
+                <span class="glyphicon glyphicon-envelope"></span><br />
+                Let us know</a>
+            </p>
+            <br />
+        </div>
+        <div class="col-md-4">
+            <img class="img-responsive" src="{% static 'images/500-question-mark.jpg' %}" alt="500 Server Error" />
+        </div>
+    </div>
+{% endblock %}
