@@ -123,8 +123,8 @@
                     </div>
                     <!-- tickets table with all the tickets that the user opened, or all tickets for staff.
                     Information shown changes depending on the user role (staff or customer).
-                    e.g. staff see the status code instead of the full status text, they also see who opened the case
-                    and the reason -->
+                    e.g. staff see the status code instead of the full status text, they  see who opened the case
+                    and the reason too -->
                     <div id="tickets" class="collapse in border-left-teal">
                         {% if tickets > 0 %}
                                 <table class="table"><tbody>
@@ -133,9 +133,7 @@
                                             {% if user.is_staff %} <td>{{ ticket.status }}</td>
                                             {% else %} <td>{{ ticket.get_status_display }}</td>
                                             {% endif %}
-                                            <td>
-                                                <a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.subject }}</a>
-                                            </td>
+                                            <td><a href="{% url 'ticket-detail' ticket.id %}">{{ ticket.subject }}</a></td>
                                             <td>Opened: {{ ticket.opened_date | date}}</td>
                                             {% if user.is_staff %}
                                                 <td>By: {{ ticket.user.first_name }}&nbsp;{{ ticket.user.last_name }}</td>

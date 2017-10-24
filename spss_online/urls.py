@@ -52,7 +52,6 @@ urlpatterns = [
 
     # Tickets
     url(r'', include('tickets.urls')),
-
 ]
 
 if settings.DEBUG:

@@ -38,7 +38,8 @@
                     <li id="nav-products" {% if request.resolver_match.url_name == 'products'%}class="active"{% endif %}>
                         <a href="{% url 'products' %}">Products</a>
                     </li>
-                    <li id="nav-blog" {% if request.resolver_match.url_name == 'blog' or request.resolver_match.url_name == 'post-detail'%}class="active"{% endif %}>
+                    <li id="nav-blog" {% if request.resolver_match.url_name == 'blog' or request.resolver_match.url_name == 'post-detail'%}class="active"
+                    {% endif %}>
                         <a href="{% url 'blog' %}">Blog</a>
                     </li>
                     <li id="nav-contact" {% if request.resolver_match.url_name == 'contact'%}class="active"{% endif %}>
@@ -48,20 +49,26 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Show profile, tickets and log out only if the user is authenticated -->
                     {% if user.is_authenticated %}
-                        <li id="nav-profile" {% if request.resolver_match.url_name == 'profile'%}class="active"{% endif %}>
+                        <li id="nav-profile" {% if request.resolver_match.url_name == 'profile'%}class="active"
+                        {% endif %}>
                             <a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> My Profile</a>
                         </li>
-                        <li id="nav-tickets" {% if request.resolver_match.url_name == 'ticket-detail' or request.resolver_match.url_name == 'tickets-list' or request.resolver_match.url_name == 'new-ticket' %}class="active"{% endif %}>
-                            <a href="{% url 'tickets-list' %}"><span class="glyphicon glyphicon glyphicon-briefcase"></span> My Tickets </a> </li>
+                        <li id="nav-tickets" {% if request.resolver_match.url_name == 'ticket-detail' or request.resolver_match.url_name == 'tickets-list' %}class="active"
+                        {% endif %}>
+                            <a href="{% url 'tickets-list' %}"><span class="glyphicon glyphicon glyphicon-briefcase">
+                            </span> My Tickets </a> </li>
 
-                        <li id="nav-logout"><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log out</a> </li>
+                        <li id="nav-logout"><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out">
+                        </span> Log out</a> </li>
                     <!-- Show register and login only if the user is not authenticated -->
                     {% else %}
-                        <li id="nav-register" {% if request.resolver_match.url_name == 'register'%}class="active"{% endif %}>
+                        <li id="nav-register" {% if request.resolver_match.url_name == 'register'%}class="active"
+                        {% endif %}>
                             <a href="{% url 'register' %}"><span class="glyphicon glyphicon-pencil"></span> Register</a>
                         </li>
-                        <li id="nav-login" {% if request.resolver_match.url_name == 'login'%}class="active"{% endif %}>
-                            <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a> </li>
+                        <li id="nav-login" {% if request.resolver_match.url_name == 'login'%}class="active"
+                        {% endif %}>
+                            <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
                     {% endif %}
                 </ul>
 

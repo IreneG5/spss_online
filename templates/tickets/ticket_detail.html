@@ -17,31 +17,31 @@
                         Status: {{ ticket.get_status_display }}</h3>
              </div>
             <div class="col-md-6">
-                <a href="{% url 'tickets-list' %}" class="btn btn-default">Back to My Tickets</a>
+                {% if not user.is_staff %}
+                            <a  id="ticket-new-ticket"
+                                href="{% url 'new-ticket' %}" class="btn btn-default btn-tickets">Open New Ticket</a>&emsp;
+                        {% endif %}
+                <a href="{% url 'tickets-list' %}" class="btn btn-default btn-tickets">Back to My Tickets</a>
+
             </div>
         </div>
         <!-- end header -->
 
         <div class="row">
             <!-- Buttons to update tickets -->
-            <div class="col-md-6">
                 {% if user.is_customer or user.is_staff  %}
+                    <div class="col-md-6">
                     {% if ticket.status != "CLS" %}
                         <a id="ticket-add-comment"
-                           href="{% url 'new-comment' ticket.id %}" class="btn btn-default">Add Comment</a> &emsp;
+                           href="{% url 'new-comment' ticket.id %}" class="btn btn-primary btn-tickets">Add Comment</a>&emsp;
                         <a  id="ticket-close-ticket"
-                            href="{% url 'close-ticket' ticket.id %}" class="btn btn-danger">Close Ticket</a>
+                            href="{% url 'close-ticket' ticket.id %}" class="btn btn-danger btn-tickets">Close Ticket</a>
                     {% else %}
                         <a  id="ticket-reopen-ticket"
-                            href="{% url 'reopen-ticket' ticket.id %}" class="btn btn-warning">Reopen Ticket</a>
+                            href="{% url 'reopen-ticket' ticket.id %}" class="btn btn-warning btn-tickets">Reopen Ticket</a>
                     {% endif %}
-                    </div><div class="col-md-6">
-                        {% if not user.is_staff %}
-                            <a  id="ticket-new-ticket"
-                                href="{% url 'new-ticket' %}" class="btn btn-primary">Open New Ticket</a>
-                        {% endif %}
-                {% else %}
-                     </div><div class="col-md-6">
+                    </div>
+
                 {% endif %}
             </div>
         </div>
