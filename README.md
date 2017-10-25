@@ -368,6 +368,7 @@ Most of the python files have been validated for pep8 requirements using [PEP8 O
 The source code of the published pages have been validated with [W3C MarkUp Validator Center](https://validator.w3.org/). There are some known errors in some pages such as: the "Tweet" functionality in the blog post section, which contains spaces in the href value of the link as the pre-populated text is built using the title value of the blog post; and duplicated IDs in the products page, due to the paypal_form_for created as many times as the number of products.  
 
 **Update 25th October 2017 - Note for Project Assessors**
+
 Since yesterday 24th October in the evening, I have been having problems testing the PayPal functionality. 
 IPN signals don't seem to be coming through when they should, so the functionality when returning to paypal_return
 after making a purchase is not behaving properly.
