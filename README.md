@@ -144,7 +144,7 @@ enables us to show the right message in the products section of the profile page
 
 #### paypal_store
 paypal_store app manages the PayPal functionality to make the purchases possible. It processes the ipn signal from PayPal after a purchase is made and shows the purchase's information on the return page.
-
+The note in the paypal_return template indicating the user that they will receive an email is just what should happen in the real world, but it is not implemented in this project.
 
 #### blog
 blog app manages everything related with the functionality of the blog and its blog posts. It contains 3 models, Blog, Post and Vote. In the front end it shows the different blog posts in the blog page, giving the user the ability to click on them to see the blog post details. 
