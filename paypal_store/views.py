@@ -37,7 +37,7 @@ def paypal_return(request):
                 # Calculate when the purchase was made from the license_end field
                 year = last_purchase.license_end.year - int(last_purchase.product.license_type[0])
                 last_purchase_date = last_purchase.license_end.replace(year=year)
-                # If this purchase was made in the last 3 minutes this is what we are looking form
+                # If this purchase was made in the last 3 minutes, this is what we are looking for
                 # The 3 minutes it to give Paypal time to send the signal and the user to come back to
                 # the website.
                 if last_purchase_date >= arrow.utcnow().replace(seconds=-180).datetime:

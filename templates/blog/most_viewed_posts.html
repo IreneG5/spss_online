@@ -8,7 +8,9 @@
             </div>
             <div class="col-sm-6 ">
                 <div class="centered"> {{ post.views }} {% if post.views == 1 %}view{% else %}views{% endif %}</div>
-                <div><img class="img-responsive" src="{{ post.image.url }}" alt="{{ post.title|truncatewords:7 }}" /></div>
+                {% if post.image.name %}
+                    <div><img class="img-responsive" src="{{ post.image.url }}" alt="{{ post.title|truncatewords:7 }}" /></div>
+                {% endif %}
             </div>
         </div>
         {% if forloop.last %}

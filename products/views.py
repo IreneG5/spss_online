@@ -22,4 +22,6 @@ def all_products(request):
         .order_by('license_end')
     args = {'products': products, 'purchases': purchases, 'today': today,
             'expire_soon': expire_soon}
+    for product in products:
+        print product.image.name
     return render(request, "products/products.html", args)

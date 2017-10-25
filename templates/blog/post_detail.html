@@ -48,7 +48,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="centered">
-                        <img class="img-responsive" src="{{ post.image.url }}" alt="{{ post.title|truncatewords:7 }}"/>
+                        {% if post.image.name %}
+                            <img class="img-responsive" src="{{ post.image.url }}" alt="{{ post.title|truncatewords:7 }}"/>
+                        {% endif %}
                     </div>
                     <div>
                         <br>

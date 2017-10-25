@@ -435,7 +435,7 @@ class TicketDetailPageDeleteCommentsTest(TestCase):
 
     def test_staff_can_delete_comments_if_more_than_one(self):
         tickets_page = self.client.get('/tickets/1/')
-        self.assertIn('id="ticket-delete-comment" ', tickets_page.content)
+        self.assertIn('id="ticket-delete-comment', tickets_page.content)
 
     def tearDown(self):
         self.user_staff.delete()

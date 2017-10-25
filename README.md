@@ -367,6 +367,19 @@ Most of the python files have been validated for pep8 requirements using [PEP8 O
 
 The source code of the published pages have been validated with [W3C MarkUp Validator Center](https://validator.w3.org/). There are some known errors in some pages such as: the "Tweet" functionality in the blog post section, which contains spaces in the href value of the link as the pre-populated text is built using the title value of the blog post; and duplicated IDs in the products page, due to the paypal_form_for created as many times as the number of products.  
 
+**Update 25th October 2017 - Note for Project Assessors**
+Since yesterday 24th October in the evening, I have been having problems testing the PayPal functionality. 
+IPN signals don't seem to be coming through when they should, so the functionality when returning to paypal_return
+after making a purchase is not behaving properly.
+Tests run last night showed that no signal was coming through, therefore, a new purchase was not being created in the DB
+and the paypal_return page was returning a message saying there was a problem processing the purchase. I thought it 
+was a problem with my code so I tried reverting the latest changes, making some new commits, but nothing seemed to be working. 
+This morning, all yesterday's signals suddenly came through and the new purchases were saved.
+Later in the morning some tests were passing and others were failing, randomly from my perspective as within a 5 minute
+time-frame and not making any changes in the code the results were different, e.g. one purchase was not saved, another
+one was saved after a few  minutes, and another one worked fine.
+Having said that, if you encounter any problem when testing the purchasing process, I would suggest that you to try again 
+a few minutes, or even hours, later. 
 
 
 # Future additions and improvements

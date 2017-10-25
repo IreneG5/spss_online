@@ -24,7 +24,7 @@
                                 <div class="blog-mini-date">
                                     <i>{{ post.published_date| date }} | {{ post.category }}</i>
                                 </div>
-                                {% if post.image.url %}
+                                {% if post.image.name %}
                                     <div class="blog-mini-image">
                                         <img class="img-responsive" src="{{ post.image.url }}"
                                              alt="{{ post.title|truncatewords:7 }}" />
