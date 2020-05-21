@@ -5,7 +5,7 @@ This is my final project for the Code Institute's Full Stack Developer Online Pr
 
 easySPSS is a fictional e-commerce platform. The content is based on the company I work for, which currently uses digital marketing to promote SPSS software but only sells it through more traditional channels. I decided to build this particular app because it is in my company's plans to move to an e-commece model in the near future.
 
-You can view the deployed version on http://spss-online-herokuapp.com
+You can view the deployed version on https://spss-online.herokuapp.com
 
 ## Content:
 - [Overview](#overview)
